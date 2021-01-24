@@ -6,7 +6,7 @@
 #    By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/23 16:25:47 by yait-el-          #+#    #+#              #
-#    Updated: 2021/01/23 19:06:17 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/01/24 17:36:24 by yait-el-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,12 +40,16 @@ MLXDIR		= mlx
 ####################INC
 
 INCS		:= inc/Rtv1.h
+INCS		+= inc/Global.h
+INCS		+= inc/sdl_rt.h
+INCS		+= inc/struct.h
 INCS		+= libft/libft.h
 INCS		+= mlx/mlx.h
 
 ########################SRC files
 
 SRC			:=main.c
+SRC			+=mlx_stuff.c
 
 #################### Libraries
 LIBS		:= -lmlx

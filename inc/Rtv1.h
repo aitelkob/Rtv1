@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:01:37 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/23 18:55:31 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/01/24 17:30:40 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <mlx.h>
-
+#include "Global.h"
+#include "sdl_rt.h"
+#include "struct.h"
 
 #endif
