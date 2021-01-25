@@ -6,7 +6,7 @@
 #    By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/23 16:25:47 by yait-el-          #+#    #+#              #
-#    Updated: 2021/01/24 17:36:24 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/01/25 15:38:38 by yait-el-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ print-%  : ; @echo $* = $($*)
 
 $(NAME): $(MLXX) $(C_OBJS)
 	@echo "$(RED)\n***********>>>Building : $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
-	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
+	#@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
 
 #########  make libft
 $(LFT):
