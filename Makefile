@@ -6,7 +6,7 @@
 #    By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/23 16:25:47 by yait-el-          #+#    #+#              #
-#    Updated: 2021/01/25 15:38:38 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/01/25 19:18:05 by yait-el-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,9 @@ FT   = libft.a
 
 ######################DIR
 
-LFTDIR		= libft
+LFTDIR		= Libft
 SRCSDIR		= src
-OBJSDIR		= objs
+OBJSDIR		= obj
 INCSDIR		:= inc
 INCSDIR		+= $(LFTDIR)
 MLXDIR		= mlx
@@ -43,7 +43,7 @@ INCS		:= inc/Rtv1.h
 INCS		+= inc/Global.h
 INCS		+= inc/sdl_rt.h
 INCS		+= inc/struct.h
-INCS		+= libft/libft.h
+INCS		+= Libft/include/libft.h
 INCS		+= mlx/mlx.h
 
 ########################SRC files
@@ -83,7 +83,7 @@ print-%  : ; @echo $* = $($*)
 
 $(NAME): $(MLXX) $(C_OBJS)
 	@echo "$(RED)\n***********>>>Building : $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
-	#@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
+	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
 
 #########  make libft
 $(LFT):
@@ -104,3 +104,6 @@ fclean: clean
 	@echo "$(GREEN)**********   Deleting $(NAME) **********\n$(RESET)"
 	@$(RM) $(NAME)
 	@$(RM) $(OBJSDIR)
+
+re: fclean all
+.PHONY: all clean fclean re
