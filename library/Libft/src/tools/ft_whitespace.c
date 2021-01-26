@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Rtv1.h                                             :+:      :+:    :+:   */
+/*   ft_whitespace.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/23 18:01:37 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/26 11:12:21 by yait-el-         ###   ########.fr       */
+/*   Created: 2019/04/20 03:32:47 by yait-el-          #+#    #+#             */
+/*   Updated: 2019/04/20 03:40:48 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RTV1_H
-#define RTV1_H
+#include "libft.h"
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <math.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <mlx.h>
-#include "Global.h"
-#include "sdl_rt.h"
-#include "struct.h"
-
-#endif
+int				ft_whitespace(char c)
+{
+	if (c == ' ' || c == '\0' || c == '\n' || c == '\v' ||
+			c == '\f' || c == '\r' || c == '\t')
+		return (1);
+	return (0);
+}

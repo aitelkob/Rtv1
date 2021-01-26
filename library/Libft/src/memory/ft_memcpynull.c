@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Rtv1.h                                             :+:      :+:    :+:   */
+/*   ft_memcpynull.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/23 18:01:37 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/26 11:12:21 by yait-el-         ###   ########.fr       */
+/*   Created: 2021/01/25 09:49:00 by yait-el-          #+#    #+#             */
+/*   Updated: 2021/01/25 09:49:02 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RTV1_H
-#define RTV1_H
+#include "libft.h"
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <math.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <mlx.h>
-#include "Global.h"
-#include "sdl_rt.h"
-#include "struct.h"
+void	*ft_memcpynull(void *dst, const void *src, size_t size)
+{
+	size_t	i;
 
-#endif
+	i = 0;
+	while (i < size)
+	{
+		((unsigned char*)dst)[i] = ((unsigned char*)src)[i];
+		i++;
+	}
+	((unsigned char*)dst)[i] = '\0';
+	return (dst);
+}

@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Rtv1.h                                             :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/23 18:01:37 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/26 11:12:21 by yait-el-         ###   ########.fr       */
+/*   Created: 2021/01/25 09:35:59 by yait-el-          #+#    #+#             */
+/*   Updated: 2021/01/25 09:36:02 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RTV1_H
-#define RTV1_H
+#include "libft.h"
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <math.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <mlx.h>
-#include "Global.h"
-#include "sdl_rt.h"
-#include "struct.h"
+char	*ft_strmap(char const *s, char (*f)(char))
+{
+	char			*str;
+	size_t			i;
 
-#endif
+	i = 0;
+	if (s == NULL)
+		return (NULL);
+	i = ft_strlen(s);
+	str = (char*)malloc(sizeof(char) * (i + 1));
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		str[i] = (*f)(s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}

@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Rtv1.h                                             :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/23 18:01:37 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/26 11:12:21 by yait-el-         ###   ########.fr       */
+/*   Created: 2021/01/25 10:27:51 by yait-el-          #+#    #+#             */
+/*   Updated: 2021/01/25 10:27:52 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RTV1_H
-#define RTV1_H
+#include "libft.h"
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <math.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <mlx.h>
-#include "Global.h"
-#include "sdl_rt.h"
-#include "struct.h"
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
+{
+	char		*str;
+	size_t		i;
 
-#endif
+	if (s == NULL)
+		return (NULL);
+	str = (char*)malloc((len + 1) * sizeof(char));
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	while (len)
+	{
+		str[i] = s[start + i];
+		i++;
+		len--;
+	}
+	str[i] = '\0';
+	return (str);
+}

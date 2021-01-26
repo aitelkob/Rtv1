@@ -6,7 +6,7 @@
 #    By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/23 16:25:47 by yait-el-          #+#    #+#              #
-#    Updated: 2021/01/25 19:18:05 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/01/26 11:47:58 by yait-el-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,20 +31,20 @@ FT   = libft.a
 
 ######################DIR
 
-LFTDIR		= Libft
+LFTDIR		= library/Libft
 SRCSDIR		= src
 OBJSDIR		= obj
 INCSDIR		:= inc
 INCSDIR		+= $(LFTDIR)
-MLXDIR		= mlx
+MLXDIR		= library/mlx
 ####################INC
 
 INCS		:= inc/Rtv1.h
 INCS		+= inc/Global.h
 INCS		+= inc/sdl_rt.h
 INCS		+= inc/struct.h
-INCS		+= Libft/include/libft.h
-INCS		+= mlx/mlx.h
+INCS		+= library/Libft/include/libft.h
+INCS		+= library/mlx/mlx.h
 
 ########################SRC files
 
@@ -68,7 +68,7 @@ C_INCS      = $(foreach include, $(INCSDIR), -I$(include))
 ################# Compilation flags
 CC              = gcc
 RM              = rm -rf
-CFLAGS          = $(C_INCS) -Wall -Wextra -Werror
+CFLAGS          = $(C_INCS) 
 
 #----------------->>>>>>>>>>>>>>>>START<<<<<<<<<<<<<-------------------#
 $(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)

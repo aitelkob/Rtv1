@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Rtv1.h                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/23 18:01:37 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/26 11:12:21 by yait-el-         ###   ########.fr       */
+/*   Created: 2021/01/25 09:47:05 by yait-el-          #+#    #+#             */
+/*   Updated: 2021/01/25 09:47:06 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RTV1_H
-#define RTV1_H
+#include "libft.h"
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <math.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <mlx.h>
-#include "Global.h"
-#include "sdl_rt.h"
-#include "struct.h"
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	unsigned char	*temp;
 
-#endif
+	temp = NULL;
+	if (dest < src || dest > (src + n))
+		ft_memcpy(dest, src, n);
+	else
+	{
+		if (!(temp = (unsigned char *)malloc(n * sizeof(unsigned char))))
+			return (0);
+		else
+		{
+			ft_memcpy(temp, src, n);
+			ft_memcpy(dest, temp, n);
+			free(temp);
+		}
+		temp = NULL;
+	}
+	return (dest);
+}

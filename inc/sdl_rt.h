@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 16:38:59 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/24 18:34:42 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/01/26 09:35:36 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,7 @@
 # define SDL_RT_H
 
 #include "Rtv1.h"
-
-
-typedef struct      s_mlix
-{
-    void            *mlx_ptr;
-    void            *win_ptr;
-    void            *img_ptr;
-    int             *img;
-    int             bits_per_pixel;
-    int             size_line;
-    int             endian;
-}                   t_mlix;
+#include "struct.h"
 
 void        ft_destroy(t_mlix *mlx);
 void        setup(t_mlix *mlx);

@@ -6,17 +6,26 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:46:27 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/24 17:35:51 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/01/26 11:47:55 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Rtv1.h"
 
-int main()
+int main(int ac, char **av)
 {
 	t_mlix mlx;
-	setup(&mlx);
+	int fd;
+	int i = 0;
+	if (!(fd  = open(*av, O_RDONLY)))
+	{
+		printf("this is fd error !");
+		exit(0);
+	}
+	//setup(&mlx);
+	char **str = NULL;
 
-	printf("working \n");
+	i = get_next_line(fd ,str);
+	printf("%s",str[0]);
 	return (0);
 }

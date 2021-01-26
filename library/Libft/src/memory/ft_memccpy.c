@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Rtv1.h                                             :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/23 18:01:37 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/26 11:12:21 by yait-el-         ###   ########.fr       */
+/*   Created: 2021/01/25 09:54:35 by yait-el-          #+#    #+#             */
+/*   Updated: 2021/01/25 09:54:36 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RTV1_H
-#define RTV1_H
+#include "libft.h"
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <math.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <mlx.h>
-#include "Global.h"
-#include "sdl_rt.h"
-#include "struct.h"
+void	*ft_memccpy(void *str1, const void *str2, int c, size_t n)
+{
+	size_t			i;
+	unsigned char	c1;
+	unsigned char	*s1;
+	unsigned char	*s2;
 
-#endif
+	i = 0;
+	c1 = (unsigned char)c;
+	s1 = (unsigned char*)str1;
+	s2 = (unsigned char*)str2;
+	while (i < n)
+	{
+		s1[i] = s2[i];
+		if (s2[i] == c1)
+			return (s1 + i + 1);
+		i++;
+	}
+	return (NULL);
+}
