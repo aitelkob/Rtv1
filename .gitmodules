@@ -1,3 +1,6 @@
 [submodule "get_next_line"]
 	path = library/get_next_line
 	url = https://github.com/aitelkob/Get_next_line
+[submodule "library/Libft"]
+	path = library/Libft
+	url = https://github.com/aitelkob/Libft
