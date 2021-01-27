@@ -6,7 +6,7 @@
 #    By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/23 16:25:47 by yait-el-          #+#    #+#              #
-#    Updated: 2021/01/26 11:47:58 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/01/26 17:05:32 by yait-el-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,13 +52,14 @@ SRC			:=main.c
 SRC			+=mlx_stuff.c
 
 #################### Libraries
-LIBS		:= -lmlx
+LIBS		:= -L$(MLXDIR) -lmlx
 LIBS		+= -framework OpenGL
 LIBS		+= -framework AppKit
 LIBS		+= -lz
+LIBS		+= -L$(LFTDIR) -lft
 
-################### 3ya9a li makine lache but i do it fuck it
-
+################### 3ya9a li makine lache Oops!... I Did It Again
+LFT         = $(LFTDIR)/$(FT)
 MLXX		= $(MLXDIR)/$(MLX)
 D_SRCS      = $(addsuffix /, $(SRCSDIR))
 D_OBJS      = $(addsuffix /, $(OBJSDIR))
@@ -81,7 +82,7 @@ all:$(OBJSDIR) $(C_OBJS) $(NAME)
 print-%  : ; @echo $* = $($*)
 ############################
 
-$(NAME): $(MLXX) $(C_OBJS)
+$(NAME):$(LFT) $(MLXX) $(C_OBJS)
 	@echo "$(RED)\n***********>>>Building : $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(C_OBJS) $(LIBS)
 
