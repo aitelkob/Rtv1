@@ -1,0 +1,5 @@
+cylinder:
+  origin: 0 0 500
+  normal: 10 1 500
+  radius: 10
+  color: 255 255 0
