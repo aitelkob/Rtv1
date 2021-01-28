@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:46:27 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/28 19:02:18 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/01/28 19:30:08 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,11 @@ void		parce(char *av,t_rtv *rtv)
 	while(get_next_line(rtv->parse.fd ,&rtv->parse.line))
 	{
 		test = parse_cut(rtv);
-		if (ft_strcmp(test,"plane"))
+		if (!ft_strcmp(test,"plane"))
+			printf("line == %s\n",test);
+		else if (!ft_strcmp(test,"sphere"))
+			printf("line == %s\n",test);
+		else if (!ft_strcmp(test,"cone"))
 			printf("line == %s\n",test);
 		//printf("%s\n",test);
 		free(rtv->parse.line);
