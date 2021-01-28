@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:46:27 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/27 17:54:04 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/01/28 12:02:15 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 void	 ksem(char *line)
 {
 	char *res;
+	char	**ress;
+	char	**resso;
 
 	res = ft_strtrim(line);
+	free(res);
+	ress = ft_strsplit(res , ':');
 
-	printf("%s \n",res);
+	printf("%s \n",ress[0]);
 }
 
 void		parce(char *av)
@@ -37,6 +41,7 @@ void		parce(char *av)
 	{
 		ksem(line);
 	}
+	close(fd);
 }
 
 int main(int ac, char **av)
