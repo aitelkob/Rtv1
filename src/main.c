@@ -6,46 +6,82 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:46:27 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/28 12:02:15 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/01/28 19:02:18 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Rtv1.h"
 
-void	 ksem(char *line)
+void	error(char *str)
+{
+	printf("%s\n",str);
+	exit(0);
+}
+
+/*void	if_head_obj(char *str)
+{
+	if (ft_strcmp(str,"plan") || ft_strcmp(str,"sphere") || ft_strcmp(str,"cylider") || ft_strcmp(str,"cone"))
+		return (1);
+	return (0);
+}
+
+char	*ksem_arg(char *line)
+{
+
+}*/
+
+char	*ksem(char *line)
 {
 	char *res;
 	char	**ress;
-	char	**resso;
+	char	*resso;
 
 	res = ft_strtrim(line);
 	free(res);
 	ress = ft_strsplit(res , ':');
+	resso = ft_strtrim(ress[0]);
 
-	printf("%s \n",ress[0]);
+	return (resso);
 }
 
-void		parce(char *av)
+char *parse_cut(t_rtv *rtv)
 {
-	int fd;
-	char *line;
+    char    *cmp;
 
-	int i = 0;
-	if (!(fd  = open(av, O_RDONLY)))
-	{
-		printf("this is fd error !");
-		exit(0);
-	}
+    cmp = ft_strtrim(rtv->parse.line);
+	if (cmp[0] == '#')
+		return (cmp);
+	if ((cmp[ft_strlen(cmp) - 1] != ':') &&
+			(cmp[ft_strlen(cmp) - 1] != '1') && 
+			(cmp[ft_strlen(cmp) - 1] != '0'))
+		error("missing :");
+	cmp[ft_strlen(cmp) - 1] = '\0';
+	return (cmp);
+}
 
-	while(get_next_line(fd ,&line))
+void		parce(char *av,t_rtv *rtv)
+{
+	char *test;
+
+	if (!(rtv->parse.fd  = open(av, O_RDONLY)))
+		error("this is fd error !");
+
+	while(get_next_line(rtv->parse.fd ,&rtv->parse.line))
 	{
-		ksem(line);
+		test = parse_cut(rtv);
+		if (ft_strcmp(test,"plane"))
+			printf("line == %s\n",test);
+		//printf("%s\n",test);
+		free(rtv->parse.line);
 	}
-	close(fd);
+	if (rtv->parse.fd == -1)
+		error("fd matsedche \n");
 }
 
 int main(int ac, char **av)
 {
-	parce(av[1]);
+	t_rtv	rtv;
+
+	parce(av[1],&rtv);
 	return (0);
 }

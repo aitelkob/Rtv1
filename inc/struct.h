@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 16:40:46 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/27 19:21:13 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/01/28 17:33:28 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ typedef	struct		s_ray
 	t_vector		origin;
 	t_vector		direction;
 }					t_ray;
+
+typedef	struct		s_parse
+{
+	int				fd;
+	char			*line;
+	int				nb_line;
+	char			**agv;
+	char			*obj_name;
+}					t_parse;
 
 typedef struct      s_mlix
 {
@@ -54,7 +63,7 @@ typedef	struct		s_rtv
 {
 	t_mlix			mlx;
 	t_object		obj;
-		
+	t_parse			parse;	
 }					t_rtv;
 
 #endif

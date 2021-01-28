@@ -1,5 +1,5 @@
 cone:
-  origin: 0 0 0
-  normal: 0 0 0
-  radius: 0
+  origin: 1 2 3
+  normal: 1 2 3
+  radius: 1
   color: 110 25 90
