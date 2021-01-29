@@ -6,7 +6,7 @@
 #    By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/23 16:25:47 by yait-el-          #+#    #+#              #
-#    Updated: 2021/01/29 17:34:13 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/01/29 19:26:32 by yait-el-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,11 @@ OBJSDIR		= obj
 INCSDIR		:= inc
 INCSDIR		+= $(LFTDIR)
 MLXDIR		= library/mlx
+CHILDDIR    := start
+CHILDDIR    += parse
+CHILDDIR    += mlx
+CHILDDIR    += libvect
+CHILDDIR    += raytracing
 ####################INC
 
 INCS		:= inc/Rtv1.h
@@ -49,9 +54,9 @@ INCS		+= library/mlx/mlx.h
 
 ########################SRC files
 
-SRC			:=main.c
-SRC			+=mlx_stuff.c
-SRC			+=parce.c
+SRC			:=start/main.c
+SRC			+=mlx/mlx_stuff.c
+SRC			+=parse/parce.c
 
 #################### Libraries
 LIBS		:= -L$(MLXDIR) -lmlx
@@ -67,7 +72,7 @@ D_SRCS      = $(addsuffix /, $(SRCSDIR))
 D_OBJS      = $(addsuffix /, $(OBJSDIR))
 C_OBJS      = $(addprefix $(D_OBJS),  $(SRC:.c=.o))
 C_INCS      = $(foreach include, $(INCSDIR), -I$(include))
-
+C_CHILDDIR       = $(foreach dir, $(CHILDDIR),$(D_OBJS)$(dir))
 ################# Compilation flags
 CC              = gcc
 RM              = rm -rf
@@ -78,7 +83,7 @@ $(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)
 	@echo "$(PURPLE)**********>>>Compiling : $(RESET) $(LIGHTPURPLE)" $<
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-all:$(OBJSDIR) $(C_OBJS) $(NAME)
+all:$(OBJSDIR) $(C_CHILDDIR) $(NAME)
 
 ########## for D-bug
 print-%  : ; @echo $* = $($*)
@@ -94,6 +99,9 @@ $(LFT):
 ######## create obj dir
 $(OBJSDIR):
 	@mkdir -p $(OBJSDIR)
+####### create sub folder
+$(C_CHILDDIR):
+	@mkdir -p $(C_CHILDDIR)
 ####### make mlix
 $(MLXX):
 	make -sC $(MLXDIR)
