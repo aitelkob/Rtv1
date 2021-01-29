@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 16:40:46 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/28 17:33:28 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/01/29 17:25:32 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef	struct		s_object
 	char			*type;
 	t_vector		radius;
 	t_vector		origin;
+	t_vector		normal;
 	t_vector		direction;
 	t_vector		color;
 	struct s_object	*next;
@@ -62,7 +63,7 @@ typedef	struct		s_object
 typedef	struct		s_rtv
 {
 	t_mlix			mlx;
-	t_object		obj;
+	t_object		*obj;
 	t_parse			parse;	
 }					t_rtv;
 

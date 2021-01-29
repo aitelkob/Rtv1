@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Rtv1.h                                             :+:      :+:    :+:   */
+/*   fuction.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/23 18:01:37 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/29 17:33:27 by yait-el-         ###   ########.fr       */
+/*   Created: 2021/01/29 17:22:35 by yait-el-          #+#    #+#             */
+/*   Updated: 2021/01/29 17:32:58 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RTV1_H
-#define RTV1_H
+#ifndef FUCTION_H
+# define FUCTION_H
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <math.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <mlx.h>
-#include "../library/Libft/include/libft.h"
-#include "Global.h"
-#include "sdl_rt.h"
-#include "struct.h"
-#include "fuction.c"
+#include "Rtv1.h"
+
+void        parce(char *av,t_rtv *rtv);
 
 #endif
