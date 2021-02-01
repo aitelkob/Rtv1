@@ -6,7 +6,7 @@
 #    By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/23 16:25:47 by yait-el-          #+#    #+#              #
-#    Updated: 2021/01/31 17:47:00 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/02/01 19:00:27 by yait-el-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ CHILDDIR    += parse
 CHILDDIR    += mlx
 CHILDDIR    += libvect
 CHILDDIR    += raytracing
+CHILDDIR    += error
 ####################INC
 
 INCS		:= inc/Rtv1.h
@@ -59,6 +60,7 @@ SRC			+=mlx/mlx_stuff.c
 SRC			+=parse/parse2.c
 SRC			+=parse/objs_parse.c
 SRC			+=libvect/calc_vect.c
+SRC			+=error/parse_error.c
 
 #################### Libraries
 LIBS		:= -L$(MLXDIR) -lmlx

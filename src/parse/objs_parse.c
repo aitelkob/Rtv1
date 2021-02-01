@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 17:05:31 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/31 19:14:54 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/01 19:20:26 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void        plan_parce(t_rtv *rtv)
 		else if (!ft_strcmp("color",data))
 			plan->color = input_vector(arg);
 		else
-			error("plane error",data);
+			unknown_setting("plan",rtv->parse.nb_line);
 		free(data);
 		plan_parce(rtv);
 	}
@@ -72,3 +72,37 @@ void        plan_parce(t_rtv *rtv)
 	}
 }
 
+void        sphere_parce(t_rtv *rtv)
+{
+    static  t_object    *sphere;
+    char        *var;
+    char        *data;
+    char        *arg;
+
+    if (!sphere)
+        if (!(sphere = (t_object *)malloc(sizeof(t_object))))
+            error("obj error allocat","just alloct");
+
+    sphere->type = "sphere";
+    rtv->parse.nb_line++;
+    if (get_next_line(rtv->parse.fd, &data) == 1 && data[0] == ' ')
+    {
+        data = settings_cut(rtv,data,&arg);
+        if (!ft_strcmp("origin",data))
+            sphere->origin = input_vector(arg);
+        else if (!ft_strcmp("radius",data))
+            sphere->radius = input_vector(arg);
+        else if (!ft_strcmp("color",data))
+            sphere->color = input_vector(arg);
+        else
+            unknown_setting(data,rtv->parse.nb_line);
+        free(data);
+        sphere_parce(rtv);
+    }
+    else
+    {
+        first_obj(rtv,sphere);
+        sphere = NULL;
+        forward(rtv,data);
+    }
+}

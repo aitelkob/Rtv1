@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 16:43:51 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/31 19:15:53 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/01 19:21:17 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,11 @@ void		forward(t_rtv	*rtv,char *line)
 	char	*obj_name;
 
 	obj_name = name_cut(rtv,line);
+
 	if (!ft_strcmp(obj_name,"plane"))
 		plan_parce(rtv);
+	else if (!ft_strcmp(obj_name,"sphere"))
+		 sphere_parce(rtv);
 	else if (obj_name[0] == '\0')
 		return;
 	else
@@ -70,6 +73,7 @@ void        parce(char *av,t_rtv *rtv)
     if (!(rtv->parse.fd  = open(av, O_RDONLY)))
         error("this is fd error !","fd ");
     rtv->parse.nb_line = 0;
+	rtv->obj = NULL;
     while(get_next_line(rtv->parse.fd ,&rtv->parse.line))
     {
 		rtv->parse.nb_line++;
