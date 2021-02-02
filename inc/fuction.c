@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:22:35 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/01 19:00:18 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/02 17:14:25 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 void        parce(char *av,t_rtv *rtv);
 void        plan_parce(t_rtv *rtv);
 void        sphere_parce(t_rtv *rtv);
+void        cylinder_parce(t_rtv *rtv);
+void        cone_parce(t_rtv *rtv);
 char        *settings_cut(t_rtv *rtv,char *variable,char **data);
 char        *name_cut(t_rtv *rtv,char *line);
 void        forward(t_rtv   *rtv,char *line);

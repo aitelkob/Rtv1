@@ -1,4 +1,4 @@
-plane:   
+plane:
   origin: 1500 0 0
-  normal: 0.99 0 0.01
+  normal: 0 0 0.99
   color: 150 110 200

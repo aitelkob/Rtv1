@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 16:43:51 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/01 19:21:17 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/02 17:10:24 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void    error(char *str,char *where)
 {
-    printf("%s in ===(%s)\n",str,where);
-    exit(0);
+	printf("%s in ===(%s)\n",str,where);
+	exit(0);
 }
 
 char		*settings_cut(t_rtv *rtv,char *variable,char **data)
@@ -35,19 +35,19 @@ char		*settings_cut(t_rtv *rtv,char *variable,char **data)
 char        *name_cut(t_rtv *rtv,char *line)
 {
 	char    *setting;
-    char    *strtrim;
+	char    *strtrim;
 
-    if (!setting || setting[0] == '\0')
-        return ("\0");
-    strtrim = ft_strtrim(line);
-    if (strtrim[0] == '#')
-        return (strtrim);
-    if (strtrim[ft_strlen(strtrim) - 1] != ':' &&
-            strtrim[ft_strlen(strtrim) - 1] != '1' &&
-            strtrim[ft_strlen(strtrim) - 1] != '0')
-        error("parse cut",strtrim);
-    strtrim[ft_strlen(strtrim) - 1] = '\0';
-    return (strtrim);
+	if (!setting || setting[0] == '\0')
+		return ("\0");
+	strtrim = ft_strtrim(line);
+	if (strtrim[0] == '#')
+		return (strtrim);
+	if (strtrim[ft_strlen(strtrim) - 1] != ':' &&
+			strtrim[ft_strlen(strtrim) - 1] != '1' &&
+			strtrim[ft_strlen(strtrim) - 1] != '0')
+		error("parse cut",strtrim);
+	strtrim[ft_strlen(strtrim) - 1] = '\0';
+	return (strtrim);
 }
 
 void		forward(t_rtv	*rtv,char *line)
@@ -59,7 +59,12 @@ void		forward(t_rtv	*rtv,char *line)
 	if (!ft_strcmp(obj_name,"plane"))
 		plan_parce(rtv);
 	else if (!ft_strcmp(obj_name,"sphere"))
-		 sphere_parce(rtv);
+		sphere_parce(rtv);
+	else if (!ft_strcmp(obj_name,"cylinder"))
+		cylinder_parce(rtv);
+	else if (!ft_strcmp(obj_name,"cone"))
+		cone_parce(rtv);
+
 	else if (obj_name[0] == '\0')
 		return;
 	else
@@ -68,18 +73,18 @@ void		forward(t_rtv	*rtv,char *line)
 }
 void        parce(char *av,t_rtv *rtv)
 {
-    char *test;
+	char *test;
 
-    if (!(rtv->parse.fd  = open(av, O_RDONLY)))
-        error("this is fd error !","fd ");
-    rtv->parse.nb_line = 0;
+	if (!(rtv->parse.fd  = open(av, O_RDONLY)))
+		error("this is fd error !","fd ");
+	rtv->parse.nb_line = 0;
 	rtv->obj = NULL;
-    while(get_next_line(rtv->parse.fd ,&rtv->parse.line))
-    {
+	while(get_next_line(rtv->parse.fd ,&rtv->parse.line))
+	{
 		rtv->parse.nb_line++;
-        forward(rtv,rtv->parse.line);
-        free(rtv->parse.line);
-    }
-    if (rtv->parse.fd == -1)
-        error("fd matsedche \n","fd matsedch");
+		forward(rtv,rtv->parse.line);
+		free(rtv->parse.line);
+	}
+	if (rtv->parse.fd == -1)
+		error("fd matsedche \n","fd matsedch");
 }
