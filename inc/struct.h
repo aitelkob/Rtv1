@@ -36,7 +36,14 @@ typedef	struct		s_parse
 	int				nb_line;
 	char			**agv;
 	char			*obj_name;
-}					t_parse;
+}                 t_parse;
+
+typedef struct      s_light
+{
+  double            intensity;
+  t_vector          origin;
+  struct s_light    *next;
+}                   t_light;
 
 typedef struct      s_mlix
 {
