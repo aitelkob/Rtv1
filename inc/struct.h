@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 16:40:46 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/02 17:58:56 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/03 12:50:13 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 
 #include "Rtv1.h"
 #include "sdl_rt.h"
+
+enum    e_type
+{
+    PLANE = 1,
+    SPHERE,
+    CYLINDER,
+    CONE
+};
 
 typedef	struct		s_vector
 {
@@ -58,7 +66,7 @@ typedef struct      s_mlix
 
 typedef	struct		s_object
 {
-	char			*type;
+	int				type;
 	double			radius;
 	t_vector		origin;
 	t_vector		normal;

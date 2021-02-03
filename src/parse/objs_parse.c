@@ -6,58 +6,11 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 17:05:31 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/02 18:02:07 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/03 15:39:36 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Rtv1.h"
-
-void            first_obj(t_rtv *rtv, t_object *obj)
-{
-    t_object    *tmp;
-
-    tmp = obj;
-    tmp->next = rtv->obj;
-    rtv->obj = tmp;
-}
-
-void            first_light(t_rtv *rtv, t_light *light)
-{
-    t_light    *tmp;
-
-    tmp = light;
-    tmp->next = rtv->light;
-    rtv->light = tmp;
-}
-double			input_onearg(char *data,int nbr)
-{
-	char	**lines;
-	double ret;
-
-	lines = ft_strsplit(data, ' ');
-	 if (ft_lentab(lines) != 1)
-		 syntax_error(data,"bezzaf parametre",nbr);
-	 ret = ft_atoi(ft_strdup(lines[0]));
-	 free_splited(lines);
-	 return (ret);
-}
-
-t_vector        input_vector(char *data,int nbr)
-{
-    char    **lines;
-    t_vector vec;
-
-    lines = ft_strsplit(data,' ');
-     if (ft_lentab(lines) != 3)
-     	syntax_error(data,"bezzaf parametre",nbr);
-
-    vec.x =(int) ft_atoi(lines[0]);
-    vec.y =(int) ft_atoi(lines[1]);
-    vec.z =(int) ft_atoi(lines[2]);
-	 printf("->x=%d,%d,%d\n",ft_atoi(lines[0]),ft_atoi(lines[1]),ft_atoi(lines[2]));
-	free_splited(lines);
-    return (vec);
-}
 
 void        plan_parce(t_rtv *rtv)
 {
@@ -70,7 +23,7 @@ void        plan_parce(t_rtv *rtv)
 		if (!(plan = (t_object *)malloc(sizeof(t_object))))
 			error("obj error allocat","just alloct");
 
-	plan->type = "plane";
+	plan->type = PLANE;
 	rtv->parse.nb_line++;
 	if (get_next_line(rtv->parse.fd, &data) == 1 && data[0] == ' ')
 	{
@@ -105,7 +58,7 @@ void        sphere_parce(t_rtv *rtv)
         if (!(sphere = (t_object *)malloc(sizeof(t_object))))
             error("obj error allocat","just alloct");
 
-    sphere->type = "sphere";
+    sphere->type = SPHERE;
     rtv->parse.nb_line++;
     if (get_next_line(rtv->parse.fd, &data) == 1 && data[0] == ' ')
     {
@@ -140,7 +93,7 @@ void        cylinder_parce(t_rtv *rtv)
         if (!(cylinder = (t_object *)malloc(sizeof(t_object))))
             error("obj error allocat","just alloct");
 
-    cylinder->type = "cylinder";
+    cylinder->type = CYLINDER;
     rtv->parse.nb_line++;
     if (get_next_line(rtv->parse.fd, &data) == 1 && data[0] == ' ')
     {
@@ -177,7 +130,7 @@ void        cone_parce(t_rtv *rtv)
         if (!(cone = (t_object *)malloc(sizeof(t_object))))
             error("obj error allocat","just alloct");
 
-    cone->type = "cone";
+    cone->type = CONE;
     rtv->parse.nb_line++;
     if (get_next_line(rtv->parse.fd, &data) == 1 && data[0] == ' ')
     {
@@ -202,37 +155,3 @@ void        cone_parce(t_rtv *rtv)
         forward(rtv,data);
     }
 }
-
-void        light_parce(t_rtv *rtv)
-{
-    static  t_light    *light;
-    char        *var;
-    char        *data;
-    char        *arg;
-
-    if (!light)
-        if (!(light = (t_light *)malloc(sizeof(t_light))))
-            error("obj error allocat","just alloct");
-
-    rtv->parse.nb_line++;
-    if (get_next_line(rtv->parse.fd, &data) == 1 && data[0] == ' ')
-    {
-        data = settings_cut(rtv,data,&arg);
-        if (!ft_strcmp("origin",data))
-            light->origin = input_vector(arg,rtv->parse.nb_line);
-        else if (!ft_strcmp("intensity",data))
-            light->intensity = atoi(arg);
-        else
-            unknown_setting(data,rtv->parse.nb_line);
-        free(data);
-        light_parce(rtv);
-    }
-    else
-    {
-      //// to do
-        first_light(rtv,light);
-        light = NULL;
-        forward(rtv,data);
-    }
-}
-

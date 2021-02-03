@@ -1,0 +1,140 @@
+light:
+  origin: 800 400 0
+  intensity: 1
+plane:
+  origin: 0 800 0
+  normal: 0 0.999 0.001
+  color: 0 255 0
+plane:
+  origin: 1500 0 0
+  normal: 0.99 0 0.01
+  color: 0 255 0
+plane:
+  origin: 0 0 0
+  normal: -1.01 0 0.01
+  color: 0 255 0
+plane:
+  origin: 0 0 0
+  normal: 0 -1.001 0.001
+  color: 0 255 0
+plane:
+  origin: 0 0 2000
+  normal: 0 0 1
+  color: 0 255 0
+sphere:
+  origin: 814 345 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 815 340 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 816 335 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 817 330 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 818 325 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 819 320 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 820 315 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 820 310 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 820 305 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 820 300 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 820 295 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 820 290 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 820 285 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 820 280 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 820 275 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 820 270 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 820 265 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 820 260 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 819 255 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 818 250 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 817 245 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 816 240 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 815 235 297
+  radius: 32
+  color: 251 190 183
+sphere:
+  origin: 800 219 280
+  radius: 12
+  color: 255 255 255
+sphere:
+  origin: 825 215 280
+  radius: 12
+  color: 255 255 255
+sphere:
+  origin: 803 223 272
+  radius: 4
+  color: 0 0 0
+sphere:
+  origin: 825 220 272
+  radius: 4
+  color: 0 0 0
+sphere:
+  origin: 750 400 300
+  radius: 100
+  color: 255 205 148
+sphere:
+  origin: 770 400 340
+  radius: 100
+  color: 255 205 148
+
