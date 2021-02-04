@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:46:27 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/03 15:52:01 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/04 18:17:34 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ int main(int ac, char **av)
 {
 	t_rtv	rtv;
 
-	parce(av[1],&rtv);
+	//parce(av[1],&rtv);
 	//loop_print(&rtv);
+	setup_mlx(&rtv.mlx);
+	display(&rtv.mlx);
 	return (0);
 }
