@@ -6,48 +6,50 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:46:27 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/04 18:17:34 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/07 16:11:24 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Rtv1.h"
 
-/*void            print_vect(t_vector vec,char *str)
+void            print_vect(t_vector vec,char *str)
 {
-	printf("%s->x=%d,%d,%d\n",str,vec.x,vec.y,vec.z);
-}*/
+	printf("%s->x=%0.2f,%0.2f,%0.2f\n",str,vec.x,vec.y,vec.z);
+}
 
-/*void		loop_print(t_rtv *rtv)
+void		loop_print(t_rtv *rtv)
 {
 	t_object *current = rtv->obj;
 
 	while (current)
 	{
-		if (!ft_strcmp(current->type,"plane"))
+		if (current->type == PLANE)
 		{
-			printf("%s\n",current->type);
+			printf("PLANE\n");
 			print_vect(current->origin,"origin");
-			//print_vect(current->normal,"normal");
+			print_vect(current->normal,"normal");
 			print_vect(current->color,"color");
 		}
-		else if (!ft_strcmp(current->type,"sphere"))
+		else if (current->type == SPHERE)
 		{
-			printf("%s\n",current->type);
+			printf("SPHERE\n");
 			print_vect(current->origin,"origin");
-			print_vect(current->radius,"radius");
+			printf("radius = %0.2f\n",current->radius);
 			print_vect(current->color,"color");
 		}
 		current = current->next;
 	}
-}*/
+}
 
 int main(int ac, char **av)
 {
 	t_rtv	rtv;
 
-	//parce(av[1],&rtv);
+
+	parce(av[1],&rtv);
 	//loop_print(&rtv);
 	setup_mlx(&rtv.mlx);
+	raytracing(&rtv);
 	display(&rtv.mlx);
 	return (0);
 }

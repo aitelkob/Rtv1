@@ -6,7 +6,7 @@
 #    By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/23 16:25:47 by yait-el-          #+#    #+#              #
-#    Updated: 2021/02/03 15:52:11 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/02/07 15:10:24 by yait-el-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,12 +57,14 @@ INCS		+= library/mlx/mlx.h
 
 SRC			:=start/main.c
 SRC			+=mlx/mlx_stuff.c
+SRC			+=mlx/put_pixels.c
 SRC			+=parse/parse.c
 SRC			+=parse/objs_parse.c
 SRC			+=parse/tools_parse.c
 SRC			+=libvect/calc_vect.c
 SRC			+=parse/light_parse.c
 SRC			+=error/parse_error.c
+SRC			+=raytracing/raytracing.c
 
 #################### Libraries
 LIBS		:= -L$(MLXDIR) -lmlx

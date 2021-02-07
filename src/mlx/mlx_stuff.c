@@ -6,12 +6,13 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 16:18:27 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/04 18:17:44 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/07 15:14:09 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Rtv1.h"
 
+int         red_button(t_mlix *mlix);
 void		ft_destroy(t_mlix *mlx)
 {
 	mlx_destroy_image(mlx->mlx_ptr, mlx->img_ptr);
@@ -24,7 +25,7 @@ void		setup_mlx(t_mlix *mlx)
 	mlx->mlx_ptr = mlx_init();
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIN_W, WIN_H, "RTv1");
 	mlx->img_ptr = mlx_new_image(mlx->mlx_ptr, WIN_W, WIN_H);
-	mlx->img = (int *)mlx_get_data_addr(mlx->img_ptr, &mlx->bits_per_pixel, &mlx->size_line, &mlx->endian);
+	mlx->img =(int*) mlx_get_data_addr(mlx->img_ptr, &mlx->bits_per_pixel, &mlx->size_line, &mlx->endian);
 }
 
 int     key_hook(int keycode, t_mlix *mlix)
@@ -44,5 +45,6 @@ void		display(t_mlix *mlx)
 {
 	mlx_hook(mlx->win_ptr, 2, 0, key_hook,mlx);
 	mlx_hook(mlx->win_ptr, 17, 0, red_button, mlx);
+	mlx_put_image_to_window(mlx,mlx->win_ptr,mlx->img_ptr,0,0);
 	mlx_loop(mlx->mlx_ptr);
 }

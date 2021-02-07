@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:22:35 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/04 18:09:30 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/07 15:17:20 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,10 @@ void			display(t_mlix *mlx);
 int				key_hook(int keycode, t_mlix *mlix);
 void			setup_mlx(t_mlix *mlx);
 void			ft_destroy(t_mlix *mlx);
+void            ft_put_pixel(t_mlix *mlx,int x ,int y,int color);
 
+/**
+ * ********************************* raytracing
+**/ 
+void            raytracing(t_rtv *rtv);
 #endif
