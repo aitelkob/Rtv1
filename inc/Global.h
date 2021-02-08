@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 16:51:35 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/07 17:59:06 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/08 09:51:48 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ////// Infinte distance, used as a default value
 # define DIST_MAX 20000
 //////// in order to prevent boucing rays self-intersecting
-# define DIST_MIN -80000
+# define DIST_MIN 0.0001
 # define FOV 30
 # define KEY_ESC 53
 
