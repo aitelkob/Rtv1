@@ -2,4 +2,12 @@ sphere:
   origin: 818 325 300
   radius: 30
   color: 255 205 148
+sphere:
+  origin: 818 325 300
+  radius: 30
+  color: 255 205 148
+sphere:
+  origin: 818 325 300
+  radius: 30
+  color: 255 205 148
 

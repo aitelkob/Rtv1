@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 16:18:27 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/07 15:14:09 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/09 18:09:38 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void		setup_mlx(t_mlix *mlx)
 
 int     key_hook(int keycode, t_mlix *mlix)
 {
+	(void)mlix;
     if (keycode == KEY_ESC)
         exit(0);
 	return (1);
@@ -37,6 +38,7 @@ int     key_hook(int keycode, t_mlix *mlix)
 
 int			red_button(t_mlix *mlix)
 {
+	(void)mlix;
 	exit(0);
 	return(0);
 }

@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 17:05:31 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/03 15:39:36 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/09 18:13:03 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void        plan_parce(t_rtv *rtv)
 {
 	static  t_object    *plan;
-	char        *var;
 	char        *data;
 	char        *arg;
 
@@ -50,7 +49,6 @@ void        plan_parce(t_rtv *rtv)
 void        sphere_parce(t_rtv *rtv)
 {
     static  t_object    *sphere;
-    char        *var;
     char        *data;
     char        *arg;
 
@@ -85,7 +83,6 @@ void        sphere_parce(t_rtv *rtv)
 void        cylinder_parce(t_rtv *rtv)
 {
     static  t_object    *cylinder;
-    char        *var;
     char        *data;
     char        *arg;
 
@@ -122,7 +119,6 @@ void        cylinder_parce(t_rtv *rtv)
 void        cone_parce(t_rtv *rtv)
 {
     static  t_object    *cone;
-    char        *var;
     char        *data;
     char        *arg;
 

@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:22:35 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/07 18:37:33 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/09 18:18:58 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void			sphere_parce(t_rtv *rtv);
 void			cylinder_parce(t_rtv *rtv);
 void			cone_parce(t_rtv *rtv);
 void			light_parce(t_rtv *rtv);
+void        camera_parce(t_rtv *rtv);
 ///////// string manipulation
 
 char			*settings_cut(t_rtv *rtv,char *variable,char **data);
@@ -36,7 +37,7 @@ void			syntax_error(char *line, char *reasoning, int nbline);
 void			unknown_setting(char *line, int nbline);
 void			error(char *str,char *where);
 ///////////// list manipulation
-
+void            first_camera(t_rtv *rtv, t_camera *camera);
 void            first_light(t_rtv *rtv, t_light *light);
 void            first_obj(t_rtv *rtv, t_object *obj);
 t_vector        input_vector(char *data,int nbr);

@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 16:40:46 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/07 16:54:40 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/09 18:21:52 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,14 @@ typedef struct      s_mlix
     int             endian;
 }                   t_mlix;
 
+typedef struct      s_camera
+{
+    t_vector        origin;
+    double          fov;
+    t_vector        look_at;
+    struct s_camera *next;
+}                   t_camera;
+
 typedef	struct		s_object
 {
 	int				type;
@@ -81,6 +89,7 @@ typedef	struct		s_rtv
 	t_mlix			mlx;
 	t_object		*obj;
 	t_parse			parse;
+	t_camera		*camera;
 	t_light			*light;	
 }					t_rtv;
 

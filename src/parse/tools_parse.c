@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:26:32 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/03 17:10:37 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/09 18:37:34 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@ void            first_obj(t_rtv *rtv, t_object *obj)
     tmp = obj;
     tmp->next = rtv->obj;
     rtv->obj = tmp;
+}
+
+void            first_camera(t_rtv *rtv, t_camera *camera)
+{
+    t_camera    *tmp;
+
+    tmp = camera;
+    tmp->next = rtv->camera;
+    rtv->camera = tmp;
 }
 
 void            first_light(t_rtv *rtv, t_light *light)
@@ -55,7 +64,7 @@ t_vector        input_vector(char *data,int nbr)
     vec.x =ft_atof(lines[0]);
     vec.y =ft_atof(lines[1]);
     vec.z =ft_atof(lines[2]);
-    //printf("%s line = %d->x=%0.2f,%0.2f,%.2f\n",data,nbr,vec.x,vec.y,vec.z);
+    printf("%s line = %d->x=%0.2f,%0.2f,%.2f\n",data,nbr,vec.x,vec.y,vec.z);
     free_splited(lines);
     return (vec);
 }

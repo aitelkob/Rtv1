@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:46:27 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/07 16:11:24 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/09 18:37:09 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void            print_vect(t_vector vec,char *str)
 void		loop_print(t_rtv *rtv)
 {
 	t_object *current = rtv->obj;
-
+	t_camera *curr = rtv->camera;
+	printf("de5ale hena \n");
 	while (current)
 	{
 		if (current->type == PLANE)
@@ -39,17 +40,25 @@ void		loop_print(t_rtv *rtv)
 		}
 		current = current->next;
 	}
+	while (curr)
+	{	
+				printf("camera\n");
+				print_vect(rtv->camera->origin,"origin");
+				printf("fov = %0.2f\n",rtv->camera->fov);
+				print_vect(rtv->camera->look_at,"look_at");
+				curr = curr->next;
+	}
 }
 
 int main(int ac, char **av)
 {
 	t_rtv	rtv;
 
-
+	(void)ac;
 	parce(av[1],&rtv);
-	//loop_print(&rtv);
-	setup_mlx(&rtv.mlx);
-	raytracing(&rtv);
-	display(&rtv.mlx);
+	loop_print(&rtv);
+	//setup_mlx(&rtv.mlx);
+	//raytracing(&rtv);
+	//display(&rtv.mlx);
 	return (0);
 }

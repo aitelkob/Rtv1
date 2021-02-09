@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 16:43:51 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/03 15:47:25 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/09 18:17:26 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char		*settings_cut(t_rtv *rtv,char *variable,char **data)
 {
 	char	**line;
 	char	*option;
-
+	(void)rtv;
 	line = ft_strsplit(variable,':');
 	if (ft_lentab(line) != 2)
 		error("bezzaf parametres \n",line[0]);
@@ -37,6 +37,8 @@ char        *name_cut(t_rtv *rtv,char *line)
 	char    *setting;
 	char    *strtrim;
 
+	(void)rtv;
+	setting = NULL;
 	if (!setting || setting[0] == '\0')
 		return ("\0");
 	strtrim = ft_strtrim(line);
@@ -55,8 +57,10 @@ void		forward(t_rtv	*rtv,char *line)
 	char	*obj_name;
 
 	obj_name = name_cut(rtv,line);
-
-	if (!ft_strcmp(obj_name,"light"))
+	
+	if (!ft_strcmp(obj_name,"camera"))
+    	camera_parce(rtv);
+	else if (!ft_strcmp(obj_name,"light"))
 		light_parce(rtv);
 	else if (!ft_strcmp(obj_name,"plane"))
 		plan_parce(rtv);
@@ -75,8 +79,6 @@ void		forward(t_rtv	*rtv,char *line)
 }
 void        parce(char *av,t_rtv *rtv)
 {
-	char *test;
-
 	if (!(rtv->parse.fd  = open(av, O_RDONLY)))
 		error("this is fd error !","fd ");
 	rtv->parse.nb_line = 0;
