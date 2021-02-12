@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 09:49:04 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/08 19:01:52 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/12 18:33:24 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,29 @@ t_vector		camera(t_ray ray, int x, int y, t_vector up)
 	t_vector sum = add(multi(u_vector,px * pw), multi(v_vector,py * ph));
 	return add(sum, dirvec_norm);
 }
+double			get_dest(t_ray *rtv,t_object *obj)
+{
+	t_object		*tmp;
+	double			dst;
 
+	tmp = rtv->obj;
+
+	while (tmp)
+	{
+		if (tmp->type == SPHERE)
+			///// dst = intersection of Sphere
+		else if (tmp->type == PLANE)
+			///// dst = intersection pf plane
+		else if (tmp->type == CYLINDER)
+			///// dst = intersection of cylinder
+		else if (tmp->type == CONE)
+			///// dst = intersection of cone
+		tmp = tmp->next;
+	}
+}
 void			raytracing(t_rtv *rtv)
 {
+	t_vec 
 	int x;
 	int y;
 	unsigned int *img_temp;
@@ -157,7 +177,7 @@ void			raytracing(t_rtv *rtv)
 
 			///tekhrbihg diyal sofiane
 
-			t_vector plane_vec_s;
+			/*t_vector plane_vec_s;
 			t_vector plane_org;
 			t_vector up;
 			
@@ -175,7 +195,7 @@ void			raytracing(t_rtv *rtv)
 			double a = length_squared(dirvecs_norm, dirvecs_norm);
 			double b = length_squared(dirvecs_norm, xvec) * 2;
 			double c = length_squared(xvec, xvec) - 50*50;
-			double delta = b * b - 4 * a * c;		
+			double delta = b * b - 4 * a * c;*/
 			if (delta > 0)////7ad hena
 				rtv->mlx.img[(WIN_H - 1 - x) * WIN_W + y]=rgb_to_int(ft_itvect(15,157,88));
 		}
