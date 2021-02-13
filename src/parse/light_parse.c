@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:22:50 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/09 18:19:08 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/10 09:13:51 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,11 @@ void        camera_parce(t_rtv *rtv)
         else
             unknown_setting(data,rtv->parse.nb_line);
         free(data);
-        camera_parce(rtv);
+		camera_parce(rtv);
     }
-    else
-    {
-        first_camera(rtv,camera);
-        camera = NULL;
+	else
+	{
+		rtv->camera = camera;
         forward(rtv,data);
-    }
+	}
 }

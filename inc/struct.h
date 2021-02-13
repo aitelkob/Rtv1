@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 16:40:46 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/09 18:21:52 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/10 15:20:32 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ typedef	struct		s_rtv
 	t_object		*obj;
 	t_parse			parse;
 	t_camera		*camera;
-	t_light			*light;	
+	t_light			*light;
+ 	t_ray			ray;
 }					t_rtv;
 
 #endif

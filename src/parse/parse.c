@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 16:43:51 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/09 18:17:26 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/10 08:42:13 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ char        *name_cut(t_rtv *rtv,char *line)
 	char    *strtrim;
 
 	(void)rtv;
-	setting = NULL;
 	if (!setting || setting[0] == '\0')
 		return ("\0");
 	strtrim = ft_strtrim(line);
@@ -57,7 +56,6 @@ void		forward(t_rtv	*rtv,char *line)
 	char	*obj_name;
 
 	obj_name = name_cut(rtv,line);
-	
 	if (!ft_strcmp(obj_name,"camera"))
     	camera_parce(rtv);
 	else if (!ft_strcmp(obj_name,"light"))

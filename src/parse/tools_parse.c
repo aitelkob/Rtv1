@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:26:32 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/09 18:37:34 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/10 09:12:37 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ double          input_onearg(char *data,int nbr)
      if (ft_lentab(lines) != 1)
          syntax_error(data,"bezzaf parametre",nbr);
      ret = ft_atoi(ft_strdup(lines[0]));
+	 //printf("Fov= %f\n",ret);
      free_splited(lines);
      return (ret);
 }
@@ -64,7 +65,7 @@ t_vector        input_vector(char *data,int nbr)
     vec.x =ft_atof(lines[0]);
     vec.y =ft_atof(lines[1]);
     vec.z =ft_atof(lines[2]);
-    printf("%s line = %d->x=%0.2f,%0.2f,%.2f\n",data,nbr,vec.x,vec.y,vec.z);
+    //printf("%s line = %d->x=%0.2f,%0.2f,%.2f\n",data,nbr,vec.x,vec.y,vec.z);
     free_splited(lines);
     return (vec);
 }

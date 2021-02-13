@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:22:35 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/09 18:18:58 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/10 10:48:48 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ double          input_onearg(char *data,int nbr);
 /**
  * ****************************** vector lib
 **/
-
+void            print_vect(t_vector vec,char *str);
 t_vector		add(t_vector vec1, t_vector vec2);
 t_vector		sub(t_vector vec1, t_vector vec2);
 t_vector		multi(t_vector vec1, double t);
