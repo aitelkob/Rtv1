@@ -1,6 +1,6 @@
 sphere:
-  origin: 50 50 100
-  radius: 30
+  origin: 60 60 100
+  radius: 60
   color: 255 205 148
 plane:
   origin: 1500 0 5
