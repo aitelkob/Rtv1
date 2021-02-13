@@ -62,16 +62,8 @@ typedef struct      s_mlix
 	int				*d;
     int             bits_per_pixel;
     int             size_line;
-    int             endian;
-}                   t_mlix;
-
-typedef struct      s_camera
-{
-    t_vector        origin;
-    double          fov;
-    t_vector        look_at;
-    struct s_camera *next;
-}                   t_camera;
+    int				endian;
+}					t_mlix;
 
 typedef	struct		s_object
 {
@@ -83,7 +75,13 @@ typedef	struct		s_object
 	t_vector		color;
 	struct s_object	*next;
 }					t_object;
-
+typedef struct		s_camera
+{
+	t_vector		origin;
+	double			fov;
+	t_vector		look_at;
+	t_vector		up;
+}					t_camera;
 typedef	struct		s_rtv
 {
 	t_mlix			mlx;

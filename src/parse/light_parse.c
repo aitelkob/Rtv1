@@ -67,11 +67,11 @@ void        camera_parce(t_rtv *rtv)
         else
             unknown_setting(data,rtv->parse.nb_line);
         free(data);
-		camera_parce(rtv);
+        camera_parce(rtv);
     }
-	else
-	{
-		rtv->camera = camera;
+    else
+    {
+        rtv->camera = camera;
         forward(rtv,data);
-	}
+    }
 }

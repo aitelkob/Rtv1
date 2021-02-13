@@ -45,7 +45,7 @@ t_vector        vecto_subvec(t_vector v1,t_vector v2)
 }
 
 
- void            print_vect(t_vector vec,char *str);
+void            print_vect(t_vector vec,char *str);
 double      dot(t_vector v, t_vector b)
 {
 	return ((v.x * b.x) + (v.y * b.y) + (v.z * b.z));
@@ -92,6 +92,66 @@ double			intersection_plane(t_ray ray, t_object plane)
 	return (DIST_MAX);	
 }
 
+double intersection_cylinder(t_ray ray, t_object cylinder)
+{
+	double a, b, c, t0, t1, tmp;
+
+	t_vector x;
+	x = vecto_subvec(ray.origin, cylinder.origin);
+	/////// calculate qudratic coefficients
+
+	a = dot(ray.direction, ray.direction) - dot(ray.direction, cylinder.normal) * dot(ray.direction, cylinder.normal);
+	b = (dot(ray.direction, x) - dot(ray.direction, cylinder.normal) * dot(x, cylinder.normal)) * 2;
+	c = dot(x, x) - dot(x, cylinder.normal) * dot(x, cylinder.normal) - cylinder.radius * cylinder.radius;
+	////// check whether we intersect
+	/***  (-b±√(b²-4ac))s
+	 *     ---------------
+	 *          (2a)
+	**/
+	////// check whether we intersect
+	tmp = b * b - 4 * a * c;
+	t0 = (-b + sqrt(tmp)) / (2 * a);
+	t1 = (-b - sqrt(tmp)) / (2 * a);
+
+	if (t0 > t1)
+		return (t1);
+	else
+		return (t0);
+}
+
+double intersection_cone(t_ray ray, t_object cone)
+{
+	double a, b, c, t0, t1, tmp, alpha, tk;
+
+	t_vector x;
+	alpha = 60 * ((22.0 / 7.0) / 180.0);
+	x = vecto_subvec(ray.origin, cone.origin);
+	/////// calculate qudratic coefficients
+	a = dot(ray.direction, ray.direction);
+	b = 2 * dot(ray.direction, x);
+	c = dot(x, x) - (cone.radius * cone.radius);
+
+	tk = 1 + tan(alpha / 2) * tan(alpha / 2);
+	a = dot(ray.direction, ray.direction) - tk * dot(ray.direction, cone.normal) * dot(ray.direction, cone.normal);
+	b = (dot(ray.direction, x) - tk * dot(ray.direction, cone.normal) * dot(x, cone.normal)) * 2;
+	c = dot(x, x) - tk * dot(x, cone.normal) * dot(x, cone.normal);
+
+	////// check whether we intersect
+	/***  (-b±√(b²-4ac))sss
+	 *     ---------------
+	 *          (2a)
+	**/
+	////// check whether we intersect
+	tmp = b * b - 4 * a * c;
+	t0 = (-b + sqrt(tmp)) / (2 * a);
+	t1 = (-b - sqrt(tmp)) / (2 * a);
+
+	if (t0 > t1)
+		return (t1);
+	else
+		return (t0);
+}
+
 double			intersection_sphere(t_ray ray,t_object sphere)
 {
 	double a,b,c,t0,t1,tmp;
@@ -136,23 +196,23 @@ t_vector		camera(t_ray ray, int x, int y, t_vector up)
 	t_vector sum = add(multi(u_vector,px * pw), multi(v_vector,py * ph));
 	return add(sum, dirvec_norm);
 }
-double			get_dest(t_rtv *rtv,t_ray ray)
+double get_dest(t_rtv *rtv, t_ray ray)
 {
-	t_object		*tmp;
-	double			dst;
+	t_object *tmp;
+	double dst;
 
 	tmp = rtv->obj;
 
 	while (tmp)
 	{
 		if (tmp->type == SPHERE)
-			dst = intersection_sphere(ray,*tmp);
+			dst = intersection_sphere(ray, *tmp);
 		else if (tmp->type == PLANE)
-			dst = intersection_plane(ray,*tmp);
-		/*else if (tmp->type == CYLINDER)
-			///// dst = intersection of cylinder
+			dst = intersection_plane(ray, *tmp);
+		else if (tmp->type == CYLINDER)
+			dst = intersection_cylinder(ray, *tmp);
 		else if (tmp->type == CONE)
-			///// dst = intersection of cone*/
+			dst = intersection_cone(ray, *tmp);
 		tmp = tmp->next;
 	}
 	return (dst);
@@ -171,7 +231,7 @@ void			raytracing(t_rtv *rtv)
 	t_ray ray2;
 	ray.origin = rtv->camera->origin;
 	ray.direction = rtv->camera->look_at;
-	ray2.origin = ray.origin;	
+	ray2.origin = ray.origin;
 
 	x = -1;
 	while (++x < WIN_H)

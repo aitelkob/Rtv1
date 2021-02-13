@@ -21,14 +21,14 @@ void            first_obj(t_rtv *rtv, t_object *obj)
     rtv->obj = tmp;
 }
 
-void            first_camera(t_rtv *rtv, t_camera *camera)
+/*void            first_camera(t_rtv *rtv, t_camera *camera)
 {
     t_camera    *tmp;
 
     tmp = camera;
     tmp->next = rtv->camera;
     rtv->camera = tmp;
-}
+}*/
 
 void            first_light(t_rtv *rtv, t_light *light)
 {
