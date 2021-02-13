@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 09:49:04 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/13 16:07:25 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/13 16:14:26 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ double			intersection_sphere(t_ray ray,t_object sphere)
 	t0 = (-b + sqrt(tmp)) / (2 * a);
 	t1 = (-b - sqrt(tmp)) / (2 * a);
 
-	if (t0 > t1)
+	if (t0 < t1)
 		return (t1);
 	else
 		return (t0);
