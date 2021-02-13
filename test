@@ -1,5 +1,13 @@
 sphere:
-  origin: 818 325 300
+  origin: 60 60 100
+  radius: 30
+  color: 255 205 148
+plane:
+  origin: 0 0 2000
+  normal: 0 1 0
+  color: 0 255 0
+sphere:
+  origin: 60 60 100
   radius: 30
   color: 255 205 148
 
