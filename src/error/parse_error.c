@@ -22,7 +22,6 @@ void    syntax_error(char *line, char *reasoning, int nbline)
     ft_putstr(reasoning);
 	ft_putstr("\033[0m");
 
-    ft_putstr(" on ");
 	ft_putstr("\033[1;33m");
     ft_putstr(line);
 	ft_putstr("\033[0m");

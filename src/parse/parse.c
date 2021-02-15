@@ -25,7 +25,7 @@ char		*settings_cut(t_rtv *rtv,char *variable,char **data)
 	(void)rtv;
 	line = ft_strsplit(variable,':');
 	if (ft_lentab(line) != 2)
-		error("bezzaf parametres \n",line[0]);
+		syntax_error(variable,"somthing wrong with parsing file",rtv->parse.nb_line);
 	option = ft_strtrim(line[0]);
 	*data = ft_strdup(line[1]);
 	free_splited(line);
@@ -46,7 +46,7 @@ char        *name_cut(t_rtv *rtv,char *line)
 	if (strtrim[ft_strlen(strtrim) - 1] != ':' &&
 			strtrim[ft_strlen(strtrim) - 1] != '1' &&
 			strtrim[ft_strlen(strtrim) - 1] != '0')
-		error("parse cut",strtrim);
+		syntax_error(line,"somthing wrong with parsing file ",rtv->parse.nb_line);
 	strtrim[ft_strlen(strtrim) - 1] = '\0';
 	return (strtrim);
 }
@@ -68,11 +68,10 @@ void		forward(t_rtv	*rtv,char *line)
 		cylinder_parce(rtv);
 	else if (!ft_strcmp(obj_name,"cone"))
 		cone_parce(rtv);
-
-	else if (obj_name[0] == '\0')
+	else if (!obj_name || obj_name[0] == '\0' || obj_name[0] == '#')
 		return;
 	else
-		error("header parse error\n",obj_name);
+		syntax_error(line,"Object name ",rtv->parse.nb_line);
 	free(obj_name);
 }
 void        parce(char *av,t_rtv *rtv)

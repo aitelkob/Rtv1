@@ -4,7 +4,6 @@ light:
 light:
   origin: 100 700 -400
   intensity: 0.7
-# BOX #
 plane:
   origin: -1 800 0
   normal: 0 0.999 0.001
@@ -25,7 +24,6 @@ plane:
   origin: 0 0 2000
   normal: 0 0 1
   color: 0 255 0
-
 sphere:
   origin: 750 400 300
   radius: 200
