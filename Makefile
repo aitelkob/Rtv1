@@ -6,7 +6,7 @@
 #    By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/23 16:25:47 by yait-el-          #+#    #+#              #
-#    Updated: 2021/02/14 17:31:35 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/02/15 16:25:26 by yait-el-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ SRC			+=libvect/vector_calculation.c
 SRC			+=parse/light_parse.c
 SRC			+=error/parse_error.c
 SRC			+=raytracing/raytracing.c
+SRC			+=raytracing/intersection.c
 
 #################### Libraries
 LIBS		:= -L$(MLXDIR) -lmlx

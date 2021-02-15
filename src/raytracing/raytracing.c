@@ -6,37 +6,12 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 09:49:04 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/15 14:39:32 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/15 18:29:34 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Rtv1.h"
-
-
-double     quadratic(double a, double b, double c)
-{
-    double      determinant;
-    double      t0;
-    double      t1;
-
-      ////// check whether we intersect
-      /***  (-b±√(b²-4ac))sss
-       *     ---------------
-       *          (2a)
-       **/
-     ////// check whether we intersect
-    determinant = b * b - 4 * a * c;
-    if (determinant < 0)
-        return (-1);
-    if (determinant == 0)
-        return (-b / (2 * a));
-    t0 = (-b + sqrt(determinant)) / (2 * a);
-    t1 = (-b - sqrt(determinant)) / (2 * a);
-    return (t0 > t1) ? t1 : t0;
-}
-
-void            print_vect(t_vector vec,char *str);
-
+double get_dest(t_rtv *rtv, t_ray ray,t_object **close);
 int             rgb_to_int(t_vector v)
 {
 	int         red;
@@ -54,70 +29,53 @@ int             rgb_to_int(t_vector v)
 	return (rgb);
 }
 
-
-double			intersection_plane(t_ray ray, t_object plane)
+double			light_sphere(t_rtv *rtv,t_object sphere,t_vector hit)
 {
-	double      d;
-	double      dist;
-	t_vector    vector_distance;
 
-	//// first , check if we intersect
-	d = dot(plane.normal, ray.direction);
-	/////check if it's less than the the minimum allowed
-	/// otherwise it's outside the range we're
-	if (d > DIST_MIN)
+	return (0);
+}
+
+double			light_plane(t_rtv *rtv,t_object plane,t_vector hit)
+{
+
+	return (0);
+}
+
+double			light_cylinder(t_rtv *rtv,t_object cylinder,t_vector hit)
+{
+	return (0);
+
+}
+
+double			light_cone(t_rtv *rtv,t_object cone,t_vector hit)
+{
+	return (0);
+}
+
+t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit)
+{
+	double		intensity;
+	t_light		*tmp;
+	t_vector	color;
+
+	intensity = 0;
+	tmp = rtv->light;
+	cord(&color,25,25,25);
+	while (tmp)
 	{
-		vector_distance =  vecto_subvec(plane.origin, ray.origin);
-		dist = dot(vector_distance, plane.normal) / d;
-		return (dist);
+		if (obj && obj->type == SPHERE)
+			intensity += light_sphere(rtv,*obj,hit);
+		else if (obj && obj->type == PLANE)
+			intensity += light_plane(rtv,*obj,hit);
+		else if (obj && obj->type == CYLINDER)
+			intensity += light_cylinder(rtv,*obj,hit);
+		else if (obj && obj->type == CONE)
+			intensity += light_cone(rtv,*obj,hit);
+
+		tmp = tmp->next;	
 	}
-	return (DIST_MAX);
-}
-
-double intersection_cylinder(t_ray ray, t_object cylinder)
-{
-	double a, b, c, t0, t1, tmp;
-
-	t_vector x;
-	x = vecto_subvec(ray.origin, cylinder.origin);
-	/////// calculate qudratic coefficients
-
-	a = dot(ray.direction, ray.direction) - dot(ray.direction, cylinder.normal) * dot(ray.direction, cylinder.normal);
-	b = (dot(ray.direction, x) - dot(ray.direction, cylinder.normal) * dot(x, cylinder.normal)) * 2;
-	c = dot(x, x) - dot(x, cylinder.normal) * dot(x, cylinder.normal) - cylinder.radius * cylinder.radius;
-	 return (quadratic(a,b,c));
-}
-
-double intersection_cone(t_ray ray, t_object cone)
-{
-	double a, b, c, t0, t1, tmp, alpha, tk;
-
-	t_vector x;
-	alpha = 60 * ((22.0 / 7.0) / 180.0);
-	x = vecto_subvec(ray.origin, cone.origin);
-	/////// calculate qudratic coefficients
-	a = dot(ray.direction, ray.direction);
-	b = 2 * dot(ray.direction, x);
-	c = dot(x, x) - (cone.radius * cone.radius);
-
-	tk = 1 + tan(alpha / 2) * tan(alpha / 2);
-	a = dot(ray.direction, ray.direction) - tk * dot(ray.direction, cone.normal) * dot(ray.direction, cone.normal);
-	b = (dot(ray.direction, x) - tk * dot(ray.direction, cone.normal) * dot(x, cone.normal)) * 2;
-	c = dot(x, x) - tk * dot(x, cone.normal) * dot(x, cone.normal);
-	 return (quadratic(a,b,c));
-}
-
-double			intersection_sphere(t_ray ray,t_object sphere)
-{
-	double a,b,c,t0,t1,tmp;
-	
-	t_vector x;
-	x = vecto_subvec(ray.origin,sphere.origin);
-	/////// calculate qudratic coefficients
-	a = dot(ray.direction,ray.direction);
-	b = 2 * dot(ray.direction,x);
-	c = dot(x,x) - (sphere.radius * sphere.radius);
-	 return (quadratic(a,b,c));
+	////////////// hena 5asna ba9i 5aseni ne9de  return color
+	return (color);
 }
 
 t_vector		camera(t_ray ray, int x, int y, t_vector up)
@@ -138,13 +96,28 @@ t_vector		camera(t_ray ray, int x, int y, t_vector up)
 	t_vector sum = add(multi(u_vector,px * pw), multi(v_vector,py * ph));
 	return add(sum, dirvec_norm);
 }
-double get_dest(t_rtv *rtv, t_ray ray)
+
+t_vector			get_pxl(t_rtv *rtv,t_ray ray)
+{
+	double		dst_min;
+	t_object	*obj;
+	t_vector	hit_point;
+	t_vector		color;
+	cord(&color,0,0,0);
+	if ((dst_min = get_dest(rtv,ray,&obj) == -1))
+			return(color);
+	hit_point = add(ray.origin , multi(ray.direction,dst_min));
+	color = colors(rtv,obj,hit_point);
+
+	return (color);
+}
+double get_dest(t_rtv *rtv, t_ray ray,t_object **close)
 {
 	t_object *tmp;
 	double dst;
 
 	tmp = rtv->obj;
-
+	double min = 9999;
 	while (tmp)
 	{
 		if (tmp->type == SPHERE)
@@ -156,6 +129,10 @@ double get_dest(t_rtv *rtv, t_ray ray)
 		else if (tmp->type == CONE)
 			dst = intersection_cone(ray, *tmp);
 		tmp = tmp->next;
+		 if (dst < min && dst > 0)
+		 {
+			 *close = tmp;
+		 }
 	}
 	return (dst);
 }
@@ -164,6 +141,7 @@ void			raytracing(t_rtv *rtv)
 	int x;
 	int y;
 	unsigned int *img_temp;
+	t_vector		color;
 
 	//camera start
 	t_ray ray;
@@ -183,15 +161,15 @@ void			raytracing(t_rtv *rtv)
 			t_vector plane_vec_s;
 			t_vector plane_org;
 			t_vector up;
-			
+			print_vect(rtv->light->origin,"light");
 			cord(&up, 0, 1, 0);
 			cord(&plane_vec_s, 0, 1, 0);
 			cord(&plane_org, 50, 50, 100);
 			/////////////start here
 			ray2.direction = camera(ray,x,y,up);
-			double dst = get_dest(rtv,ray2);
-			if (dst > 0)
-				rtv->mlx.img[(WIN_H - 1 - x) * WIN_W + y]=rgb_to_int(ft_itvect(15,157,88));
+			/*double dst = get_dest(rtv,ray2);
+			color = get_pxl(rtv,ray2);
+			rtv->mlx.img[(WIN_H - 1 - x) * WIN_W + y]=rgb_to_int(ft_itvect(color));*/
 		}
 	}
 

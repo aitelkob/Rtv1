@@ -6,12 +6,21 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 15:02:19 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/01/31 15:05:23 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/15 18:03:04 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Rtv1.h"
 
+t_vector    c_vector(double x,double y, double z)
+{
+    t_vector vector;
+
+    vector.x = x;
+    vector.y = y;
+    vector.z = z;
+    return (vector);
+}
 
 t_vector add(t_vector vec1, t_vector vec2)
 {
@@ -56,6 +65,7 @@ t_vector Div(t_vector vec1, double t)
 
     return result;
 }
+
 
 double length_squared(t_vector vec1, t_vector vec2)
 {
