@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 09:49:04 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/16 12:39:14 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/16 16:52:22 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,15 @@ t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit)
 	intensity = 0;
 	tmp = rtv->light;
 	cord(&color,25,25,25);
+	int i = 0;
 	while (tmp)
 	{
-		double alfa = length_squared(obj, obj->normal) / (length(tmp, tmp) * length(obj->normal,  obj->normal));
-		color = rgb_to_int(multi(obj->color, fabs(alfa < 0 ? 0 : alfa)));
+		//double alfa = length_squared(obj->direction, obj->normal) / (length(tmp->origin, tmp->origin) * length(obj->normal,  obj->normal));
+		/*double alfa = 0;
+		color = multi(obj->color, fabs(alfa < 0 ? 0 : alfa));*/
+		printf("this %d\n",i);
+		print_vect(tmp->origin,"light");
+		i++;
 		tmp = tmp->next;	
 	}
 
@@ -69,14 +74,14 @@ t_vector		camera(t_ray ray, int x, int y, t_vector up)
 
 t_vector				obj_normal(t_rtv *rtv,t_object *obj,t_vector hit)
 {
-	if (obj && obj->type == SPHERE)
+	/*if (obj && obj->type == SPHERE)
 		obj->normal =nrm(sub(hit,obj->origin)); 
 	else if (obj && obj->type == PLANE)
 		obj->normal = multi(obj->normal, -1);
 	else if (obj && obj->type == CYLINDER)
 		obj->normal = nrm(sub(obj->origin,obj->normal)); 
 	else if (obj && obj->type == CONE)
-		obj->normal = nrm(obj->normal);
+		obj->normal = nrm(obj->normal);*/
 	return (colors(rtv,obj,hit));
 }
 t_vector			get_pxl(t_rtv *rtv,t_ray ray)
@@ -85,11 +90,12 @@ t_vector			get_pxl(t_rtv *rtv,t_ray ray)
 	t_object	*obj;
 	t_vector	hit_point;
 	t_vector		color;
-	cord(&color,0,0,0);
+	cord(&color,20,20,0);
 	if ((dst_min = get_dest(rtv,ray,&obj) == -1))
 		return(color);
+
 	hit_point = add(ray.origin , multi(ray.direction,dst_min));
-	color = obj_normal(rtv,obj,hit_point);
+	///color = obj_normal(rtv,obj,hit_point);
 
 	return (color);
 }
@@ -117,6 +123,7 @@ double get_dest(t_rtv *rtv, t_ray ray,t_object **close)
 		}
 
 	}
+
 	return (dst);
 }
 void			raytracing(t_rtv *rtv)
@@ -144,15 +151,17 @@ void			raytracing(t_rtv *rtv)
 			t_vector plane_vec_s;
 			t_vector plane_org;
 			t_vector up;
-			mrint_vect(rtv->light->origin,"light");
+			//print_vect(rtv->light->origin,"light");
 			cord(&up, 0, 1, 0);
 			cord(&plane_vec_s, 0, 1, 0);
 			cord(&plane_org, 50, 50, 100);
 			/////////////start here
 			ray2.direction = camera(ray,x,y,up);
-			/*double dst = get_dest(rtv,ray2);
-			  color = get_pxl(rtv,ray2);
-			  rtv->mlx.img[(WIN_H - 1 - x) * WIN_W + y]=rgb_to_int(ft_itvect(color));*/
+			//double dst = get_dest(rtv,ray2);
+			color = get_pxl(rtv,ray2);
+			//print_vect(color,"color");
+			  rtv->mlx.img[(WIN_H - 1 - x) * WIN_W + y]=rgb_to_int(color);
+
 		}
 	}
 
