@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 16:43:51 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/10 08:42:13 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/16 17:46:34 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void        parce(char *av,t_rtv *rtv)
 		error("this is fd error !","fd ");
 	rtv->parse.nb_line = 0;
 	rtv->obj = NULL;
+	rtv->light = NULL;
 	while(get_next_line(rtv->parse.fd ,&rtv->parse.line))
 	{
 		rtv->parse.nb_line++;

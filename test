@@ -1,9 +1,6 @@
 light:
   origin: -400 50 -400
   intensity: 1
-light:
-  origin: -500 50 -400
-  intensity: 1
 plane:
   origin: 50 50 100
   normal: 1 0 0

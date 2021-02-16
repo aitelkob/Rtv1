@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:22:50 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/10 09:13:51 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/16 17:14:08 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void        light_parce(t_rtv *rtv)
             error("obj error allocat","just alloct");
 
     rtv->parse.nb_line++;
+	int i = 0;
     if (get_next_line(rtv->parse.fd, &data) == 1 && data[0] == ' ')
     {
         data = settings_cut(rtv,data,&arg);
@@ -37,7 +38,6 @@ void        light_parce(t_rtv *rtv)
     }
     else
     {
-      //// to do
         first_light(rtv,light);
         light = NULL;
         forward(rtv,data);

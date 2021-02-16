@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:46:27 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/10 16:56:23 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/16 17:47:02 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void		loop_print(t_rtv *rtv)
 {
 	t_object *current = rtv->obj;
 	t_camera *curr = rtv->camera;
-	while (current)
+	t_light *tmp = rtv->light;
+
+	/*while (current)
 	{
 		if (current->type == PLANE)
 		{
@@ -38,6 +40,12 @@ void		loop_print(t_rtv *rtv)
 			print_vect(current->color,"color");
 		}
 		current = current->next;
+	}*/
+	while (tmp)
+	{
+		print_vect(tmp->origin,"light");
+		printf(" intensiti %f \n",tmp->intensity);
+		tmp = tmp->next;
 	}
 
 	if (rtv->camera)
@@ -55,7 +63,7 @@ int main(int ac, char **av)
 
 	(void)ac;
 	parce(av[1],&rtv);
-	//loop_print(&rtv);
+	///loop_print(&rtv);
 	setup_mlx(&rtv.mlx);
 	raytracing(&rtv);
 	display(&rtv.mlx);

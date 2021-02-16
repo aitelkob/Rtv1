@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:26:32 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/16 16:49:47 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/16 17:32:59 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,6 @@ void            first_obj(t_rtv *rtv, t_object *obj)
     tmp->next = rtv->obj;
     rtv->obj = tmp;
 }
-
-/*void            first_camera(t_rtv *rtv, t_camera *camera)
-{
-    t_camera    *tmp;
-
-    tmp = camera;
-    tmp->next = rtv->camera;
-    rtv->camera = tmp;
-}*/
 
 void            first_light(t_rtv *rtv, t_light *light)
 {
