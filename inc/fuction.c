@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:22:35 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/15 17:03:31 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/16 12:40:20 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ t_vector		vecto_subvec(t_vector v1,t_vector v2);
 double			dot(t_vector v, t_vector b);
 double			map(double x, double sw, double ew, double spw, double epw);
 t_vector CrossProduct(t_vector vec1, t_vector vec2);
+t_vector nrm(t_vector vec);
 /**
  * ********************************* mlx stuff
  **/ 

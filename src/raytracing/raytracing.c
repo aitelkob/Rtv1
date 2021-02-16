@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 09:49:04 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/15 18:29:34 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/16 12:39:14 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,6 @@ int             rgb_to_int(t_vector v)
 	return (rgb);
 }
 
-double			light_sphere(t_rtv *rtv,t_object sphere,t_vector hit)
-{
-
-	return (0);
-}
-
-double			light_plane(t_rtv *rtv,t_object plane,t_vector hit)
-{
-
-	return (0);
-}
-
-double			light_cylinder(t_rtv *rtv,t_object cylinder,t_vector hit)
-{
-	return (0);
-
-}
-
-double			light_cone(t_rtv *rtv,t_object cone,t_vector hit)
-{
-	return (0);
-}
-
 t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit)
 {
 	double		intensity;
@@ -63,18 +40,11 @@ t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit)
 	cord(&color,25,25,25);
 	while (tmp)
 	{
-		if (obj && obj->type == SPHERE)
-			intensity += light_sphere(rtv,*obj,hit);
-		else if (obj && obj->type == PLANE)
-			intensity += light_plane(rtv,*obj,hit);
-		else if (obj && obj->type == CYLINDER)
-			intensity += light_cylinder(rtv,*obj,hit);
-		else if (obj && obj->type == CONE)
-			intensity += light_cone(rtv,*obj,hit);
-
+		double alfa = length_squared(obj, obj->normal) / (length(tmp, tmp) * length(obj->normal,  obj->normal));
+		color = rgb_to_int(multi(obj->color, fabs(alfa < 0 ? 0 : alfa)));
 		tmp = tmp->next;	
 	}
-	////////////// hena 5asna ba9i 5aseni ne9de  return color
+
 	return (color);
 }
 
@@ -83,10 +53,10 @@ t_vector		camera(t_ray ray, int x, int y, t_vector up)
 
 	t_vector dirvec = sub(ray.direction, ray.origin); // get w vector
 	t_vector dirvec_norm = Div(dirvec,(length(dirvec, dirvec))); //normlize direction vec
-	
+
 	t_vector u_vector = CrossProduct(dirvec_norm, up); // get u vector
 	t_vector v_vector = CrossProduct(dirvec_norm, u_vector); // get v vector
-	
+
 	double alpha = 60 * ((22.0/7.0) / 180.0);
 	double pw = tan(alpha);
 	double ph = pw;
@@ -97,6 +67,18 @@ t_vector		camera(t_ray ray, int x, int y, t_vector up)
 	return add(sum, dirvec_norm);
 }
 
+t_vector				obj_normal(t_rtv *rtv,t_object *obj,t_vector hit)
+{
+	if (obj && obj->type == SPHERE)
+		obj->normal =nrm(sub(hit,obj->origin)); 
+	else if (obj && obj->type == PLANE)
+		obj->normal = multi(obj->normal, -1);
+	else if (obj && obj->type == CYLINDER)
+		obj->normal = nrm(sub(obj->origin,obj->normal)); 
+	else if (obj && obj->type == CONE)
+		obj->normal = nrm(obj->normal);
+	return (colors(rtv,obj,hit));
+}
 t_vector			get_pxl(t_rtv *rtv,t_ray ray)
 {
 	double		dst_min;
@@ -105,9 +87,9 @@ t_vector			get_pxl(t_rtv *rtv,t_ray ray)
 	t_vector		color;
 	cord(&color,0,0,0);
 	if ((dst_min = get_dest(rtv,ray,&obj) == -1))
-			return(color);
+		return(color);
 	hit_point = add(ray.origin , multi(ray.direction,dst_min));
-	color = colors(rtv,obj,hit_point);
+	color = obj_normal(rtv,obj,hit_point);
 
 	return (color);
 }
@@ -129,10 +111,11 @@ double get_dest(t_rtv *rtv, t_ray ray,t_object **close)
 		else if (tmp->type == CONE)
 			dst = intersection_cone(ray, *tmp);
 		tmp = tmp->next;
-		 if (dst < min && dst > 0)
-		 {
-			 *close = tmp;
-		 }
+		if (dst < min && dst > 0)
+		{
+			*close = tmp;
+		}
+
 	}
 	return (dst);
 }
@@ -161,15 +144,15 @@ void			raytracing(t_rtv *rtv)
 			t_vector plane_vec_s;
 			t_vector plane_org;
 			t_vector up;
-			print_vect(rtv->light->origin,"light");
+			mrint_vect(rtv->light->origin,"light");
 			cord(&up, 0, 1, 0);
 			cord(&plane_vec_s, 0, 1, 0);
 			cord(&plane_org, 50, 50, 100);
 			/////////////start here
 			ray2.direction = camera(ray,x,y,up);
 			/*double dst = get_dest(rtv,ray2);
-			color = get_pxl(rtv,ray2);
-			rtv->mlx.img[(WIN_H - 1 - x) * WIN_W + y]=rgb_to_int(ft_itvect(color));*/
+			  color = get_pxl(rtv,ray2);
+			  rtv->mlx.img[(WIN_H - 1 - x) * WIN_W + y]=rgb_to_int(ft_itvect(color));*/
 		}
 	}
 

@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/14 17:20:45 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/14 18:36:48 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/16 11:02:11 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ void cord(t_vector *vec, double x, double y, double z)
     vec->x = x;
     vec->y = y;
     vec->z = z;
+}
+
+t_vector nrm(t_vector vec)
+{
+    return Div(vec, (length(vec, vec)));
 }
 
 t_vector        ft_itvect(int x,int y, int z)
