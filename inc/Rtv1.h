@@ -24,6 +24,6 @@
 #include "Global.h"
 #include "sdl_rt.h"
 #include "struct.h"
-#include "fuction.c"
+#include "fuction.h"
 
 #endif

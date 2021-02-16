@@ -4,9 +4,9 @@ light:
 plane:
   origin: 50 50 100
   normal: 1 0 0
-  color: 246 246 246
+  color: 246 0 0
 camera:
-  origin: 50 50 0
+  origin: 20 50 0
   fov: 60
   look_at: 50 50 50
 #

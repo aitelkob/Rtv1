@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Rtv1.h"
-double get_dest(t_rtv *rtv, t_ray ray,t_object **close);
+//double get_dest(t_rtv *rtv, t_ray ray,t_object **close);
 int             rgb_to_int(t_vector v)
 {
 	int         red;
@@ -29,18 +29,23 @@ int             rgb_to_int(t_vector v)
 	return (rgb);
 }
 
-t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit)
+t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal)
 {
 	double		intensity;
 	t_light		*tmp;
 	t_vector	color;
+	double alfa;
+	t_vector light_dir;
 
 	intensity = 0;
 	tmp = rtv->light;
-	cord(&color,25,25,25);
+	cord(&color,250,0,0);
 	while (tmp)
 	{
-		tmp = tmp->next;	
+		light_dir = sub(tmp->origin, hit);
+		alfa = dot(light_dir, normal) / (length(light_dir, light_dir) * length(normal, normal));
+		color = multi(color, fabs(alfa < 0 ? 0 : alfa));
+		tmp = tmp->next;
 	}
 
 	return (color);
@@ -65,37 +70,48 @@ t_vector		camera(t_ray ray, int x, int y, t_vector up)
 	return add(sum, dirvec_norm);
 }
 
-t_vector				obj_normal(t_rtv *rtv,t_object *obj,t_vector hit)
+t_vector				obj_normal(t_ray ray,t_object *obj, double dst)
 {
+	t_vector xvec;
+	double m;
+	double tk;
+	t_vector normal;
+	t_vector p_c;
+	double alpha;
+	
+	xvec = vecto_subvec(ray.origin, obj->origin);
+	alpha = 60 * ((22.0/7.0) / 180.0);
+	if (obj->type != PLANE && obj->type != SPHERE)
+		m = dot(obj->direction, obj->normal) * dst + dot(xvec, obj->normal);
+	if (obj->type != PLANE)
+		p_c = add(xvec, multi(ray.direction, dst));
+	tk = 1 + tan(alpha / 2) * tan(alpha / 2);
 	if (obj && obj->type == SPHERE)
-		obj->normal =nrm(sub(hit,obj->origin)); 
+		normal = p_c;
 	else if (obj && obj->type == PLANE)
-		obj->normal = multi(obj->normal, -1);
-	/*else if (obj && obj->type == CYLINDER)
-		obj->normal = nrm(sub(obj->origin,obj->normal)); 
+		normal = multi(obj->normal, -1);
+	else if (obj && obj->type == CYLINDER)
+		normal = nrm(sub(p_c, multi(obj->normal, m)));
 	else if (obj && obj->type == CONE)
-		obj->normal = nrm(obj->normal);*/
-	return (colors(rtv,obj,hit));
+		normal = sub(p_c, multi(obj->normal, (1 + tk * tk) * m));
+	return normal;
 }
-t_vector			get_pxl(t_rtv *rtv,t_ray ray)
+
+t_vector			get_pxl(t_rtv *rtv,t_ray ray,t_object *obj, double dst_min)
 {
-	double		dst_min;
-	t_object	*obj;
 	t_vector	hit_point;
 	t_vector		color;
-	cord(&color,20,20,0);
-	if ((dst_min = get_dest(rtv,ray,&obj) == -1))
-		return(color);
-
+	
 	hit_point = add(ray.origin , multi(ray.direction,dst_min));
-	color = obj_normal(rtv,obj,hit_point);
+	color = colors(rtv,obj,hit_point, obj_normal(ray, obj, dst_min));
 
 	return (color);
 }
-double get_dest(t_rtv *rtv, t_ray ray,t_object **close)
+t_vector get_dest(t_rtv *rtv, t_ray ray)
 {
-	t_object *tmp;
-	double dst;
+	t_object	*tmp;
+	double		dst;
+	t_vector	color;
 
 	tmp = rtv->obj;
 	double min = 9999;
@@ -111,14 +127,14 @@ double get_dest(t_rtv *rtv, t_ray ray,t_object **close)
 			dst = intersection_cone(ray, *tmp);
 		if (dst < min && dst > 0)
 		{
-			*close = tmp;
+			min = dst;
+			color = get_pxl(rtv, ray, tmp, dst);
 		}
-		
 		tmp = tmp->next;
 
 	}
 
-	return (dst);
+	return (color);
 }
 void			raytracing(t_rtv *rtv)
 { 
@@ -152,7 +168,7 @@ void			raytracing(t_rtv *rtv)
 			/////////////start here
 			ray2.direction = camera(ray,x,y,up);
 			//double dst = get_dest(rtv,ray2);
-			color = get_pxl(rtv,ray2);
+			color = get_dest(rtv,ray2);
 			//print_vect(color,"color");
 			  rtv->mlx.img[(WIN_H - 1 - x) * WIN_W + y]=rgb_to_int(color);
 

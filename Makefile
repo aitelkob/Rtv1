@@ -6,7 +6,7 @@
 #    By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/23 16:25:47 by yait-el-          #+#    #+#              #
-#    Updated: 2021/02/15 16:25:26 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/02/16 19:12:59 by selibrah         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ CHILDDIR    += error
 
 INCS		:= inc/Rtv1.h
 INCS		+= inc/Global.h
-INCS		+= inc/fuction.c
+INCS		+= inc/fuction.h
 INCS		+= inc/sdl_rt.h
 INCS		+= inc/struct.h
 INCS		+= library/Libft/include/libft.h
