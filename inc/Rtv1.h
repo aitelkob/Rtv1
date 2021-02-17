@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <mlx.h>
+#include "../library/mlx/mlx.h"
 #include "../library/Libft/include/libft.h"
 #include "Global.h"
 #include "sdl_rt.h"

@@ -12,16 +12,22 @@
 
 #include "Rtv1.h"
 //double get_dest(t_rtv *rtv, t_ray ray,t_object **close);
-int             rgb_to_int(t_vector v)
-{
-	int         red;
-	int         green;
-	int         blue;
-	int         rgb;
 
-	red = (int)v.x;
-	green = (int)v.y;
-	blue = (int)v.z;
+int color_nrm(int i)
+{
+	return i > 255 ? 255 : i;
+}
+
+int rgb_to_int(t_vector v)
+{
+	int red;
+	int green;
+	int blue;
+	int rgb;
+
+	red = color_nrm((int)v.x);
+	green = color_nrm((int)v.y);
+	blue = color_nrm((int)v.z);
 	rgb = red;
 	rgb = (rgb << 8) + green;
 	rgb = (rgb << 8) + blue;
@@ -29,48 +35,48 @@ int             rgb_to_int(t_vector v)
 	return (rgb);
 }
 
-t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal)
+t_vector colors(t_rtv *rtv, t_object *obj, t_vector hit, t_vector normal)
 {
-	double		intensity;
-	t_light		*tmp;
-	t_vector	color;
+	double intensity;
+	t_light *tmp;
+	t_vector color;
 	double alfa;
 	t_vector light_dir;
 
 	intensity = 0;
 	tmp = rtv->light;
-	cord(&color,250,0,0);
+	cord(&color, 0, 0, 0);
 	while (tmp)
 	{
 		light_dir = sub(tmp->origin, hit);
 		alfa = dot(light_dir, normal) / (length(light_dir, light_dir) * length(normal, normal));
-		color = multi(color, fabs(alfa < 0 ? 0 : alfa));
+		color = add(color, multi(obj->color, fabs(alfa < 0 ? 0 : alfa)));
 		tmp = tmp->next;
 	}
 
 	return (color);
 }
 
-t_vector		camera(t_ray ray, int x, int y, t_vector up)
+t_vector camera(t_ray ray, int x, int y, t_vector up)
 {
 
-	t_vector dirvec = sub(ray.direction, ray.origin); // get w vector
-	t_vector dirvec_norm = Div(dirvec,(length(dirvec, dirvec))); //normlize direction vec
+	t_vector dirvec = sub(ray.direction, ray.origin);			  // get w vector
+	t_vector dirvec_norm = Div(dirvec, (length(dirvec, dirvec))); //normlize direction vec
 
-	t_vector u_vector = CrossProduct(dirvec_norm, up); // get u vector
+	t_vector u_vector = CrossProduct(dirvec_norm, up);		 // get u vector
 	t_vector v_vector = CrossProduct(dirvec_norm, u_vector); // get v vector
 
-	double alpha = 60 * ((22.0/7.0) / 180.0);
+	double alpha = 60 * ((22.0 / 7.0) / 180.0);
 	double pw = tan(alpha);
 	double ph = pw;
-	double px = map(x, 0, WIN_W,-1,1);
-	double py = map(y, 0, WIN_H,-1,1);
+	double px = map(x, 0, WIN_W, -1, 1);
+	double py = map(y, 0, WIN_H, -1, 1);
 
-	t_vector sum = add(multi(u_vector,px * pw), multi(v_vector,py * ph));
+	t_vector sum = add(multi(u_vector, px * pw), multi(v_vector, py * ph));
 	return add(sum, dirvec_norm);
 }
 
-t_vector				obj_normal(t_ray ray,t_object *obj, double dst)
+t_vector obj_normal(t_ray ray, t_object *obj, double dst)
 {
 	t_vector xvec;
 	double m;
@@ -78,9 +84,9 @@ t_vector				obj_normal(t_ray ray,t_object *obj, double dst)
 	t_vector normal;
 	t_vector p_c;
 	double alpha;
-	
+
 	xvec = vecto_subvec(ray.origin, obj->origin);
-	alpha = 60 * ((22.0/7.0) / 180.0);
+	alpha = 60 * ((22.0 / 7.0) / 180.0);
 	if (obj->type != PLANE && obj->type != SPHERE)
 		m = dot(obj->direction, obj->normal) * dst + dot(xvec, obj->normal);
 	if (obj->type != PLANE)
@@ -97,24 +103,25 @@ t_vector				obj_normal(t_ray ray,t_object *obj, double dst)
 	return normal;
 }
 
-t_vector			get_pxl(t_rtv *rtv,t_ray ray,t_object *obj, double dst_min)
+t_vector get_pxl(t_rtv *rtv, t_ray ray, t_object *obj, double dst_min)
 {
-	t_vector	hit_point;
-	t_vector		color;
-	
-	hit_point = add(ray.origin , multi(ray.direction,dst_min));
-	color = colors(rtv,obj,hit_point, obj_normal(ray, obj, dst_min));
+	t_vector hit_point;
+	t_vector color;
+
+	hit_point = add(ray.origin, multi(ray.direction, dst_min));
+	color = colors(rtv, obj, hit_point, obj_normal(ray, obj, dst_min));
 
 	return (color);
 }
 t_vector get_dest(t_rtv *rtv, t_ray ray)
 {
-	t_object	*tmp;
-	double		dst;
-	t_vector	color;
+	t_object *tmp;
+	double dst;
+	t_vector color;
 
 	tmp = rtv->obj;
 	double min = 9999;
+	cord(&color, 0, 0, 0);
 	while (tmp)
 	{
 		if (tmp->type == SPHERE)
@@ -131,17 +138,16 @@ t_vector get_dest(t_rtv *rtv, t_ray ray)
 			color = get_pxl(rtv, ray, tmp, dst);
 		}
 		tmp = tmp->next;
-
 	}
 
 	return (color);
 }
-void			raytracing(t_rtv *rtv)
-{ 
+void raytracing(t_rtv *rtv)
+{
 	int x;
 	int y;
 	unsigned int *img_temp;
-	t_vector		color;
+	t_vector color;
 
 	//camera start
 	t_ray ray;
@@ -166,13 +172,11 @@ void			raytracing(t_rtv *rtv)
 			cord(&plane_vec_s, 0, 1, 0);
 			cord(&plane_org, 50, 50, 100);
 			/////////////start here
-			ray2.direction = camera(ray,x,y,up);
+			ray2.direction = camera(ray, x, y, up);
 			//double dst = get_dest(rtv,ray2);
-			color = get_dest(rtv,ray2);
+			color = get_dest(rtv, ray2);
 			//print_vect(color,"color");
-			  rtv->mlx.img[(WIN_H - 1 - x) * WIN_W + y]=rgb_to_int(color);
-
+			rtv->mlx.img[(WIN_H - 1 - x) * WIN_W + y] = rgb_to_int(color);
 		}
 	}
-
 }
