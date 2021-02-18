@@ -11,6 +11,10 @@
 /* ************************************************************************** */
 
 #include "Rtv1.h"
+int color_nrm(int i)
+{
+	return i > 255 ? 255 : i;
+}
 double get_dest(t_rtv *rtv, t_ray ray,t_object **close);
 int             rgb_to_int(t_vector v)
 {
@@ -19,9 +23,9 @@ int             rgb_to_int(t_vector v)
 	int         blue;
 	int         rgb;
 
-	red = (int)v.x;
-	green = (int)v.y;
-	blue = (int)v.z;
+	red = color_nrm((int)v.x);
+	green = color_nrm((int)v.y);
+	blue = color_nrm((int)v.z);
 	rgb = red;
 	rgb = (rgb << 8) + green;
 	rgb = (rgb << 8) + blue;
@@ -29,20 +33,27 @@ int             rgb_to_int(t_vector v)
 	return (rgb);
 }
 
-t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal)
+t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal, t_ray ray)
 {
 	double intensity;
 	t_light *tmp;
 	t_vector color;
 	double alfa;
+	double alfa2;
+	t_vector h;
+	t_vector one;
 	t_vector light_dir;
 	intensity = 0;
 	tmp = rtv->light;
+	cord(&one,1,1,1);
 	while (tmp)
 	{
 		light_dir = sub(tmp->origin, hit);
+		h = nrm(add(light_dir,sub(ray.origin,hit)));
 		alfa =  dot(light_dir, normal) / (length(light_dir, light_dir) * length(normal, normal));
+		alfa2 = dot(h, normal) / (length(h, h) * length(normal, normal));
 		color = add(color, multi(obj->color, fabs(alfa < 0 ? 0 : alfa)));
+		color = add(color, multi(one,255 * powf(alfa2 < 0 ? 0 : alfa2, 10)));
 		tmp = tmp->next;	
 	}
 
@@ -108,7 +119,7 @@ t_vector			get_pxl(t_rtv *rtv,t_ray ray)
 		return(color);
 	hit_point = add(ray.origin , multi(ray.direction,dst_min));
 	if (obj)
-		color = colors(rtv, obj, hit_point, obj_normal(ray, obj, dst_min));
+		color = colors(rtv, obj, hit_point, obj_normal(ray, obj, dst_min),ray);
 	return (color);
 }
 double get_dest(t_rtv *rtv, t_ray ray,t_object **close)
