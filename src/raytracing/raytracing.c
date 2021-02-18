@@ -35,6 +35,10 @@ int             rgb_to_int(t_vector v)
 
 t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal, t_ray ray)
 {
+  t_ray ray;
+  t_object   *tmp;
+  double  dist_light;
+  double   dist;
 	double intensity;
 	t_light *tmp;
 	t_vector color;
@@ -49,6 +53,10 @@ t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal, t_ray 
 	while (tmp)
 	{
 		light_dir = sub(tmp->origin, hit);
+    dist_light = lenth(sub(tmp->origin,hit));
+    ray.origin = add(hit,nrm(sub(tmp->origin,hit)));
+    ray.direction = nrm(sub(tmp->origin,hit));
+    dst = get_dst(rtv,ray,tmp);
 		h = nrm(add(light_dir,sub(ray.origin,hit)));
 		alfa =  dot(light_dir, normal) / (length(light_dir, light_dir) * length(normal, normal));
 		alfa2 = dot(h, normal) / (length(h, h) * length(normal, normal));
