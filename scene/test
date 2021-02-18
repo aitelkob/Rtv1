@@ -1,0 +1,14 @@
+cylinder:   
+  origin: 0 0 500
+  normal: 10 1 500
+  radius: 1
+  color: 255 255 0
+cone:   
+  origin: 0     0   0
+  normal: 0     0    0
+  radius: 5 
+  color: 110 25 90
+plane:      
+  origin: 1500 0 0
+  normal: 0.99 0 0.01
+  color: 150 110 200

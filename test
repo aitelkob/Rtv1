@@ -1,0 +1,12 @@
+light:
+  origin: -400 50 -400
+  intensity: 1
+plane:
+  origin: 50 50 100
+  normal: 1 0 0
+  color: 246 246 246
+camera:
+  origin: 50 50 0
+  fov: 60
+  look_at: 50 50 50
+#
