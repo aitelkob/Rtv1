@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 09:49:04 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/18 15:44:08 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/18 16:29:45 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,11 @@ t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal)
 	t_vector light_dir;
 	intensity = 0;
 	tmp = rtv->light;
-	cord(&color,255,25,25);
 	while (tmp)
 	{
 		light_dir = sub(tmp->origin, hit);
-		if (normal.x > 0 || normal.y > 0 ||normal.z > 0)
-		{alfa = dot(light_dir, normal) / (length(light_dir, light_dir) * length(normal, normal));
-		printf("thi is %f\n",alfa);
-		color = add(color, multi(obj->color, fabs(alfa < 0 ? 0 : alfa)));}
+		alfa =  dot(light_dir, normal) / (length(light_dir, light_dir) * length(normal, normal));
+		color = add(color, multi(obj->color, fabs(alfa < 0 ? 0 : alfa)));
 		tmp = tmp->next;	
 	}
 
@@ -79,9 +76,7 @@ t_vector obj_normal(t_ray ray, t_object *obj, double dst)
 	t_vector p_c;
 	double alpha;
 
-	if (obj)
-	{
-		xvec = vecto_subvec(ray.origin, obj->origin);
+	xvec = vecto_subvec(ray.origin, obj->origin);
 	alpha = 60 * ((22.0 / 7.0) / 180.0);
 	if (obj->type != PLANE && obj->type != SPHERE)
 		m = dot(obj->direction, obj->normal) * dst + dot(xvec, obj->normal);
@@ -96,7 +91,6 @@ t_vector obj_normal(t_ray ray, t_object *obj, double dst)
 		normal = nrm(sub(p_c, multi(obj->normal, m)));
 	else if (obj && obj->type == CONE)
 		normal = sub(p_c, multi(obj->normal, (1 + tk * tk) * m));
-	}
 	return normal;
 }
 
@@ -109,17 +103,12 @@ t_vector			get_pxl(t_rtv *rtv,t_ray ray)
 	t_vector		color;
 	t_vector		normal;
 
-	cord(&color,200,20,0);
-	cord(&normal,0,0,0);
+	cord(&color,0,0,0);
 	if ((dst_min = get_dest(rtv,ray,&obj)) == -1)
 		return(color);
 	hit_point = add(ray.origin , multi(ray.direction,dst_min));
 	if (obj)
-	{
-		normal = obj_normal(ray, obj, dst_min);
-		print_vect(normal,"nomale");
-	}
-	color = colors(rtv, obj, hit_point, normal);
+		color = colors(rtv, obj, hit_point, obj_normal(ray, obj, dst_min));
 	return (color);
 }
 double get_dest(t_rtv *rtv, t_ray ray,t_object **close)
