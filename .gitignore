@@ -1,6 +1,7 @@
 # VIM: Temperory files
 *~
 *.o
+.DS_Store
 # VIM: Swap-files
 [._]*.s[a-w][a-z]
 [._]s[a-w][a-z]
