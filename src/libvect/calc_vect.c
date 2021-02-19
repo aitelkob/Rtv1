@@ -6,81 +6,64 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 15:02:19 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/15 18:03:04 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/19 12:40:09 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Rtv1.h"
 
-t_vector    c_vector(double x,double y, double z)
+t_vector		add(t_vector vec1, t_vector vec2)
 {
-    t_vector vector;
+	t_vector	result;
 
-    vector.x = x;
-    vector.y = y;
-    vector.z = z;
-    return (vector);
+	result.x = vec1.x + vec2.x;
+	result.y = vec1.y + vec2.y;
+	result.z = vec1.z + vec2.z;
+	return (result);
 }
 
-t_vector add(t_vector vec1, t_vector vec2)
+t_vector		sub(t_vector vec1, t_vector vec2)
 {
-    t_vector result;
+	t_vector	result;
 
-    result.x = vec1.x + vec2.x;
-    result.y = vec1.y + vec2.y;
-    result.z = vec1.z + vec2.z;
-
-    return result;
+	result.x = vec1.x - vec2.x;
+	result.y = vec1.y - vec2.y;
+	result.z = vec1.z - vec2.z;
+	return (result);
 }
 
-t_vector sub(t_vector vec1, t_vector vec2)
+t_vector		multi(t_vector vec1, double t)
 {
-    t_vector result;
+	t_vector	result;
 
-    result.x = vec1.x - vec2.x;
-    result.y = vec1.y - vec2.y;
-    result.z = vec1.z - vec2.z;
-
-    return result;
+	result.x = vec1.x * t;
+	result.y = vec1.y * t;
+	result.z = vec1.z * t;
+	return (result);
 }
 
-t_vector multi(t_vector vec1, double t)
+t_vector		div(t_vector vec1, double t)
 {
-    t_vector result;
+	t_vector	result;
 
-    result.x = vec1.x * t;
-    result.y = vec1.y * t;
-    result.z = vec1.z * t;
-
-    return result;
+	result.x = vec1.x / t;
+	result.y = vec1.y / t;
+	result.z = vec1.z / t;
+	return (result);
 }
 
-t_vector Div(t_vector vec1, double t)
+double			length_squared(t_vector vec1, t_vector vec2)
 {
-    t_vector result;
+	double		result;
 
-    result.x = vec1.x / t;
-    result.y = vec1.y / t;
-    result.z = vec1.z / t;
-
-    return result;
+	result = vec1.x * vec2.x + vec1.y * vec2.y + vec1.z * vec2.z;
+	return (result);
 }
 
-
-double length_squared(t_vector vec1, t_vector vec2)
+double			length(t_vector vec1, t_vector vec2)
 {
-    double result;
+	double		result;
 
-    result = vec1.x * vec2.x + vec1.y * vec2.y + vec1.z * vec2.z;
-
-    return result;
-}
-
-double length(t_vector vec1, t_vector vec2)
-{
-    double result;
-
-    result = sqrt(length_squared(vec1, vec2));
-
-    return result;
+	result = sqrt(length_squared(vec1, vec2));
+	return (result);
 }

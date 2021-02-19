@@ -7,3 +7,17 @@ Permettez – moi de vous recommander quelqu’un qui peut être en mesure de vo
 Cordialement;
 
 Soufiane Elibrahimi
+
+
+**********>>>Norminette :   src/start/main.c ❌
+**********>>>Norminette :   src/mlx/mlx_stuff.c ✅
+**********>>>Norminette :   src/mlx/put_pixels.c ❌
+**********>>>Norminette :   src/parse/parse.c ✅
+**********>>>Norminette :   src/parse/objs_parse.c ❌
+**********>>>Norminette :   src/parse/tools_parse.c ❌
+**********>>>Norminette :   src/libvect/calc_vect.c ❌
+**********>>>Norminette :   src/libvect/vector_calculation.c ❌
+**********>>>Norminette :   src/parse/light_parse.c ❌
+**********>>>Norminette :   src/error/parse_error.c ❌
+**********>>>Norminette :   src/raytracing/raytracing.c ❌
+**********>>>Norminette :   src/raytracing/intersection.c ✅

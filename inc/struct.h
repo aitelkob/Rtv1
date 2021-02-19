@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 16:40:46 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/15 18:15:59 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/19 12:08:44 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,17 @@ typedef struct      s_mlix
     int             size_line;
     int				endian;
 }					t_mlix;
+
+typedef	struct		s_inters
+{
+  double			a;
+  double			b;
+  double			c;
+  double			t0;
+  double			t1;
+  double			tmp;
+  t_vector			x;
+}					t_inters;
 
 typedef	struct		s_object
 {
