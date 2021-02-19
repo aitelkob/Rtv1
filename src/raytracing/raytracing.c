@@ -6,11 +6,11 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 09:49:04 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/19 12:30:31 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/19 17:06:26 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Rtv1.h"
+#include "rtv1.h"
 int color_nrm(int i)
 {
 	return i > 255 ? 255 : i;
@@ -72,10 +72,10 @@ t_vector		camera(t_ray ray, int x, int y, t_vector up)
 {
 
 	t_vector dirvec = sub(ray.direction, ray.origin); // get w vector
-	t_vector dirvec_norm = Div(dirvec,(length(dirvec, dirvec))); //normlize direction vec
+	t_vector dirvec_norm = divi(dirvec,(length(dirvec, dirvec))); //normlize direction vec
 
-	t_vector u_vector = CrossProduct(dirvec_norm, up); // get u vector
-	t_vector v_vector = CrossProduct(dirvec_norm, u_vector); // get v vector
+	t_vector u_vector = crossproduct(dirvec_norm, up); // get u vector
+	t_vector v_vector = crossproduct(dirvec_norm, u_vector); // get v vector
 
 	double alpha = 60 * ((22.0/7.0) / 180.0);
 	double pw = tan(alpha);

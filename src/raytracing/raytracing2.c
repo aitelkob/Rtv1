@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Rtv1.h"
+#include "rtv1.h"
 t_vector        camera(t_ray    *ray, int x, int y, t_vector up,t_rtv *rtv)
 {
 

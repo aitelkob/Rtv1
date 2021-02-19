@@ -8,16 +8,19 @@ Cordialement;
 
 Soufiane Elibrahimi
 
+Norme: ./src/parse/tools_parse.c ✅
+Norme: ./src/parse/objs_parse.c ✅
+Norme: ./src/parse/check_obj.c ✅
+Norme: ./src/parse/light_parse.c ✅
+Norme: ./src/parse/parse.c ✅
+Norme: ./src/mlx/mlx_stuff.c ✅
+Norme: ./src/libvect/calc_vect.c ✅
+Norme: ./src/libvect/vector_calculation.c ✅
+Norme: ./src/raytracing/intersection.c ✅
+Norme: ./inc/fuction.h ✅
+Norme: ./inc/rtv1.h ✅
+Norme: ./inc/struct.h ✅
 
 **********>>>Norminette :   src/start/main.c ❌
-**********>>>Norminette :   src/mlx/mlx_stuff.c ✅
-**********>>>Norminette :   src/mlx/put_pixels.c ❌
-**********>>>Norminette :   src/parse/parse.c ✅
-**********>>>Norminette :   src/parse/objs_parse.c ❌
-**********>>>Norminette :   src/parse/tools_parse.c ❌
-**********>>>Norminette :   src/libvect/calc_vect.c ❌
-**********>>>Norminette :   src/libvect/vector_calculation.c ❌
-**********>>>Norminette :   src/parse/light_parse.c ❌
-**********>>>Norminette :   src/error/parse_error.c ❌
+**********>>>Norminette :   src/libvect/vector_calculation2.c❌
 **********>>>Norminette :   src/raytracing/raytracing.c ❌
-**********>>>Norminette :   src/raytracing/intersection.c ✅

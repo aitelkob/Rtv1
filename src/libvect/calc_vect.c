@@ -6,11 +6,11 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 15:02:19 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/19 12:40:09 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/19 15:05:29 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Rtv1.h"
+#include "rtv1.h"
 
 t_vector		add(t_vector vec1, t_vector vec2)
 {
@@ -42,7 +42,7 @@ t_vector		multi(t_vector vec1, double t)
 	return (result);
 }
 
-t_vector		div(t_vector vec1, double t)
+t_vector		divi(t_vector vec1, double t)
 {
 	t_vector	result;
 
@@ -57,13 +57,5 @@ double			length_squared(t_vector vec1, t_vector vec2)
 	double		result;
 
 	result = vec1.x * vec2.x + vec1.y * vec2.y + vec1.z * vec2.z;
-	return (result);
-}
-
-double			length(t_vector vec1, t_vector vec2)
-{
-	double		result;
-
-	result = sqrt(length_squared(vec1, vec2));
 	return (result);
 }

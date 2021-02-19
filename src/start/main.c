@@ -6,11 +6,11 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:46:27 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/17 18:47:49 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/19 19:23:31 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Rtv1.h"
+#include "rtv1.h"
 
 void            print_vect(t_vector vec,char *str)
 {
@@ -50,10 +50,10 @@ void		loop_print(t_rtv *rtv)
 
 	if (rtv->camera)
 	{	
-				printf("camera\n");
-				print_vect(rtv->camera->origin,"origin");
-				printf("fov = %0.2f\n",rtv->camera->fov);
-				print_vect(rtv->camera->look_at,"look_at");
+		printf("camera\n");
+		print_vect(rtv->camera->origin,"origin");
+		printf("fov = %0.2f\n",rtv->camera->fov);
+		print_vect(rtv->camera->look_at,"look_at");
 	}
 }
 
@@ -61,11 +61,15 @@ int main(int ac, char **av)
 {
 	t_rtv	rtv;
 
-	(void)ac;
-	parce(av[1],&rtv);
-	//loop_print(&rtv);
-	setup_mlx(&rtv.mlx);
-	raytracing(&rtv);
-	display(&rtv.mlx);
+	if (ac == 2 && (access(av[1], F_OK)) == 0)
+	{
+		parce(av[1],&rtv);
+		//loop_print(&rtv);
+		setup_mlx(&rtv.mlx);
+		raytracing(&rtv);
+		display(&rtv.mlx);
+	}
+	else
+		syntax_error(av[1],"please parse file next time",0);
 	return (0);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Rtv1.h"
+#include "rtv1.h"
 void cord(t_vector *vec, double x, double y, double z)
 {
 	vec->x = x;

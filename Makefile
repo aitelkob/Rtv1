@@ -6,7 +6,7 @@
 #    By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/23 16:25:47 by yait-el-          #+#    #+#              #
-#    Updated: 2021/02/15 16:25:26 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/02/19 19:27:30 by yait-el-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,10 +45,8 @@ CHILDDIR    += raytracing
 CHILDDIR    += error
 ####################INC
 
-INCS		:= inc/Rtv1.h
-INCS		+= inc/Global.h
-INCS		+= inc/fuction.c
-INCS		+= inc/sdl_rt.h
+INCS		:= inc/rtv1.h
+INCS		+= inc/fuction.h
 INCS		+= inc/struct.h
 INCS		+= library/Libft/include/libft.h
 INCS		+= library/mlx/mlx.h
@@ -57,12 +55,13 @@ INCS		+= library/mlx/mlx.h
 
 SRC			:=start/main.c
 SRC			+=mlx/mlx_stuff.c
-SRC			+=mlx/put_pixels.c
 SRC			+=parse/parse.c
 SRC			+=parse/objs_parse.c
+SRC			+=parse/check_obj.c
 SRC			+=parse/tools_parse.c
 SRC			+=libvect/calc_vect.c
 SRC			+=libvect/vector_calculation.c
+SRC			+=libvect/vector_calculation2.c
 SRC			+=parse/light_parse.c
 SRC			+=error/parse_error.c
 SRC			+=raytracing/raytracing.c

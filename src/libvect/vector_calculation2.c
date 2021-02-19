@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sdl_rt.h                                           :+:      :+:    :+:   */
+/*   vector_calculation2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/24 16:38:59 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/06 14:47:46 by yait-el-         ###   ########.fr       */
+/*   Created: 2021/02/19 15:06:01 by yait-el-          #+#    #+#             */
+/*   Updated: 2021/02/19 15:08:24 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SDL_RT_H
-# define SDL_RT_H
+#include "rtv1.h"
 
-#include "Rtv1.h"
-#include "struct.h"
+t_vector		vecto_subvec(t_vector v1, t_vector v2)
+{
+	return (ft_itvect(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z));
+}
 
+double			map(double x, double sw, double ew, double spw, double epw)
+{
+	return (x * ((epw - spw) / (ew - sw)) + spw);
+}
 
-#endif
+double			dot(t_vector v, t_vector b)
+{
+	return ((v.x * b.x) + (v.y * b.y) + (v.z * b.z));
+}

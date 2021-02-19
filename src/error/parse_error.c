@@ -6,11 +6,11 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:01:17 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/02 15:21:48 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/19 14:58:41 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Rtv1.h"
+#include "rtv1.h"
 
 void    syntax_error(char *line, char *reasoning, int nbline)
 {
