@@ -6,11 +6,11 @@ plane:
   normal: 1 0 0
   color: 246 246 246
 sphere:
-  origin: 50 50 50
+  origin: 50 50 100
   radius: 30
   color: 255 0 0
 camera:
-  origin: 40 50 0
+  origin: 40 50 20
   fov: 60
   look_at: 50 50 50
 #
