@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 17:05:31 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/20 15:29:58 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/20 17:29:46 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void					plan_parce(t_rtv *rtv)
 	{
 		first_obj(rtv, plan);
 		plan = NULL;
+		free(plan);
 		forward(rtv, data);
 	}
 }
@@ -60,6 +61,7 @@ void					sphere_parce(t_rtv *rtv)
 	{
 		first_obj(rtv, sphere);
 		sphere = NULL;
+		free(sphere);
 		forward(rtv, data);
 	}
 }

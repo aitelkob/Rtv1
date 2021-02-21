@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 16:43:51 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/19 12:26:22 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/20 17:27:39 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ char			*settings_cut(t_rtv *rtv, char *variable, char **data)
 	char		**line;
 	char		*option;
 
-	(void)rtv;
 	line = ft_strsplit(variable, ':');
 	if (ft_lentab(line) != 2)
-		syntax_error(variable, "somthing wrong with  file", rtv->parse.nb_line);
+		syntax_error(rtv, "variable", "somthing wrong with  file",
+		rtv->parse.nb_line);
 	option = ft_strtrim(line[0]);
 	*data = ft_strdup(line[1]);
 	free_splited(line);
@@ -35,11 +35,9 @@ char			*settings_cut(t_rtv *rtv, char *variable, char **data)
 
 char			*name_cut(t_rtv *rtv, char *line)
 {
-	char		*setting;
 	char		*strtrim;
 
-	(void)rtv;
-	if (!setting || setting[0] == '\0')
+	if (!line || line[0] == '\0')
 		return ("\0");
 	strtrim = ft_strtrim(line);
 	if (strtrim[0] == '#')
@@ -47,8 +45,10 @@ char			*name_cut(t_rtv *rtv, char *line)
 	if (strtrim[ft_strlen(strtrim) - 1] != ':' &&
 			strtrim[ft_strlen(strtrim) - 1] != '1' &&
 			strtrim[ft_strlen(strtrim) - 1] != '0')
-		syntax_error(line, "somthing wrong with file ", rtv->parse.nb_line);
+		syntax_error(rtv, line, "somthing wrong with file ",
+		rtv->parse.nb_line);
 	strtrim[ft_strlen(strtrim) - 1] = '\0';
+	free(line);
 	return (strtrim);
 }
 
@@ -72,7 +72,7 @@ void			forward(t_rtv *rtv, char *line)
 	else if (!obj_name || obj_name[0] == '\0' || obj_name[0] == '#')
 		return ;
 	else
-		syntax_error(line, "Object name ", rtv->parse.nb_line);
+		syntax_error(rtv, line, "Object name ", rtv->parse.nb_line);
 	free(obj_name);
 }
 

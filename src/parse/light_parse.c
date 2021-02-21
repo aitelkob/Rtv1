@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:22:50 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/19 17:49:17 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/20 17:14:42 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,24 @@ void					light_check(char *data, char *arg,
 t_light *light, t_rtv *rtv)
 {
 	if (!ft_strcmp("origin", data))
-		light->origin = input_vector(arg, rtv->parse.nb_line);
+		light->origin = input_vector(rtv, arg, rtv->parse.nb_line);
 	else if (!ft_strcmp("intensity", data))
 		light->intensity = atoi(arg);
 	else
-		unknown_setting(data, rtv->parse.nb_line);
+		unknown_setting(rtv, data, rtv->parse.nb_line);
 }
 
 void					camera_check(char *data, char *arg,
 t_camera *camera, t_rtv *rtv)
 {
 	if (!ft_strcmp("origin", data))
-		camera->origin = input_vector(arg, rtv->parse.nb_line);
+		camera->origin = input_vector(rtv, arg, rtv->parse.nb_line);
 	else if (!ft_strcmp("fov", data))
-		camera->fov = input_onearg(arg, rtv->parse.nb_line);
+		camera->fov = input_onearg(rtv, arg, rtv->parse.nb_line);
 	else if (!ft_strcmp("look_at", data))
-		camera->look_at = input_vector(arg, rtv->parse.nb_line);
+		camera->look_at = input_vector(rtv, arg, rtv->parse.nb_line);
 	else
-		unknown_setting(data, rtv->parse.nb_line);
+		unknown_setting(rtv, data, rtv->parse.nb_line);
 }
 
 void					light_parce(t_rtv *rtv)

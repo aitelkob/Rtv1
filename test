@@ -1,8 +1,8 @@
 light:
-  origin: -40 50 -40
+  origin: -300 500 -5000
   intensity: 1
 plane:
-  origin: 50 50 100
+  origin: 90 50 100
   normal: 1 0 0
   color: 246 246 246
 sphere:
@@ -10,7 +10,6 @@ sphere:
   radius: 30
   color: 255 0 0
 camera:
-  origin: 40 50 20
+  origin: 50 50 0
   fov: 60
   look_at: 50 50 50
-#

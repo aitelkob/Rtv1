@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:26:32 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/19 17:45:46 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/20 17:05:56 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,29 @@ void				first_light(t_rtv *rtv, t_light *light)
 	rtv->light = tmp;
 }
 
-double				input_onearg(char *data, int nbr)
+double				input_onearg(t_rtv *rtv, char *data, int nbr)
 {
 	char			**lines;
 	double			ret;
 
 	lines = ft_strsplit(data, ' ');
+	free(data);
 	if (ft_lentab(lines) != 1)
-		syntax_error(data, "bezzaf parametre", nbr);
+		syntax_error(rtv, data, "bezzaf parametre", nbr);
 	ret = ft_atoi(ft_strdup(lines[0]));
 	free_splited(lines);
 	return (ret);
 }
 
-t_vector			input_vector(char *data, int nbr)
+t_vector			input_vector(t_rtv *rtv, char *data, int nbr)
 {
 	char			**lines;
 	t_vector		vec;
 
 	lines = ft_strsplit(data, ' ');
+	free(data);
 	if (ft_lentab(lines) != 3)
-		syntax_error(data, "bezzaf parametre", nbr);
+		syntax_error(rtv, data, "bezzaf parametre", nbr);
 	vec.x = ft_atof(lines[0]);
 	vec.y = ft_atof(lines[1]);
 	vec.z = ft_atof(lines[2]);

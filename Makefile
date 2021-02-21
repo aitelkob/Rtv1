@@ -6,7 +6,7 @@
 #    By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/23 16:25:47 by yait-el-          #+#    #+#              #
-#    Updated: 2021/02/20 15:47:16 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/02/20 15:54:13 by yait-el-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ INCS		+= library/mlx/mlx.h
 ########################SRC files
 
 SRC			:=start/main.c
+SRC			+=start/freeing.c
 SRC			+=mlx/mlx_stuff.c
 SRC			+=parse/parse.c
 SRC			+=parse/objs_parse.c

@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 15:39:37 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/20 15:50:09 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/20 17:45:02 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void free_objects(t_rtv  *rt)
 {
-    t_obj   *next;
+    t_object   *next;
 
-    while (rt && rt->objects)
+    while (rt && rt->obj)
     {
-        next = rt->objects->next;
-        free(rt->objects);
-        rt->objects = next;
+        next = rt->obj->next;
+        free(rt->obj);
+        rt->obj = next;
     }
 }
 
@@ -28,18 +28,22 @@ static void free_lights(t_rtv *rt)
 {
     t_light *next;
 
-    while (rt && rt->lights)
+    while (rt && rt->light)
     {
-        next = rt->lights->next;
-        free(rt->lights);
-        rt->lights = next;
+        next = rt->light->next;
+        free(rt->light);
+        rt->light = next;
     }
 }
 
 void		exiting_program(t_rtv *rtv)
 {
-	free(rtv->camera);
-	free_lights(rtv);
-	free_objects(rtv);
-
+	ft_destroy(&rtv->mlx);
+	if (rtv->camera)
+		free(rtv->camera);
+	if (rtv->light)
+		free_lights(rtv);
+	if (rtv->obj)
+		free_objects(rtv);
+	exit(0);
 }

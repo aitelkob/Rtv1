@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:22:35 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/20 15:51:52 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/21 14:50:13 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void			camera_parce(t_rtv *rtv);
 char			*settings_cut(t_rtv *rtv, char *variable, char **data);
 char			*name_cut(t_rtv *rtv, char *line);
 void			forward(t_rtv *rtv, char *line);
-void			syntax_error(char *line, char *reasoning, int nbline);
-void			unknown_setting(char *line, int nbline);
+void			syntax_error(t_rtv *rtv, char *line, char *reasoning, int nbline);
+void			unknown_setting(t_rtv *rtv, char *line, int nbline);
 void			error(char *str, char *where);
 void			first_camera(t_rtv *rtv, t_camera *camera);
 void			first_light(t_rtv *rtv, t_light *light);
 void			first_obj(t_rtv *rtv, t_object *obj);
-t_vector		input_vector(char *data, int nbr);
-double			input_onearg(char *data, int nbr);
+t_vector		input_vector(t_rtv *rtv, char *data, int nbr);
+double			input_onearg(t_rtv *rtv, char *data, int nbr);
 
 /*
  ******************************* vector lib
@@ -69,8 +69,8 @@ t_vector		nrm(t_vector vec);
  ********************************mlx stuff
 */
 
-void			display(t_mlix *mlx);
-int				key_hook(int keycode, t_mlix *mlix);
+void			display(t_rtv *rtv, t_mlix *mlx);
+int				key_hook(int keycode, t_rtv *rtv);
 void			setup_mlx(t_mlix *mlx);
 void			ft_destroy(t_mlix *mlx);
 void			ft_put_pixel(t_mlix *mlx, int x, int y, int color);

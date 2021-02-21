@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 16:18:27 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/19 12:31:25 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/21 14:54:16 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,24 @@ void			setup_mlx(t_mlix *mlx)
 	&mlx->bits_per_pixel, &mlx->size_line, &mlx->endian);
 }
 
-int				key_hook(int keycode, t_mlix *mlix)
+int				key_hook(int keycode, t_rtv *rtv)
 {
-	(void)mlix;
 	if (keycode == KEY_ESC)
 		exit(0);
+		//exiting_program(rtv);
 	return (1);
 }
 
-int				red_button(t_mlix *mlix)
+int				red_button(t_rtv *rtv)
 {
-	(void)mlix;
-	exit(0);
-	return (0);
+	exiting_program(rtv);
+	return(0);
 }
 
-void			display(t_mlix *mlx)
+void			display(t_rtv *rtv, t_mlix *mlx)
 {
 	mlx_hook(mlx->win_ptr, 2, 0, key_hook, mlx);
-	mlx_hook(mlx->win_ptr, 17, 0, red_button, mlx);
+	mlx_hook(mlx->win_ptr, 17, 0, red_button, rtv);
 	mlx_put_image_to_window(mlx, mlx->win_ptr, mlx->img_ptr, 0, 0);
 	mlx_loop(mlx->mlx_ptr);
 }

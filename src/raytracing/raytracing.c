@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+double get_dest(t_rtv *rtv, t_ray ray,t_object **close);
+
 int color_nrm(int i)
 {
 	return i > 255 ? 255 : i;
@@ -35,34 +38,38 @@ int             rgb_to_int(t_vector v)
 
 t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal, t_ray ray)
 {
-  //t_ray ray;
-  //t_object   *tmp;
-  double  dist_light;
-  double   dist;
+  	//t_ray ray;
+  	//t_object   *tmp;
+  	double  dist_light;
+  	double   dist;
 	double intensity;
 	t_light *tmp;
 	t_vector color;
 	double alfa;
 	double alfa2;
+	double dst;
+	t_object *tmp2;
 	t_vector h;
 	t_vector one;
 	t_vector light_dir;
+	t_ray ray2;
 	intensity = 0;
 	tmp = rtv->light;
 	cord(&one,1,1,1);
 	while (tmp)
 	{
-	light_dir = sub(tmp->origin, hit);
-   /* dist_light = lenth(sub(tmp->origin,hit));
-    ray.origin = add(hit,nrm(sub(tmp->origin,hit)));
-    ray.direction = nrm(sub(tmp->origin,hit));
-    dst = get_dst(rtv,ray,tmp);*/
+		light_dir = sub(tmp->origin, hit);
+   		dist_light = length(light_dir,light_dir);
+    	ray2.origin = hit;
+    	ray2.direction = nrm(light_dir);
+    	dst = get_dest(rtv,ray2,&tmp2);
 		h = nrm(add(light_dir,sub(ray.origin,hit)));
 		alfa =  dot(light_dir, normal) / (length(light_dir, light_dir) * length(normal, normal));
-		alfa2 = dot(h, normal) / (length(h, h) * length(normal, normal));
+		alfa2 = dst != 9999 ? 0 : dot(h, normal) / (length(h, h) * length(normal, normal));
 		color = add(color, multi(obj->color, fabs(alfa < 0 ? 0 : alfa)));
 		color = add(color, multi(one,255 * powf(alfa2 < 0 ? 0 : alfa2, 10)));
-		tmp = tmp->next;	
+		color = multi(color, dst != 9999 ? 0.4 : 1);
+		tmp = tmp->next;
 	}
 
 	return (color);
@@ -123,7 +130,7 @@ t_vector			get_pxl(t_rtv *rtv,t_ray ray)
 	t_vector		normal;
 
 	cord(&color,0,0,0);
-	if ((dst_min = get_dest(rtv,ray,&obj)) == -1)
+	if ((dst_min = get_dest(rtv,ray,&obj)) == 9999)
 		return(color);
 	hit_point = add(ray.origin , multi(ray.direction,dst_min));
 	if (obj)

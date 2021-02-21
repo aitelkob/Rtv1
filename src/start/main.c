@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:46:27 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/20 15:38:02 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/20 17:21:15 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ int main(int ac, char **av)
 	{
 		parce(av[1],&rtv);
 		//loop_print(&rtv);
-		//setup_mlx(&rtv.mlx);
-		//raytracing(&rtv);
-		//display(&rtv.mlx);
+		setup_mlx(&rtv.mlx);
+		raytracing(&rtv);
+		display(&rtv, &rtv.mlx);
 	}
 	else
-		syntax_error(av[1],"please parse file next time",0);
+		syntax_error(&rtv,av[1],"please parse file next time",0);
 	return (0);
 }
