@@ -16,9 +16,15 @@ void					light_check(char *data, char *arg,
 t_light *light, t_rtv *rtv)
 {
 	if (!ft_strcmp("origin", data))
-		light->origin = input_vector(rtv, arg, rtv->parse.nb_line);
+	{
+		light->origin = input_vector(rtv, arg, rtv->parse.nb_line,data);
+		free(data);
+		}
 	else if (!ft_strcmp("intensity", data))
-		light->intensity = atoi(arg);
+	{
+		light->intensity = input_onearg(rtv, arg, rtv->parse.nb_line,data);
+		free(data);
+	}
 	else
 		unknown_setting(rtv, data, rtv->parse.nb_line);
 }
@@ -27,11 +33,11 @@ void					camera_check(char *data, char *arg,
 t_camera *camera, t_rtv *rtv)
 {
 	if (!ft_strcmp("origin", data))
-		camera->origin = input_vector(rtv, arg, rtv->parse.nb_line);
+		camera->origin = input_vector(rtv, arg, rtv->parse.nb_line,data);
 	else if (!ft_strcmp("fov", data))
-		camera->fov = input_onearg(rtv, arg, rtv->parse.nb_line);
+		camera->fov = input_onearg(rtv, arg, rtv->parse.nb_line,data);
 	else if (!ft_strcmp("look_at", data))
-		camera->look_at = input_vector(rtv, arg, rtv->parse.nb_line);
+		camera->look_at = input_vector(rtv, arg, rtv->parse.nb_line,data);
 	else
 		unknown_setting(rtv, data, rtv->parse.nb_line);
 }
@@ -50,7 +56,7 @@ void					light_parce(t_rtv *rtv)
 	{
 		data = settings_cut(rtv, data, &arg);
 		light_check(data, arg, light, rtv);
-		free(data);
+		//free(data);
 		light_parce(rtv);
 	}
 	else
@@ -74,13 +80,16 @@ void					camera_parce(t_rtv *rtv)
 	if (get_next_line(rtv->parse.fd, &data) == 1 && data[0] == ' ')
 	{
 		data = settings_cut(rtv, data, &arg);
+		printf("this is [%s]\n",data);
 		camera_check(data, arg, camera, rtv);
+		
 		free(data);
 		camera_parce(rtv);
 	}
 	else
 	{
 		rtv->camera = camera;
+		camera = NULL;
 		forward(rtv, data);
 	}
 }

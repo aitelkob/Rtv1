@@ -24,6 +24,11 @@ char			*settings_cut(t_rtv *rtv, char *variable, char **data)
 	char		*option;
 
 	line = ft_strsplit(variable, ':');
+	if (variable)
+	{
+		free(variable);
+		variable = NULL;
+	}
 	if (ft_lentab(line) != 2)
 		syntax_error(rtv, "variable", "somthing wrong with  file",
 		rtv->parse.nb_line);

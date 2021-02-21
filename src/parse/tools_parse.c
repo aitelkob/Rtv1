@@ -30,25 +30,28 @@ void				first_light(t_rtv *rtv, t_light *light)
 	rtv->light = tmp;
 }
 
-double				input_onearg(t_rtv *rtv, char *data, int nbr)
+double				input_onearg(t_rtv *rtv, char *data, int nbr,char *head)
 {
 	char			**lines;
 	double			ret;
+	char			*tmp;
 
+	//printf("this is head (%s)\n", head);
 	lines = ft_strsplit(data, ' ');
 	free(data);
 	if (ft_lentab(lines) != 1)
 		syntax_error(rtv, data, "bezzaf parametre", nbr);
-	ret = ft_atoi(ft_strdup(lines[0]));
+	ret = ft_atoi(lines[0]);
 	free_splited(lines);
 	return (ret);
 }
 
-t_vector			input_vector(t_rtv *rtv, char *data, int nbr)
+t_vector			input_vector(t_rtv *rtv, char *data, int nbr,char *head)
 {
 	char			**lines;
 	t_vector		vec;
 
+	//printf("this is head (%s)\n", head);
 	lines = ft_strsplit(data, ' ');
 	free(data);
 	if (ft_lentab(lines) != 3)

@@ -36,14 +36,15 @@ void			camera_parce(t_rtv *rtv);
 char			*settings_cut(t_rtv *rtv, char *variable, char **data);
 char			*name_cut(t_rtv *rtv, char *line);
 void			forward(t_rtv *rtv, char *line);
-void			syntax_error(t_rtv *rtv, char *line, char *reasoning, int nbline);
+void			syntax_error(t_rtv *rtv, char *line,
+char *reasoning, int nbline);
 void			unknown_setting(t_rtv *rtv, char *line, int nbline);
 void			error(char *str, char *where);
 void			first_camera(t_rtv *rtv, t_camera *camera);
 void			first_light(t_rtv *rtv, t_light *light);
 void			first_obj(t_rtv *rtv, t_object *obj);
-t_vector		input_vector(t_rtv *rtv, char *data, int nbr);
-double			input_onearg(t_rtv *rtv, char *data, int nbr);
+t_vector		input_vector(t_rtv *rtv, char *data, int nbr, char *head);
+double			input_onearg(t_rtv *rtv, char *data, int nbr, char *head);
 
 /*
  ******************************* vector lib
