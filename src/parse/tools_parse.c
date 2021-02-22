@@ -36,11 +36,14 @@ double				input_onearg(t_rtv *rtv, char *data, int nbr,char *head)
 	double			ret;
 	char			*tmp;
 
-	//printf("this is head (%s)\n", head);
 	lines = ft_strsplit(data, ' ');
-	free(data);
 	if (ft_lentab(lines) != 1)
-		syntax_error(rtv, data, "bezzaf parametre", nbr);
+	{
+		free(data);
+		free(head);
+		syntax_error(rtv, data, head, nbr);
+	}
+	free(data);
 	ret = ft_atoi(lines[0]);
 	free_splited(lines);
 	return (ret);
@@ -53,9 +56,13 @@ t_vector			input_vector(t_rtv *rtv, char *data, int nbr,char *head)
 
 	//printf("this is head (%s)\n", head);
 	lines = ft_strsplit(data, ' ');
-	free(data);
 	if (ft_lentab(lines) != 3)
-		syntax_error(rtv, data, "bezzaf parametre", nbr);
+	{
+		free(data);
+		free(head);
+		syntax_error(rtv, "reasing", "parameters wrong in", nbr);
+	}
+	free(data);
 	vec.x = ft_atof(lines[0]);
 	vec.y = ft_atof(lines[1]);
 	vec.z = ft_atof(lines[2]);

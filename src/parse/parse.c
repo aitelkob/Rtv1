@@ -45,8 +45,6 @@ char			*name_cut(t_rtv *rtv, char *line)
 	if (!line || line[0] == '\0')
 		return ("\0");
 	strtrim = ft_strtrim(line);
-	if (strtrim[0] == '#')
-		return (strtrim);
 	if (strtrim[ft_strlen(strtrim) - 1] != ':' &&
 			strtrim[ft_strlen(strtrim) - 1] != '1' &&
 			strtrim[ft_strlen(strtrim) - 1] != '0')
@@ -62,6 +60,7 @@ void			forward(t_rtv *rtv, char *line)
 	char		*obj_name;
 
 	obj_name = name_cut(rtv, line);
+	//printf("this is [%s] adresse [%p] \n",reasoning,reasoning);
 	if (!ft_strcmp(obj_name, "camera"))
 		camera_parce(rtv);
 	else if (!ft_strcmp(obj_name, "light"))
@@ -74,10 +73,17 @@ void			forward(t_rtv *rtv, char *line)
 		cylinder_parce(rtv);
 	else if (!ft_strcmp(obj_name, "cone"))
 		cone_parce(rtv);
-	else if (!obj_name || obj_name[0] == '\0' || obj_name[0] == '#')
+	else if (!obj_name || obj_name[0] == '\0' || obj_name[0] == '\n')
+	{
+		free(line);
 		return ;
+	}
 	else
-		syntax_error(rtv, line, "Object name ", rtv->parse.nb_line);
+	{
+		free(obj_name);
+		free(line);
+		syntax_error(rtv, "name of obj", "note good", rtv->parse.nb_line);
+	}
 	free(obj_name);
 }
 
@@ -88,11 +94,10 @@ void			parce(char *av, t_rtv *rtv)
 	rtv->parse.nb_line = 0;
 	rtv->obj = NULL;
 	rtv->light = NULL;
-	while (get_next_line(rtv->parse.fd, &rtv->parse.line))
+	if (get_next_line(rtv->parse.fd, &rtv->parse.line))
 	{
 		rtv->parse.nb_line++;
 		forward(rtv, rtv->parse.line);
-		free(rtv->parse.line);
 	}
 	if (rtv->parse.fd == -1)
 		error("fd matsedche \n", "fd matsedch");

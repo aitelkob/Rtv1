@@ -21,7 +21,7 @@ void    syntax_error(t_rtv *rtv,char *line, char *reasoning, int nbline)
 	ft_putstr("\033[1;31m");
     ft_putstr(reasoning);
 	ft_putstr("\033[0m");
-
+	//printf("this is [%s] adresse [%p] \n",reasoning,reasoning);
 	ft_putstr("\033[1;33m");
     ft_putstr(line);
 	ft_putstr("\033[0m");
@@ -31,7 +31,8 @@ void    syntax_error(t_rtv *rtv,char *line, char *reasoning, int nbline)
     ft_putnbr(nbline);
 	ft_putstr("\033[0m");
     ft_putchar('\n');
-    exiting_program(rtv);
+	exit(0);
+    //exiting_program(rtv);
 }
 
 void    unknown_setting(t_rtv *rtv,char *line, int nbline)
@@ -47,5 +48,5 @@ void    unknown_setting(t_rtv *rtv,char *line, int nbline)
     ft_putnbr(nbline);
     ft_putchar('\n');
 	ft_putstr("\033[0m");
-	exiting_program(rtv);
+	//exiting_program(rtv);
 }

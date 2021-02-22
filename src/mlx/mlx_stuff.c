@@ -31,8 +31,8 @@ void			setup_mlx(t_mlix *mlx)
 int				key_hook(int keycode, t_rtv *rtv)
 {
 	if (keycode == KEY_ESC)
-		exit(0);
-		//exiting_program(rtv);
+		//exit(0);
+		exiting_program(rtv);
 	return (1);
 }
 
