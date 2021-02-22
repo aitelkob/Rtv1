@@ -24,14 +24,14 @@ char			*settings_cut(t_rtv *rtv, char *variable, char **data)
 	char		*option;
 
 	line = ft_strsplit(variable, ':');
-	if (variable)
+	if (ft_lentab(line) != 2)
 	{
 		free(variable);
-		variable = NULL;
-	}
-	if (ft_lentab(line) != 2)
+		free(*data);
 		syntax_error(rtv, "variable", "somthing wrong with  file",
 		rtv->parse.nb_line);
+	}
+	free(variable);
 	option = ft_strtrim(line[0]);
 	*data = ft_strdup(line[1]);
 	free_splited(line);
@@ -60,7 +60,6 @@ void			forward(t_rtv *rtv, char *line)
 	char		*obj_name;
 
 	obj_name = name_cut(rtv, line);
-	//printf("this is [%s] adresse [%p] \n",reasoning,reasoning);
 	if (!ft_strcmp(obj_name, "camera"))
 		camera_parce(rtv);
 	else if (!ft_strcmp(obj_name, "light"))

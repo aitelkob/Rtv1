@@ -32,7 +32,6 @@ void    syntax_error(t_rtv *rtv,char *line, char *reasoning, int nbline)
 	ft_putstr("\033[0m");
     ft_putchar('\n');
 	exit(0);
-    //exiting_program(rtv);
 }
 
 void    unknown_setting(t_rtv *rtv,char *line, int nbline)
@@ -48,5 +47,5 @@ void    unknown_setting(t_rtv *rtv,char *line, int nbline)
     ft_putnbr(nbline);
     ft_putchar('\n');
 	ft_putstr("\033[0m");
-	//exiting_program(rtv);
+	exit(0);
 }

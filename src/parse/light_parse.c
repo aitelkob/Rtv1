@@ -12,17 +12,17 @@
 
 #include "rtv1.h"
 
-void					light_check(char *data, char *arg,
+void						light_check(char *data, char *arg,
 t_light *light, t_rtv *rtv)
 {
 	if (!ft_strcmp("origin", data))
 	{
-		light->origin = input_vector(rtv, arg, rtv->parse.nb_line,data);
+		light->origin = input_vector(rtv, arg, rtv->parse.nb_line, data);
 		free(data);
 		}
 	else if (!ft_strcmp("intensity", data))
 	{
-		light->intensity = input_onearg(rtv, arg, rtv->parse.nb_line,data);
+		light->intensity = input_onearg(rtv, arg, rtv->parse.nb_line, data);
 		free(data);
 	}
 	else
@@ -34,17 +34,17 @@ t_camera *camera, t_rtv *rtv)
 {
 	if (!ft_strcmp("origin", data))
 	{
-		camera->origin = input_vector(rtv, arg, rtv->parse.nb_line,data);
+		camera->origin = input_vector(rtv, arg, rtv->parse.nb_line, data);
 		free(data);
 	}
 	else if (!ft_strcmp("fov", data))
 	{
-		camera->fov = input_onearg(rtv, arg, rtv->parse.nb_line,data);
+		camera->fov = input_onearg(rtv, arg, rtv->parse.nb_line, data);
 		free(data);
 	}
 	else if (!ft_strcmp("look_at", data))
 	{
-		camera->look_at = input_vector(rtv, arg, rtv->parse.nb_line,data);
+		camera->look_at = input_vector(rtv, arg, rtv->parse.nb_line, data);
 		free(data);
 	}
 	else
@@ -88,7 +88,6 @@ void					camera_parce(t_rtv *rtv)
 	if (get_next_line(rtv->parse.fd, &data) == 1 && data[0] == ' ')
 	{
 		data = settings_cut(rtv, data, &arg);
-		//printf("this is [%s] = [%p]\n",data,data);
 		camera_check(data, arg, camera, rtv);
 		camera_parce(rtv);
 	}
