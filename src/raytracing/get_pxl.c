@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_pxl.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/23 17:46:27 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/20 17:21:15 by yait-el-         ###   ########.fr       */
+/*   Created: 2021/02/23 10:02:17 by yait-el-          #+#    #+#             */
+/*   Updated: 2021/02/23 10:02:33 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void            print_vect(t_vector vec,char *str)
+t_vector			get_pxl(t_rtv *rtv,t_ray ray)
 {
-	printf("%s->x=%0.2f,%0.2f,%0.2f\n", str, vec.x, vec.y, vec.z);
-}
+	double			dst_min;
+	t_object		*obj;
+	t_vector		hit_point;
+	t_vector		color;
+	t_vector		normal;
 
-int main(int ac, char **av)
-{
-	t_rtv	rtv;
-
-	if (ac == 2 && (access(av[1], F_OK)) == 0)
-	{
-		parce(av[1],&rtv);
-		setup_mlx(&rtv.mlx);
-		raytracing(&rtv);
-		display(&rtv, &rtv.mlx);
-	}
-	else
-		syntax_error(&rtv, av[1], "please parse file next time", 0);
-	return (0);
+	cord(&color,0,0,0);
+	obj = NULL;
+	if ((dst_min = get_dest(rtv,ray,&obj)) == 9999)
+		return(color);
+	hit_point = add(ray.origin , multi(ray.direction,dst_min));
+	if (obj)
+		color = colors(rtv, obj, hit_point, obj_normal(ray, obj, dst_min),ray);
+	return (color);
 }

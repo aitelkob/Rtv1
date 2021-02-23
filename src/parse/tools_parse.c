@@ -30,7 +30,7 @@ void				first_light(t_rtv *rtv, t_light *light)
 	rtv->light = tmp;
 }
 
-double				input_onearg(t_rtv *rtv, char *data, int nbr,char *head)
+double				input_onearg(t_rtv *rtv, char *data, int nbr, char *head)
 {
 	char			**lines;
 	double			ret;
@@ -49,12 +49,11 @@ double				input_onearg(t_rtv *rtv, char *data, int nbr,char *head)
 	return (ret);
 }
 
-t_vector			input_vector(t_rtv *rtv, char *data, int nbr,char *head)
+t_vector			input_vector(t_rtv *rtv, char *data, int nbr, char *head)
 {
 	char			**lines;
 	t_vector		vec;
 
-	//printf("this is head (%s)\n", head);
 	lines = ft_strsplit(data, ' ');
 	if (ft_lentab(lines) != 3)
 	{

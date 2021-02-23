@@ -6,25 +6,23 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 09:49:04 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/19 17:06:26 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/23 10:37:14 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-double get_dest(t_rtv *rtv, t_ray ray,t_object **close);
-
 int color_nrm(int i)
 {
 	return i > 255 ? 255 : i;
 }
-double get_dest(t_rtv *rtv, t_ray ray,t_object **close);
-int             rgb_to_int(t_vector v)
+double			get_dest(t_rtv *rtv, t_ray ray,t_object **close);
+int				rgb_to_int(t_vector v)
 {
-	int         red;
-	int         green;
-	int         blue;
-	int         rgb;
+	int			red;
+	int			green;
+	int			blue;
+	int			rgb;
 
 	red = color_nrm((int)v.x);
 	green = color_nrm((int)v.y);
@@ -38,8 +36,6 @@ int             rgb_to_int(t_vector v)
 
 t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal, t_ray ray)
 {
-  	//t_ray ray;
-  	//t_object   *tmp;
   	double  dist_light;
   	double   dist;
 	double intensity;
@@ -75,32 +71,37 @@ t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal, t_ray 
 	return (color);
 }
 
-t_vector		camera(t_ray ray, int x, int y, t_vector up)
+t_vector			camera(t_ray ray, int x, int y, t_vector up)
 {
-
-	t_vector dirvec = sub(ray.direction, ray.origin); // get w vector
-	t_vector dirvec_norm = divi(dirvec,(length(dirvec, dirvec))); //normlize direction vec
-
-	t_vector u_vector = crossproduct(dirvec_norm, up); // get u vector
-	t_vector v_vector = crossproduct(dirvec_norm, u_vector); // get v vector
-
-	double alpha = 60 * ((22.0/7.0) / 180.0);
-	double pw = tan(alpha);
-	double ph = pw;
-	double px = map(x, 0, WIN_W,-1,1);
-	double py = map(y, 0, WIN_H,-1,1);
-
-	t_vector sum = add(multi(u_vector,px * pw), multi(v_vector,py * ph));
+	t_vector		dirvec;
+	t_vector		dirvec_norm;
+	t_vector		u_vector;
+	t_vector		v_vector;
+	double			alpha;
+	double			pw;
+	double			px;
+	double			py;
+	double			ph;
+	
+	dirvec = sub(ray.direction, ray.origin);
+	dirvec_norm = divi(dirvec,(length(dirvec, dirvec)));
+	u_vector = crossproduct(dirvec_norm, up);
+	v_vector = crossproduct(dirvec_norm, u_vector);
+	alpha = 60 * ((22.0/7.0) / 180.0);
+	pw = tan(alpha);
+	px = map(x, 0, WIN_W,-1,1);
+	py = map(y, 0, WIN_H,-1,1);
+	t_vector sum = add(multi(u_vector,px * pw), multi(v_vector,py * pw));
 	return add(sum, dirvec_norm);
 }
-t_vector obj_normal(t_ray ray, t_object *obj, double dst)
+t_vector			obj_normal(t_ray ray, t_object *obj, double dst)
 {
-	t_vector xvec;
-	double m;
-	double tk;
-	t_vector normal;
-	t_vector p_c;
-	double alpha;
+	t_vector		xvec;
+	double			m;
+	double			tk;
+	t_vector		normal;
+	t_vector		p_c;
+	double			alpha;
 
 	xvec = vecto_subvec(ray.origin, obj->origin);
 	alpha = 60 * ((22.0 / 7.0) / 180.0);
@@ -120,16 +121,17 @@ t_vector obj_normal(t_ray ray, t_object *obj, double dst)
 	return normal;
 }
 
+
 t_vector			get_pxl(t_rtv *rtv,t_ray ray)
 {
-	double		dst_min;
-	int i = 0;
-	t_object	*obj = NULL;
-	t_vector	hit_point;
+	double			dst_min;
+	t_object		*obj;
+	t_vector		hit_point;
 	t_vector		color;
 	t_vector		normal;
 
 	cord(&color,0,0,0);
+	obj = NULL;
 	if ((dst_min = get_dest(rtv,ray,&obj)) == 9999)
 		return(color);
 	hit_point = add(ray.origin , multi(ray.direction,dst_min));
@@ -137,13 +139,14 @@ t_vector			get_pxl(t_rtv *rtv,t_ray ray)
 		color = colors(rtv, obj, hit_point, obj_normal(ray, obj, dst_min),ray);
 	return (color);
 }
-double get_dest(t_rtv *rtv, t_ray ray,t_object **close)
+double				get_dest(t_rtv *rtv, t_ray ray,t_object **close)
 {
-	t_object *tmp;
-	double dst;
+	t_object		*tmp;
+	double			dst;
+	double			min;
 
 	tmp = rtv->obj;
-	double min = 9999;
+	min = 9999;
 	while (tmp)
 	{
 		if (tmp->type == SPHERE)
@@ -166,43 +169,29 @@ double get_dest(t_rtv *rtv, t_ray ray,t_object **close)
 	else
 		return (-1);
 }
-void			raytracing(t_rtv *rtv)
+void				raytracing(t_rtv *rtv)
 { 
-	int x;
-	int y;
-	unsigned int *img_temp;
+	int				x;
+	int				y;
+	unsigned int	*img_temp;
 	t_vector		color;
+	t_ray			ray;
+	t_ray			ray2;
+	t_vector		up;
 
-	//camera start
-	t_ray ray;
-	t_ray ray2;
+	cord(&up, 0, 1, 0);
 	ray.origin = rtv->camera->origin;
 	ray.direction = rtv->camera->look_at;
 	ray2.origin = ray.origin;
-
 	x = -1;
 	while (++x < WIN_H)
 	{
 		y = -1;
 		while (++y < WIN_W)
 		{
-			///tekhrbihg diyal sofiane
-
-			t_vector plane_vec_s;
-			t_vector plane_org;
-			t_vector up;
-			//print_vect(rtv->light->origin,"light");
-			cord(&up, 0, 1, 0);
-			cord(&plane_vec_s, 0, 1, 0);
-			cord(&plane_org, 50, 50, 100);
-			/////////////start here
-			ray2.direction = camera(ray,x,y,up);
-			//double dst = get_dest(rtv,ray2);
-			color = get_pxl(rtv,ray2);
-			//print_vect(color,"color");
+			ray2.direction = camera(ray, x, y, up);
+			color = get_pxl(rtv, ray2);
 			rtv->mlx.img[(WIN_H - 1 - x) * WIN_W + y]=rgb_to_int(color);
-
 		}
 	}
-
 }

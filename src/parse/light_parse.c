@@ -19,7 +19,7 @@ t_light *light, t_rtv *rtv)
 	{
 		light->origin = input_vector(rtv, arg, rtv->parse.nb_line, data);
 		free(data);
-		}
+	}
 	else if (!ft_strcmp("intensity", data))
 	{
 		light->intensity = input_onearg(rtv, arg, rtv->parse.nb_line, data);
