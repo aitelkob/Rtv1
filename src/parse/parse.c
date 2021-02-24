@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 16:43:51 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/24 12:54:01 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/24 14:53:13 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,12 @@ char			*name_cut(t_rtv *rtv, char *line)
 {
 	char		*strtrim;
 
-	if (!line || line[0] == '\0')
+	
+	if (!line || line[0] == '\0' || line[0] == '#')
+	{
+		free(line);
 		return ("\0");
+	}
 	strtrim = ft_strtrim(line);
 	if (strtrim[ft_strlen(strtrim) - 1] != ':' &&
 			strtrim[ft_strlen(strtrim) - 1] != '1' &&
@@ -72,14 +76,10 @@ void			forward(t_rtv *rtv, char *line)
 		cylinder_parce(rtv);
 	else if (!ft_strcmp(obj_name, "cone"))
 		cone_parce(rtv);
-	else if (!obj_name || obj_name[0] == '\0' || obj_name[0] == '\n')
+	else if (!obj_name || obj_name[0] == '\0' || obj_name[0] == '\n' || obj_name[0] == '#')
 		return ;
 	else
-	{
-		free(obj_name);
-		free(line);
 		syntax_error(rtv, "name of obj", "note good", rtv->parse.nb_line);
-	}
 	free(obj_name);
 }
 
@@ -90,7 +90,7 @@ void			parce(char *av, t_rtv *rtv)
 	rtv->parse.nb_line = 0;
 	rtv->obj = NULL;
 	rtv->light = NULL;
-	while  (get_next_line(rtv->parse.fd, &rtv->parse.line))
+	while (get_next_line(rtv->parse.fd, &rtv->parse.line))
 	{
 		rtv->parse.nb_line++;
 		forward(rtv, rtv->parse.line);

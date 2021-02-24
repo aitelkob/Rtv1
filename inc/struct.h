@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 16:40:46 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/20 16:57:40 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/24 15:50:47 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef struct		s_camera
 	t_vector		origin;
 	double			fov;
 	t_vector		look_at;
-	t_vector		up;
+	int				check;
 }					t_camera;
 typedef	struct		s_rtv
 {

@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:22:50 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/20 17:14:42 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/24 15:51:55 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void					camera_parce(t_rtv *rtv)
 	else
 	{
 		rtv->camera = camera;
+		rtv->camera->check = 1;
 		camera = NULL;
 		forward(rtv, data);
 	}
