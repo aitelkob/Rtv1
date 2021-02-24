@@ -1,15 +1,18 @@
 light:
-  origin: -300 500 -5000
+  origin: 0 50 -200
   intensity: 1
 plane:
-  origin: 90 50 100
-  normal: 1 0 0
-  color: 246 246 246
-plane:
-  origin: 90 50 100
-  normal: 1 0 0
-  color: 246 246 246
-sphere:
   origin: 50 50 100
-  radius: 30
+  normal: 1 0 0
+  color: 255 000 0
+sphere:
+  origin: 20 5 50
+  radius: 20
   color: 255 0 0
+
+
+
+
+
+
+

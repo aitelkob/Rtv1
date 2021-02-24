@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 16:43:51 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/20 17:27:39 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/24 12:54:01 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char			*name_cut(t_rtv *rtv, char *line)
 	if (strtrim[ft_strlen(strtrim) - 1] != ':' &&
 			strtrim[ft_strlen(strtrim) - 1] != '1' &&
 			strtrim[ft_strlen(strtrim) - 1] != '0')
-		syntax_error(rtv, line, "somthing wrong with file ",
+		syntax_error(rtv, strtrim, "somthing wrong with file ",
 		rtv->parse.nb_line);
 	strtrim[ft_strlen(strtrim) - 1] = '\0';
 	free(line);
@@ -73,10 +73,7 @@ void			forward(t_rtv *rtv, char *line)
 	else if (!ft_strcmp(obj_name, "cone"))
 		cone_parce(rtv);
 	else if (!obj_name || obj_name[0] == '\0' || obj_name[0] == '\n')
-	{
-		free(line);
 		return ;
-	}
 	else
 	{
 		free(obj_name);
@@ -93,7 +90,7 @@ void			parce(char *av, t_rtv *rtv)
 	rtv->parse.nb_line = 0;
 	rtv->obj = NULL;
 	rtv->light = NULL;
-	if (get_next_line(rtv->parse.fd, &rtv->parse.line))
+	while  (get_next_line(rtv->parse.fd, &rtv->parse.line))
 	{
 		rtv->parse.nb_line++;
 		forward(rtv, rtv->parse.line);

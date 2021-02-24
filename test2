@@ -13,4 +13,3 @@ camera:
   origin: 0 50 0
   fov: 60
   look_at: 30 50 50
-

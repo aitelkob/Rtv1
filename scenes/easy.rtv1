@@ -36,3 +36,7 @@ sphere:
   origin: 750 200 100
   radius: 50
   color: 0 250 0
+camera:
+  origin: 0 50 0
+  fov: 60
+  look_at: 30 50 50
