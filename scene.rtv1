@@ -1,0 +1,29 @@
+light:
+  origin: 0 50 -200
+  intensity: 1
+sphere:
+  origin: 50 50 50
+  radius: 20
+  color: 255 0 0
+plane:
+  origin: 20 20 -10
+  normal: 0 1 0
+  color: 0 0 0
+  rot: 0 0 0
+cone:
+  origin: 0 0 0
+  normal: 0 0 0
+  radius: 0
+  rot: 0 0 0
+  color: 0 0 0
+cylinder:
+  origin: 0 0 0
+  normal: 0 0 0
+  rot: 0 0 0
+  radius: 0
+  color: 0 0 0
+camera:
+  origin: 0 0 0
+  fov: 60
+  look_at: 50 50 50
+# 

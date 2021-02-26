@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 09:49:04 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/19 17:06:26 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/26 16:16:16 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal, t_ray 
 	intensity = 0;
 	tmp = rtv->light;
 	cord(&one,1,1,1);
+	color = (t_vector){0,0,0};
 	while (tmp)
 	{
 		light_dir = sub(tmp->origin, hit);
@@ -133,8 +134,11 @@ t_vector			get_pxl(t_rtv *rtv,t_ray ray)
 	if ((dst_min = get_dest(rtv,ray,&obj,current)) == 9999)
 		return(color);
 	hit_point = add(ray.origin , multi(ray.direction,dst_min));
-	if (obj)
-		color = colors(rtv, obj, hit_point, obj_normal(ray, obj, dst_min),ray);
+	printf("this is adress[%f] = [%p]\n",obj->origin.x,obj);
+	if (dst_min > 0)
+		color = obj->color;
+	//if (obj)
+	//	color = colors(rtv, obj, hit_point, obj_normal(ray, obj, dst_min),ray);
 	return (color);
 }
 double get_dest(t_rtv *rtv, t_ray ray,t_object **close, t_object *current)
@@ -148,8 +152,6 @@ double get_dest(t_rtv *rtv, t_ray ray,t_object **close, t_object *current)
 
 	while (tmp)
 	{
-		if (current == NULL || (current != NULL && length(sub(current->origin,tmp->origin),sub(current->origin,tmp->origin)) != 0))
-		{
 			if (tmp->type == SPHERE)
 				dst = intersection_sphere(ray, *tmp);
 			else if (tmp->type == PLANE)
@@ -162,9 +164,9 @@ double get_dest(t_rtv *rtv, t_ray ray,t_object **close, t_object *current)
 			{
 				min = (dst <= 0) ? min : dst;
 				*close = tmp;
+			//	printf("this is adress = [%p]\n",*close);
 				count++;
 			}
-		}
 		tmp = tmp->next;
 	}
 	return(min);

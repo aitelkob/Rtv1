@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 16:40:46 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/24 15:50:47 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/26 16:58:25 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef	struct		s_object
 	int				type;
 	double			radius;
 	t_vector		origin;
+	t_vector		rot;
 	t_vector		normal;
 	t_vector		direction;
 	t_vector		color;
