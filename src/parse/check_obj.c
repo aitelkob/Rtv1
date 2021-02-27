@@ -63,7 +63,7 @@ void	cylinder_checker(char *data, char *arg, t_object *cylinder, t_rtv *rtv)
 		free(data);
 		unknown_setting(rtv, "cylinder", rtv->parse.nb_line);
 	}
-		free(data);
+	free(data);
 }
 
 void	cone_checker(char *data, char *arg, t_object *cone, t_rtv *rtv)

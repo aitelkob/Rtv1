@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 09:49:04 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/26 16:16:16 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/27 18:51:12 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,10 +186,10 @@ void			raytracing(t_rtv *rtv)
 	ray2.origin = ray.origin;
 
 	x = -1;
-	while (++x < WIN_H)
+	while (++x <= WIN_H)
 	{
 		y = -1;
-		while (++y < WIN_W)
+		while (++y <= WIN_W)
 		{
 			///tekhrbihg diyal sofiane
 

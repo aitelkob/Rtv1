@@ -29,7 +29,7 @@ t_light *light, t_rtv *rtv)
 		unknown_setting(rtv, data, rtv->parse.nb_line);
 }
 
-void					camera_check(char *data, char *arg,
+void						camera_check(char *data, char *arg,
 t_camera *camera, t_rtv *rtv)
 {
 	if (!ft_strcmp("origin", data))
@@ -51,11 +51,11 @@ t_camera *camera, t_rtv *rtv)
 		unknown_setting(rtv, data, rtv->parse.nb_line);
 }
 
-void					light_parce(t_rtv *rtv)
+void						light_parce(t_rtv *rtv)
 {
-	static	t_light		*light;
-	char				*data;
-	char				*arg;
+	static	t_light			*light;
+	char					*data;
+	char					*arg;
 
 	if (!light)
 		if (!(light = (t_light *)malloc(sizeof(t_light))))
@@ -75,11 +75,11 @@ void					light_parce(t_rtv *rtv)
 	}
 }
 
-void					camera_parce(t_rtv *rtv)
+void						camera_parce(t_rtv *rtv)
 {
-	static	t_camera	*camera;
-	char				*data;
-	char				*arg;
+	static	t_camera		*camera;
+	char					*data;
+	char					*arg;
 
 	if (!camera)
 		if (!(camera = (t_camera *)malloc(sizeof(t_camera))))

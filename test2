@@ -1,10 +1,12 @@
 light:
   origin: 0 50 -200
   intensity: 1
-plane:
-  origin: 50 50 100
-  normal: 1 1 0
-  color: 255 000 0
+cylinder:
+  origin: 80 80 80
+  normal: 1 0 0
+  rot: 0 0 0
+  radius: 30
+  color: 0 0 250
 sphere:
   origin: 50 50 100
   radius: 20

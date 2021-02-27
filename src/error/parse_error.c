@@ -12,28 +12,26 @@
 
 #include "rtv1.h"
 
-void		syntax_error(t_rtv *rtv,char *line, char *reasoning, int nbline)
+void		syntax_error(t_rtv *rtv, char *line, char *reasoning, int nbline)
 {
 	ft_putstr("\033[0;35m");
 	ft_putstr("Syntax Error : ");
 	ft_putstr("\033[0m");
-
 	ft_putstr("\033[1;31m");
-    ft_putstr(reasoning);
+	ft_putstr(reasoning);
 	ft_putstr("\033[0m");
 	ft_putstr("\033[1;33m");
 	ft_putstr(line);
 	ft_putstr("\033[0m");
-
-    ft_putstr(" at line ");
+	ft_putstr(" at line ");
 	ft_putstr("\033[0;31m");
-    ft_putnbr(nbline);
+	ft_putnbr(nbline);
 	ft_putstr("\033[0m");
 	ft_putchar('\n');
 	exit(0);
 }
 
-void		unknown_setting(t_rtv *rtv,char *line, int nbline)
+void		unknown_setting(t_rtv *rtv, char *line, int nbline)
 {
 	ft_putstr("\033[0;35m");
 	ft_putstr("Unknown setting ");

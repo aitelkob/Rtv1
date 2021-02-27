@@ -38,7 +38,7 @@ int				key_hook(int keycode, t_rtv *rtv)
 int				red_button(t_rtv *rtv)
 {
 	exiting_program(rtv);
-	return(0);
+	return (0);
 }
 
 void			display(t_rtv *rtv, t_mlix *mlx)

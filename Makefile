@@ -6,7 +6,7 @@
 #    By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/23 16:25:47 by yait-el-          #+#    #+#              #
-#    Updated: 2021/02/24 16:13:26 by yait-el-         ###   ########.fr        #
+#    Updated: 2021/02/27 18:32:49 by yait-el-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ SRC			+=libvect/vector_calculation2.c
 SRC			+=parse/light_parse.c
 SRC			+=error/parse_error.c
 SRC			+=raytracing/raytracing2.c
+SRC			+=raytracing/rotation.c
 SRC			+=raytracing/intersection.c
 
 #################### Libraries

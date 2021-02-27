@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 17:05:31 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/20 17:29:46 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/27 19:03:29 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void					plan_parce(t_rtv *rtv)
 	}
 	else
 	{
+		//plan->normal = rotation(plan->normal,plan->rot);
 		first_obj(rtv, plan);
 		plan = NULL;
 		forward(rtv, data);
@@ -81,6 +82,7 @@ void					cylinder_parce(t_rtv *rtv)
 	}
 	else
 	{
+		//cylinder->normal = rotation(cylinder->normal,cylinder->rot);
 		first_obj(rtv, cylinder);
 		cylinder = NULL;
 		forward(rtv, data);

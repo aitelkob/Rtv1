@@ -12,27 +12,27 @@
 
 #include "rtv1.h"
 
-static	void			free_objects(t_rtv  *rt)
+static	void			free_objects(t_rtv *rtv)
 {
 	t_object			*next;
 
-	while (rt && rt->obj)
+	while (rtv && rtv->obj)
 	{
-		next = rt->obj->next;
-		free(rt->obj);
-		rt->obj = next;
+		next = rtv->obj->next;
+		free(rtv->obj);
+		rtv->obj = next;
 	}
 }
 
-static	void			free_lights(t_rtv *rt)
+static	void			free_lights(t_rtv *rtv)
 {
 	t_light				*next;
 
-	while (rt && rt->light)
+	while (rtv && rtv->light)
 	{
-		next = rt->light->next;
-		free(rt->light);
-		rt->light = next;
+		next = rtv->light->next;
+		free(rtv->light);
+		rtv->light = next;
 	}
 }
 

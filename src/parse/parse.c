@@ -42,7 +42,6 @@ char			*name_cut(t_rtv *rtv, char *line)
 {
 	char		*strtrim;
 
-	
 	if (!line || line[0] == '\0' || line[0] == '#')
 	{
 		free(line);
@@ -76,7 +75,8 @@ void			forward(t_rtv *rtv, char *line)
 		cylinder_parce(rtv);
 	else if (!ft_strcmp(obj_name, "cone"))
 		cone_parce(rtv);
-	else if (!obj_name || obj_name[0] == '\0' || obj_name[0] == '\n' || obj_name[0] == '#')
+	else if (!obj_name || obj_name[0] == '\0' ||
+	obj_name[0] == '\n' || obj_name[0] == '#')
 		return ;
 	else
 		syntax_error(rtv, "name of obj", "note good", rtv->parse.nb_line);

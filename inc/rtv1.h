@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:01:37 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/20 14:34:50 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/27 18:29:52 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define DIST_MIN 0.0001
 # define FOV 30
 # define KEY_ESC 53
-
+# define PI 3.14159
 # include <unistd.h>
 # include <fcntl.h>
 # include <math.h>

@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:22:35 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/21 14:50:13 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/27 18:31:52 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ double			dot(t_vector v, t_vector b);
 double			map(double x, double sw, double ew, double spw, double epw);
 t_vector		crossproduct(t_vector vec1, t_vector vec2);
 t_vector		nrm(t_vector vec);
+t_vector            rotation(t_vector v,t_vector  angle);
 
 /*
  ********************************mlx stuff
