@@ -1,12 +1,17 @@
 light:
-  origin: 0 50 -200
+  origin: -60 -50 -50
   intensity: 1
 plane:
-  origin: 50 50 100
+  origin: 50 50 50
   normal: 1 0 0
-  color: 255 000 0
-sphere:
-  origin: 20 5 50
+  color: 255 255 255
+cylinder:
+  origin: 50 50 50
+  normal: 1 0 0
   radius: 20
-  color: 255 0 0
-
+  color: 255 0 255
+camera:
+  origin: -10 50 -160
+  fov: 60
+  look_at: 50 50 50
+#

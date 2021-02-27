@@ -83,6 +83,7 @@ typedef	struct		s_object
 	t_vector		normal;
 	t_vector		direction;
 	t_vector		color;
+	double		min;
 	struct s_object	*next;
 }					t_object;
 typedef struct		s_camera
