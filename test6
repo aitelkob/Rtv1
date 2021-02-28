@@ -1,0 +1,15 @@
+sphere:
+  origin: -30 -30 70
+  radius: 10
+  color: 255 128 171
+cylinder:
+  origin: -30 0 0
+  radius: 6.5
+  normal: 1 0 0
+  color: 255 128 171
+  rot: 0 0 0
+camera:
+  origin: 0 0 170
+  fov: 30
+  look_at: 0 0 0
+#

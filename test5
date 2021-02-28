@@ -1,12 +1,65 @@
 light:
-  origin: 8 -7 -200
+  origin: 90 25 170
   intensity: 1
 sphere:
-  origin: 0 0 0
-  radius: 5
-  color: 255 0 0
+  origin: -30 -30 70
+  radius: 10
+  color: 255 128 171
+sphere:
+  origin: 30 -30 70
+  radius: 10
+  color: 255 128 171
+sphere:
+  origin: -30 30 70
+  radius: 10
+  color: 255 128 171
+sphere:
+  origin: 30 30 70
+  radius: 10
+  color: 255 128 171
+sphere:
+  origin: 30 30 0
+  radius: 10
+  color: 255 128 171
+sphere:
+  origin: -30 -30 0
+  radius: 10
+  color: 255 128 171
+sphere:
+  origin: -30 30 0
+  radius: 10
+  color: 255 128 171
+sphere:
+  origin: 30 -30 0
+  radius: 10
+  color: 255 128 171
+sphere:
+  origin: -30 -30 0
+  radius: 10
+  color: 255 128 171
+cylinder:
+  origin: -30 0 0
+  radius: 6.5
+  normal: 0 1 0
+  color: 255 128 171
+  rot: 0 0 0
+cylinder:
+  origin: 30 0 70
+  radius: 6.5
+  normal: 0 1 0
+  color: 255 128 171
+cylinder:
+  origin: -30 0 70
+  radius: 6.5
+  normal: 0 1 0
+  color: 255 128 171
+cylinder:
+  origin: 30 0 0
+  radius: 6.5
+  normal: 0 1 0
+  color: 255 128 171
 camera:
-  origin: 0 0 -20
+  origin: 0 0 170
   fov: 30
   look_at: 0 0 0
 #
