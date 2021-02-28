@@ -6,11 +6,24 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:26:32 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/27 18:50:51 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/28 09:56:31 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+void				init_obj(t_object *obj)
+{
+	t_vector		v;
+
+	v = (t_vector){0,0,0};
+	obj->radius = 0;
+	obj->origin = v;
+	obj->rot = v;
+	obj->normal = v;
+	obj->direction = v;
+	obj->color = v;
+}
 
 void				first_obj(t_rtv *rtv, t_object *obj)
 {

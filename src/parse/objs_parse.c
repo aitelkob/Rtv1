@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 17:05:31 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/27 19:03:29 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/28 10:05:07 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ void					plan_parce(t_rtv *rtv)
 	char				*data;
 
 	if (!plan)
+	{
 		if (!(plan = (t_object *)malloc(sizeof(t_object))))
 			error("obj error allocat", "just alloct");
+		init_obj(plan);
+	}
 	plan->type = PLANE;
 	rtv->parse.nb_line++;
 	if (get_next_line(rtv->parse.fd, &data) == 1 && data[0] == ' ')
@@ -31,7 +34,7 @@ void					plan_parce(t_rtv *rtv)
 	}
 	else
 	{
-		//plan->normal = rotation(plan->normal,plan->rot);
+		plan->normal = rotation(plan->normal, plan->rot);
 		first_obj(rtv, plan);
 		plan = NULL;
 		forward(rtv, data);
@@ -45,8 +48,11 @@ void					sphere_parce(t_rtv *rtv)
 	char				*arg;
 
 	if (!sphere)
+	{
 		if (!(sphere = (t_object *)malloc(sizeof(t_object))))
 			error("obj error allocat", "just alloct");
+		init_obj(sphere);
+	}
 	sphere->type = SPHERE;
 	rtv->parse.nb_line++;
 	if (get_next_line(rtv->parse.fd, &data) == 1 && data[0] == ' ')
@@ -70,8 +76,11 @@ void					cylinder_parce(t_rtv *rtv)
 	char				*arg;
 
 	if (!cylinder)
+	{
 		if (!(cylinder = (t_object *)malloc(sizeof(t_object))))
 			error("obj error allocat", "just alloct");
+		init_obj(cylinder);
+	}
 	cylinder->type = CYLINDER;
 	rtv->parse.nb_line++;
 	if (get_next_line(rtv->parse.fd, &data) == 1 && data[0] == ' ')
@@ -82,7 +91,7 @@ void					cylinder_parce(t_rtv *rtv)
 	}
 	else
 	{
-		//cylinder->normal = rotation(cylinder->normal,cylinder->rot);
+		cylinder->normal = rotation(cylinder->normal, cylinder->rot);
 		first_obj(rtv, cylinder);
 		cylinder = NULL;
 		forward(rtv, data);
@@ -96,8 +105,11 @@ void					cone_parce(t_rtv *rtv)
 	char				*arg;
 
 	if (!cone)
+	{
 		if (!(cone = (t_object *)malloc(sizeof(t_object))))
 			error("obj error allocat", "just alloct");
+		init_obj(cone);
+	}
 	cone->type = CONE;
 	rtv->parse.nb_line++;
 	if (get_next_line(rtv->parse.fd, &data) == 1 && data[0] == ' ')
@@ -108,6 +120,7 @@ void					cone_parce(t_rtv *rtv)
 	}
 	else
 	{
+		cone->normal = rotation(cone->normal, cone->rot);
 		first_obj(rtv, cone);
 		cone = NULL;
 		forward(rtv, data);

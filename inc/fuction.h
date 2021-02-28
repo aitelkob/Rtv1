@@ -32,6 +32,7 @@ void			cylinder_checker(char *data, char *arg,
 void			cone_parce(t_rtv *rtv);
 void			cone_checker(char *data, char *arg, t_object *cone, t_rtv *rtv);
 void			light_parce(t_rtv *rtv);
+void			init_obj(t_object *obj);
 void			camera_parce(t_rtv *rtv);
 char			*settings_cut(t_rtv *rtv, char *variable, char **data);
 char			*name_cut(t_rtv *rtv, char *line);
@@ -65,7 +66,7 @@ double			dot(t_vector v, t_vector b);
 double			map(double x, double sw, double ew, double spw, double epw);
 t_vector		crossproduct(t_vector vec1, t_vector vec2);
 t_vector		nrm(t_vector vec);
-t_vector            rotation(t_vector v,t_vector  angle);
+t_vector		rotation(t_vector v, t_vector angle);
 
 /*
  ********************************mlx stuff
