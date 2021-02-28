@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 09:49:04 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/28 10:17:13 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/02/28 12:05:27 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal, t_ray 
 	intensity = 0;
 	tmp = rtv->light;
 	cord(&one,1,1,1);
+	color =(t_vector) {0,0,0};
 	while (tmp)
 	{
 		light_dir = sub(tmp->origin, hit);
@@ -134,9 +135,10 @@ t_vector			get_pxl(t_rtv *rtv,t_ray ray)
 	if ((dst_min = get_dest(rtv,ray,&obj,current)) == -1)
 		return(color);
 	hit_point = add(ray.origin , multi(ray.direction,dst_min));
+
 	if (dst_min > 0)
 		color = obj->color;
-	if (obj)
+	if (rtv->light)
 		color = colors(rtv, obj, hit_point, obj_normal(ray, obj, dst_min),ray);
 	return (color);
 }
