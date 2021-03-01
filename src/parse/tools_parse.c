@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:26:32 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/28 11:53:50 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/03/01 11:52:52 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ t_vector			input_vector(t_rtv *rtv, char *data, int nbr, char *head)
 	vec.x = ft_atof(lines[0]);
 	vec.y = ft_atof(lines[1]);
 	vec.z = ft_atof(lines[2]);
-	print_vect(vec,"test-->");
 	free_splited(lines);
 	return (vec);
 }
