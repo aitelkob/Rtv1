@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 09:49:04 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/03/01 09:15:57 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/03/01 09:16:44 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal, t_ray 
     	dst = get_dest(rtv,ray2,&tmp2,obj);
 		h = nrm(add(light_dir,sub(ray.origin,hit)));
 		post = dot(light_dir, normal) / (length(light_dir, light_dir) * length(normal, normal));
-		alfa =  post;//dst != -1 ? 0.2*post : post;
+		alfa =  dst != -1 && post > 0 ? 0.1 : post;
 		alfa2 = dst != -1 ? 0 : dot(h, normal) / (length(h, h) * length(normal, normal));
 		color = add(color, multi(obj->color, fabs(alfa < 0 ? 0 : alfa)));
-		color = add(color, multi(one,255 * powf(alfa2 < 0 ? 0 : alfa2, 10)));
+		color = add(color, multi(one,255 * powf(alfa2 < 0 ? 0 : alfa2, 100)));
 		tmp = tmp->next;
 	}
 
