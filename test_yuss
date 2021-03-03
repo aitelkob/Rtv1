@@ -1,0 +1,20 @@
+light:
+  origin: -180 0 30
+  intensity: 1
+sphere:
+  origin: -120 0 0
+  radius: 10
+  color: 255 128 171
+sphere:
+  origin: 0 0 0
+  radius: 10
+  color: 255 128 171
+sphere:
+  origin: 30 0 0
+  radius: 10
+  color: 255 128 171
+camera:
+  origin: -200 0 0
+  fov: 30
+  look_at: 0 1 0
+#

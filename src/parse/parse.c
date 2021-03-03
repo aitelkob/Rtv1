@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 16:43:51 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/24 14:53:13 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/03/03 15:51:17 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,6 @@ void			parce(char *av, t_rtv *rtv)
 	}
 	if (rtv->parse.fd == -1)
 		error("fd matsedche \n", "fd matsedch");
+	else
+		close(rtv->parse.fd);
 }

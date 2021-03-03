@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 09:49:04 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/03/01 11:52:39 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/03/03 15:29:36 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ double get_dest(t_rtv *rtv, t_ray ray,t_object **close, t_object *current)
 				dst = intersection_cylinder(ray, *tmp);
 			else if (tmp->type == CONE)
 				dst = intersection_cone(ray, *tmp);
-			if (dst != -1 && (dst < min || min == -1))
+			if (dst > 0 && (dst < min || min == -1))
 			{
 				*close = tmp;
 				min = dst;
