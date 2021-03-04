@@ -79,16 +79,28 @@ int				key_hook(int keycode, t_rtv *rtv);
 void			setup_mlx(t_mlix *mlx);
 void			ft_destroy(t_mlix *mlx);
 void			ft_put_pixel(t_mlix *mlx, int x, int y, int color);
-
+double			get_dest(t_rtv *rtv, t_ray ray,t_object **close, t_object *current);
 /*
  ********************************** raytracing
 */
 
 void			raytracing(t_rtv *rtv);
+t_vector		colors(t_rtv *rtv, t_object *obj,
+t_vector hit, t_vector aim, t_ray ray);
+t_vector		get_pxl(t_rtv *rtv, t_ray ray);
+
+/*
+ ********************************** intersection
+*/
 double			intersection_plane(t_ray ray, t_object plane);
 double			intersection_cylinder(t_ray ray, t_object cylinder);
 double			intersection_cone(t_ray ray, t_object cone);
 double			intersection_sphere(t_ray ray, t_object sphere);
+
+/*
+ ********************************** error management
+*/
+
 void			exiting_program(t_rtv *rtv);
 /*
  ********************************* debugging

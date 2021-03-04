@@ -82,6 +82,7 @@ typedef	struct		s_object
 	t_vector		rot;
 	t_vector		aim;
 	t_vector		translation;
+	double			angle;
 	t_vector		direction;
 	t_vector		color;
 	double			min;

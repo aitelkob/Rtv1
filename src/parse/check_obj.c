@@ -81,6 +81,8 @@ void	cone_checker(char *data, char *arg, t_object *cone, t_rtv *rtv)
 		cone->aim = input_vector(rtv, arg, rtv->parse.nb_line, data);
 	else if (!ft_strcmp("radius", data))
 		cone->radius = input_onearg(rtv, arg, rtv->parse.nb_line, data);
+	else if (!ft_strcmp("angle", data))
+		cone->angle = input_onearg(rtv, arg, rtv->parse.nb_line, data);
 	else if (!ft_strcmp("rot", data))
 		cone->rot = input_vector(rtv, arg, rtv->parse.nb_line, data);
 	else if (!ft_strcmp("color", data))

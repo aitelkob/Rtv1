@@ -68,6 +68,7 @@ SRC			+=error/parse_error.c
 SRC			+=raytracing/raytracing4.c
 SRC			+=raytracing/rotation.c
 SRC			+=raytracing/intersection.c
+SRC			+=raytracing/get_pxl.c
 
 #################### Libraries
 LIBS		:= -L$(MLXDIR) -lmlx
@@ -77,17 +78,17 @@ LIBS		+= -lz
 LIBS		+= -L$(LFTDIR) -lft
 
 ################### 3ya9a li makine lache Oops!... I Did It Again
-LFT         = $(LFTDIR)/$(FT)
+LFT			= $(LFTDIR)/$(FT)
 MLXX		= $(MLXDIR)/$(MLX)
-D_SRCS      = $(addsuffix /, $(SRCSDIR))
-D_OBJS      = $(addsuffix /, $(OBJSDIR))
-C_OBJS      = $(addprefix $(D_OBJS),  $(SRC:.c=.o))
-C_INCS      = $(foreach include, $(INCSDIR), -I$(include))
-C_CHILDDIR       = $(foreach dir, $(CHILDDIR),$(D_OBJS)$(dir))
+D_SRCS		= $(addsuffix /, $(SRCSDIR))
+D_OBJS		= $(addsuffix /, $(OBJSDIR))
+C_OBJS		= $(addprefix $(D_OBJS),  $(SRC:.c=.o))
+C_INCS		= $(foreach include, $(INCSDIR), -I$(include))
+C_CHILDDIR	= $(foreach dir, $(CHILDDIR),$(D_OBJS)$(dir))
 ################# Compilation flags
-CC              = gcc
-RM              = rm -rf
-CFLAGS          = $(C_INCS) 
+CC    		= gcc
+RM    		= rm -rf
+CFLAGS		= $(C_INCS) 
 
 #----------------->>>>>>>>>>>>>>>>START<<<<<<<<<<<<<-------------------#
 $(D_OBJS)%.o: $(D_SRCS)%.c $(INCS)

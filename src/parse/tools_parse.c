@@ -19,6 +19,8 @@ void				init_obj(t_object *obj)
 	v = (t_vector){0, 0, 0};
 	obj->radius = 0;
 	obj->origin = v;
+	obj->translation = v;
+	obj->angle = 60;
 	obj->rot = v;
 	obj->aim = v;
 	obj->direction = v;

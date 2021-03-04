@@ -62,12 +62,12 @@ double					intersection_cone(t_ray ray, t_object cone)
 	double				tk;
 	t_inters			inter;
 
-	alpha = 100 * ((22.0 / 7.0) / 180.0);
+	alpha = deg_to_rad(cone.angle);
 	inter.x = vecto_subvec(ray.origin, cone.origin);
 	inter.a = dot(ray.direction, ray.direction);
 	inter.b = 2 * dot(ray.direction, inter.x);
 	inter.c = dot(inter.x, inter.x) - (cone.radius * cone.radius);
-	tk = 1 + tan(alpha / 2) * tan(alpha / 2);
+	tk = 1 + tan(alpha / 2.0) * tan(alpha / 2.0);
 	inter.a = dot(ray.direction, ray.direction) - tk * dot(ray.direction,
 			cone.aim) * dot(ray.direction, cone.aim);
 	inter.b = (dot(ray.direction, inter.x) - tk * dot(ray.direction,

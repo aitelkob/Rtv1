@@ -1,6 +1,6 @@
 light:
   origin: 0 50 -200
-  intensity: 1
+  intensity: 100
 sphere:
   origin: 50 50 50
   radius: 20

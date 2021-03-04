@@ -12,7 +12,36 @@
 
 #include "rtv1.h"
 
-t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector aim, t_ray ray);
+double				get_dest(t_rtv *rtv, t_ray ray, t_object **close, t_object *current)
+{
+	t_object		*tmp;
+	double			dst;
+	double			min;
+
+	tmp = rtv->obj;
+	min = -1;
+	while (tmp)
+	{
+		if (tmp->type == SPHERE)
+			dst = intersection_sphere(ray, *tmp);
+		else if (tmp->type == PLANE)
+			dst = intersection_plane(ray, *tmp);
+		else if (tmp->type == CYLINDER)
+			dst = intersection_cylinder(ray, *tmp);
+		else if (tmp->type == CONE)
+			dst = intersection_cone(ray, *tmp);
+		if (dst > 0 && (dst < min + 0.00000001 || min == -1))
+		{
+			*close = tmp;
+			min = dst;
+		}
+		tmp = tmp->next;
+	}
+	if (current != NULL && *close == current)
+		return (-1);
+	return (min);
+}
+
 t_vector			obj_norm(t_ray ray, t_object *obj, double dst)
 {
 	double			m;
@@ -43,20 +72,21 @@ t_vector			obj_norm(t_ray ray, t_object *obj, double dst)
 t_vector			get_pxl(t_rtv *rtv, t_ray ray)
 {
 	double			dst_min;
-	int				i;
-	t_object		*obj = NULL;
+	t_object		*obj;
 	t_vector		hit_point;
 	t_vector		color;
-	t_vector		aim;
-	t_object		*current = NULL;
+	t_object		*current;
 
+	obj = NULL;
+	current = NULL;
 	color = (t_vector){0, 0, 0};
 	if ((dst_min = get_dest(rtv, ray, &obj, current)) < 0)
-		return(color);
+		return (color);
 	hit_point = add(ray.origin, multi(ray.direction, dst_min));
 	if (dst_min > 0)
 		color = obj->color;
 	if (rtv->light)
-		color = colors(rtv, obj, hit_point, obj_norm(ray, obj, dst_min), ray);
+		color = colors(rtv, obj, hit_point,
+		obj_norm(ray, obj, dst_min), ray);
 	return (color);
 }
