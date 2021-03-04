@@ -1,17 +1,61 @@
-light:
-  origin: -60 -50 -50
-  intensity: 1
-plane:
-  origin: 50 50 50
-  normal: 1 0 0
-  color: 255 255 255
+sphere:
+  origin: 0 -40 400    
+  radius: 70
+  color: 255 0 0
+sphere:
+  origin: -300 200 -400 
+  radius: 90
+  color:  200 200 200
+sphere:
+  origin: 300 200 -400  
+  radius: 90
+  color:  200 200 200
+sphere:
+  origin: -300 -200 -400
+  radius: 90
+  color: 200 200 200
+sphere:
+  origin: 300 -200 -400 
+  radius: 90
+  color: 200 200 200
+sphere:
+  origin: -200 200 600
+  radius: 50
+  color: 200 200 200
+sphere:
+  origin: 200 200 600
+  radius: 50
+  color: 200 200 200
+sphere:
+  origin: -200 -200 600
+  radius: 50
+  color: 200 200 200
+sphere:
+  origin: 200 -200 600
+  radius: 50
+  color: 200 200 200
 cylinder:
-  origin: 50 50 50
-  normal: 1 0 0
-  radius: 20
-  color: 255 0 255
+  origin:-300 -1000 -400
+  normal: 0 1 0 
+  color:150 150 150
+  radius: 50 
+cylinder:
+  origin: 300 -1000 -400
+  normal: 0 1 0
+  color: 150 150 150
+  radius: 50
+cylinder:
+  origin: -200 -1000 600
+  normal: 0 1 0
+  color: 200 200 200
+  radius: 25
+cylinder:
+  origin: 200 -1000 600
+  normal: 0 1 0
+  color: 200 200 200
+  radius: 25
 camera:
-  origin: -10 50 -160
+  origin: 200 20 600
   fov: 60
-  look_at: 50 50 50
+  look_at: 0 0 0
 #

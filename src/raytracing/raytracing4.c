@@ -60,17 +60,18 @@ t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal, t_ray 
 	color =(t_vector) {0,0,0};
 	while (tmp)
 	{
-		light_dir = sub(tmp->origin, hit);
+		light_dir = nrm(sub(tmp->origin, hit));
    		dist_light = length(light_dir,light_dir);
     	ray2.origin =  tmp->origin;
     	ray2.direction = nrm(multi(light_dir, -1));
     	dst = get_dest(rtv,ray2,&tmp2,obj);
 		h = nrm(add(light_dir,sub(ray.origin,hit)));
-		post = dot(light_dir, normal) / (length(light_dir, light_dir) * length(normal, normal));
-		alfa =  dst != -1 && post > 0 ? 0.1 : post;
-		alfa2 = dst != -1 ? 0 : dot(h, normal) / (length(h, h) * length(normal, normal));
-		color = add(color, multi(obj->color, fabs(alfa < 0 ? 0 : alfa)));
-		color = add(color, multi(one,255 * powf(alfa2 < 0 ? 0 : alfa2, 100)));
+		post = dot(light_dir, normal) < 0 ? 0: dot(light_dir, normal);
+		//printf("post == %f \n", post);
+		alfa =  (!(dst != -1 || post < 0)) * post + 0.1;
+		alfa2 = (dst == -1) * dot(h, normal);
+		color = add(color, multi(obj->color, alfa));
+		color = add(color, multi(one,(alfa-0.1)*255 * powf(alfa2 < 0 ? 0 : alfa2, 100)));
 		tmp = tmp->next;
 	}
 
@@ -115,10 +116,12 @@ t_vector obj_normal(t_ray ray, t_object *obj, double dst)
 	else if (obj && obj->type == PLANE)
 		normal = multi(obj->normal, -1);
 	else if (obj && obj->type == CYLINDER)
-		normal = nrm(sub(p_c, multi(obj->normal, m)));
+		normal = sub(p_c, multi(obj->normal, m));
 	else if (obj && obj->type == CONE)
-		normal = sub(p_c, multi(obj->normal, (1 + tk * tk) * m));
-	return normal;
+		normal = sub(p_c, multi(obj->normal, tk * m));//sub(p_c, multi(obj->normal, (1 + tk * tk) * m));
+	if(dot(ray.direction, normal) > 0)
+	 	normal = multi(normal, -1);
+	return nrm(normal);
 }
 
 t_vector			get_pxl(t_rtv *rtv,t_ray ray)
@@ -132,7 +135,7 @@ t_vector			get_pxl(t_rtv *rtv,t_ray ray)
 	t_object *current = NULL;
 
 	cord(&color,0,0,0);
-	if ((dst_min = get_dest(rtv,ray,&obj,current)) == -1)
+	if ((dst_min = get_dest(rtv,ray,&obj,current)) < 0)
 		return(color);
 	hit_point = add(ray.origin , multi(ray.direction,dst_min));
 
@@ -149,7 +152,6 @@ double get_dest(t_rtv *rtv, t_ray ray,t_object **close, t_object *current)
 
 	tmp = rtv->obj;
 	double min = -1;
-	int count = 0;
 	while (tmp)
 	{
 			if (tmp->type == SPHERE)
@@ -160,11 +162,10 @@ double get_dest(t_rtv *rtv, t_ray ray,t_object **close, t_object *current)
 				dst = intersection_cylinder(ray, *tmp);
 			else if (tmp->type == CONE)
 				dst = intersection_cone(ray, *tmp);
-			if (dst != -1 && (dst < min || min == -1))
+			if (dst > 0 && (dst < min  || min == -1))
 			{
 				*close = tmp;
 				min = dst;
-				count++;
 			}
 		tmp = tmp->next;
 	}
@@ -174,6 +175,7 @@ double get_dest(t_rtv *rtv, t_ray ray,t_object **close, t_object *current)
 }
 void			raytracing(t_rtv *rtv)
 { 
+	printf("tesr = %d \n", 1 < 0);
 	int x;
 	int y;
 	unsigned int *img_temp;

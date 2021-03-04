@@ -12,6 +12,17 @@
 
 #include "rtv1.h"
 
+
+double      min_ray(double t1, double t2)
+{
+    if (((t1 < t2 || t2 < 0.1) && t1 > 0.1))
+        return (t1);
+    else if (((t2 < t1 || t1 < 0.1) && t2 > 0.1))
+    {
+        return (t2);
+    }
+    return (0);
+}
 static	double			quadratic(double a, double b, double c)
 {
 	double				determinant;
@@ -25,7 +36,8 @@ static	double			quadratic(double a, double b, double c)
 		return (-b / (2 * a));
 	t0 = (-b + sqrt(determinant)) / (2 * a);
 	t1 = (-b - sqrt(determinant)) / (2 * a);
-	return (t0 > t1) ? t1 : t0;
+	return min_ray(t1, t0);
+	
 }
 
 double					intersection_plane(t_ray ray, t_object plane)
@@ -35,13 +47,11 @@ double					intersection_plane(t_ray ray, t_object plane)
 	t_vector			vector_distance;
 
 	d = dot(plane.normal, ray.direction);
-	if (d > DIST_MIN)
-	{
-		vector_distance = vecto_subvec(plane.origin, ray.origin);
-		dist = dot(vector_distance, plane.normal) / d;
+	vector_distance = vecto_subvec(plane.origin, ray.origin);
+	dist = dot(vector_distance, plane.normal) / d;
+	if (dist > 0)
 		return (dist);
-	}
-	return (DIST_MAX);
+	return (-1);
 }
 
 double					intersection_cylinder(t_ray ray, t_object cylinder)
