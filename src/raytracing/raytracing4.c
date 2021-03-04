@@ -83,8 +83,9 @@ t_vector		camera(t_camera *camera,int x, int y, t_vector up)
 	t_ray ray;
 	ray.origin = camera->origin;
 	ray.direction = camera->look_at;
+	ray.origin.x += 0.000000001;
 	t_vector w_vector = nrm(sub(ray.direction, ray.origin)); // get w vector
-	t_vector u_vector = crossproduct(w_vector, up); // get u vector
+	t_vector u_vector = nrm(crossproduct(w_vector, up)); // get u vector
 	t_vector v_vector = crossproduct(w_vector, u_vector); // get v vector
 
 	double alpha = camera->fov * ((22.0/7.0) / 180.0);
@@ -101,7 +102,7 @@ t_vector obj_aim(t_ray ray, t_object *obj, double dst)
 	t_vector xvec;
 	double m;
 	double tk;
-	t_vector aim;
+	t_vector normal;
 	t_vector p_c;
 	double alpha;
 
@@ -113,16 +114,16 @@ t_vector obj_aim(t_ray ray, t_object *obj, double dst)
 		p_c = add(xvec, multi(ray.direction, dst));
 	tk = 1 + tan(alpha / 2) * tan(alpha / 2);
 	if (obj && obj->type == SPHERE)
-		aim = p_c;
+		normal = p_c;
 	else if (obj && obj->type == PLANE)
-		aim = multi(obj->aim, -1);
+		normal = multi(obj->aim, -1);
 	else if (obj && obj->type == CYLINDER)
-		aim = sub(p_c, multi(obj->aim, m));
+		normal = sub(p_c, multi(obj->aim, m));
 	else if (obj && obj->type == CONE)
-		aim = sub(p_c, multi(obj->aim, tk * m));//sub(p_c, multi(obj->aim, (1 + tk * tk) * m));
-	if(dot(ray.direction, aim) > 0)
-	 	aim = multi(aim, -1);
-	return nrm(aim);
+		normal = sub(p_c, multi(obj->aim, tk * m));
+	if(dot(ray.direction, normal) > 0)
+	 	normal = multi(normal, -1);
+	return nrm(normal);
 }
 
 t_vector			get_pxl(t_rtv *rtv,t_ray ray)
@@ -163,7 +164,7 @@ double get_dest(t_rtv *rtv, t_ray ray,t_object **close, t_object *current)
 				dst = intersection_cylinder(ray, *tmp);
 			else if (tmp->type == CONE)
 				dst = intersection_cone(ray, *tmp);
-			if (dst > 0 && (dst < min  || min == -1))
+			if (dst > 0 && (dst < min + 0.00000001  || min == -1))
 			{
 				*close = tmp;
 				min = dst;

@@ -1,15 +1,30 @@
-sphere:
-  origin: -30 -30 70
-  radius: 10
-  color: 255 128 171
-cylinder:
-  origin: -30 0 0
-  radius: 6.5
-  aim: 1 0 0
-  color: 255 128 171
+light:
+  origin: -35 40 170
+  intensity: 100
+plane:
+  origin: 0 0 0
+  aim: 0 -1 0
+  color: 255 255 255
   rot: 0 0 0
+  translation: 0 0 0
+plane:
+  origin: 0 0 0
+  aim: 0 -1 0
+  color: 255 255 255
+  rot: 0 0 50
+  translation: -10 0 0
+sphere:
+  origin: 0 0 0
+  color: 255 255 255
+  radius: 20
+  translation: 0 10 0
+sphere:
+  origin: 0 0 0
+  color: 255 0 0
+  radius: 20
+  translation: 50 50 0
 camera:
-  origin: 0 0 170
-  fov: 30
+  origin: -35 10 100
+  fov: 60
   look_at: 0 0 0
 #
