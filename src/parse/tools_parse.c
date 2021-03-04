@@ -16,11 +16,11 @@ void				init_obj(t_object *obj)
 {
 	t_vector		v;
 
-	v = (t_vector){0,0,0};
+	v = (t_vector){0, 0, 0};
 	obj->radius = 0;
 	obj->origin = v;
 	obj->rot = v;
-	obj->normal = v;
+	obj->aim = v;
 	obj->direction = v;
 	obj->color = v;
 }

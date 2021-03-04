@@ -34,9 +34,9 @@ double					intersection_plane(t_ray ray, t_object plane)
 	double				dist;
 	t_vector			vector_distance;
 
-	d = dot(plane.normal, ray.direction);
+	d = dot(plane.aim, ray.direction);
 	vector_distance = vecto_subvec(plane.origin, ray.origin);
-	dist = dot(vector_distance, plane.normal) / d;
+	dist = dot(vector_distance, plane.aim) / d;
 	if (dist > 0)
 		return (dist);
 	return (-1);
@@ -48,11 +48,11 @@ double					intersection_cylinder(t_ray ray, t_object cylinder)
 
 	inter.x = vecto_subvec(ray.origin, cylinder.origin);
 	inter.a = dot(ray.direction, ray.direction) - dot(ray.direction,
-			cylinder.normal) * dot(ray.direction, cylinder.normal);
+			cylinder.aim) * dot(ray.direction, cylinder.aim);
 	inter.b = (dot(ray.direction, inter.x) - dot(ray.direction,
-				cylinder.normal) * dot(inter.x, cylinder.normal)) * 2;
-	inter.c = dot(inter.x, inter.x) - dot(inter.x, cylinder.normal) *
-		dot(inter.x, cylinder.normal) - cylinder.radius * cylinder.radius;
+				cylinder.aim) * dot(inter.x, cylinder.aim)) * 2;
+	inter.c = dot(inter.x, inter.x) - dot(inter.x, cylinder.aim) *
+		dot(inter.x, cylinder.aim) - cylinder.radius * cylinder.radius;
 	return (quadratic(inter.a, inter.b, inter.c));
 }
 
@@ -69,11 +69,11 @@ double					intersection_cone(t_ray ray, t_object cone)
 	inter.c = dot(inter.x, inter.x) - (cone.radius * cone.radius);
 	tk = 1 + tan(alpha / 2) * tan(alpha / 2);
 	inter.a = dot(ray.direction, ray.direction) - tk * dot(ray.direction,
-			cone.normal) * dot(ray.direction, cone.normal);
+			cone.aim) * dot(ray.direction, cone.aim);
 	inter.b = (dot(ray.direction, inter.x) - tk * dot(ray.direction,
-				cone.normal) * dot(inter.x, cone.normal)) * 2;
+				cone.aim) * dot(inter.x, cone.aim)) * 2;
 	inter.c = dot(inter.x, inter.x) - tk * dot(inter.x,
-			cone.normal) * dot(inter.x, cone.normal);
+			cone.aim) * dot(inter.x, cone.aim);
 	return (quadratic(inter.a, inter.b, inter.c));
 }
 

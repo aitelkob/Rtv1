@@ -3,9 +3,10 @@ light:
   intensity: 1
 cylinder:
   origin: 80 80 80
-  normal: 0 1 0
+  aim: 0 1 0
   rot: 0 0 0
   radius: 30
+  translation: 0 0 0
   color: 0 0 250
 camera:
   origin: 20 30 0

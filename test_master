@@ -6,11 +6,11 @@ light:
   intensity: 1
 plane:
   origin: 50 50 100
-  normal: 1 0 0
+  aim: 1 0 0
   color: 255 0 0
 cone:
   origin: 10 50 50
-  normal: 1 0 0
+  aim: 1 0 0
   radius: 0
   color: 0 0 255
   rot: 0 0 30

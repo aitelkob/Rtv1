@@ -36,7 +36,7 @@ int             rgb_to_int(t_vector v)
 	return (rgb);
 }
 
-t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal, t_ray ray)
+t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector aim, t_ray ray)
 {
   	//t_ray ray;
   	//t_object   *tmp;
@@ -66,10 +66,10 @@ t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal, t_ray 
     	ray2.direction = nrm(multi(light_dir, -1));
     	dst = get_dest(rtv,ray2,&tmp2,obj);
 		h = nrm(add(light_dir,sub(ray.origin,hit)));
-		post = dot(light_dir, normal) < 0 ? 0: dot(light_dir, normal);
+		post = dot(light_dir, aim) < 0 ? 0: dot(light_dir, aim);
 		//printf("post == %f \n", post);
 		alfa =  (!(dst != -1 || post < 0)) * post;
-		alfa2 = (dst == -1) * dot(h, normal);
+		alfa2 = (dst == -1) * dot(h, aim);
 		color = add(color, multi(obj->color, 0.1+alfa * (tmp->intensity/100)));
 		color = add(color, multi(one,(tmp->intensity/100) * (alfa)*255 * powf(alfa2 < 0 ? 0 : alfa2, 100)));
 		tmp = tmp->next;
@@ -96,33 +96,33 @@ t_vector		camera(t_camera *camera,int x, int y, t_vector up)
 	t_vector sum = add(multi(u_vector,px * pw), multi(v_vector,py * ph));
 	return add(sum, w_vector);
 }
-t_vector obj_normal(t_ray ray, t_object *obj, double dst)
+t_vector obj_aim(t_ray ray, t_object *obj, double dst)
 {
 	t_vector xvec;
 	double m;
 	double tk;
-	t_vector normal;
+	t_vector aim;
 	t_vector p_c;
 	double alpha;
 
 	xvec = vecto_subvec(ray.origin, obj->origin);
 	alpha = 60 * ((22.0 / 7.0) / 180.0);
 	if (obj->type != PLANE && obj->type != SPHERE)
-		m = dot(ray.direction, obj->normal) * dst + dot(xvec, obj->normal);
+		m = dot(ray.direction, obj->aim) * dst + dot(xvec, obj->aim);
 	if (obj->type != PLANE)
 		p_c = add(xvec, multi(ray.direction, dst));
 	tk = 1 + tan(alpha / 2) * tan(alpha / 2);
 	if (obj && obj->type == SPHERE)
-		normal = p_c;
+		aim = p_c;
 	else if (obj && obj->type == PLANE)
-		normal = multi(obj->normal, -1);
+		aim = multi(obj->aim, -1);
 	else if (obj && obj->type == CYLINDER)
-		normal = sub(p_c, multi(obj->normal, m));
+		aim = sub(p_c, multi(obj->aim, m));
 	else if (obj && obj->type == CONE)
-		normal = sub(p_c, multi(obj->normal, tk * m));//sub(p_c, multi(obj->normal, (1 + tk * tk) * m));
-	if(dot(ray.direction, normal) > 0)
-	 	normal = multi(normal, -1);
-	return nrm(normal);
+		aim = sub(p_c, multi(obj->aim, tk * m));//sub(p_c, multi(obj->aim, (1 + tk * tk) * m));
+	if(dot(ray.direction, aim) > 0)
+	 	aim = multi(aim, -1);
+	return nrm(aim);
 }
 
 t_vector			get_pxl(t_rtv *rtv,t_ray ray)
@@ -132,7 +132,7 @@ t_vector			get_pxl(t_rtv *rtv,t_ray ray)
 	t_object	*obj = NULL;
 	t_vector	hit_point;
 	t_vector		color;
-	t_vector		normal;
+	t_vector		aim;
 	t_object *current = NULL;
 
 	cord(&color,0,0,0);
@@ -143,7 +143,7 @@ t_vector			get_pxl(t_rtv *rtv,t_ray ray)
 	if (dst_min > 0)
 		color = obj->color;
 	if (rtv->light)
-		color = colors(rtv, obj, hit_point, obj_normal(ray, obj, dst_min),ray);
+		color = colors(rtv, obj, hit_point, obj_aim(ray, obj, dst_min),ray);
 	return (color);
 }
 double get_dest(t_rtv *rtv, t_ray ray,t_object **close, t_object *current)

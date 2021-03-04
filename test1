@@ -4,7 +4,7 @@ light:
 cylinder:
   origin: -30 0 70
   radius: 30
-  normal: 0 0 0
+  : 0 0 0
   rot: 0 0 0
   color: 255 128 171
 camera:

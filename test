@@ -36,22 +36,22 @@ sphere:
   color: 200 200 200
 cylinder:
   origin:-300 -1000 -400
-  normal: 0 1 0 
+  aim: 0 1 0 
   color:150 150 150
   radius: 50 
 cylinder:
   origin: 300 -1000 -400
-  normal: 0 1 0
+  aim: 0 1 0
   color: 150 150 150
   radius: 50
 cylinder:
   origin: -200 -1000 600
-  normal: 0 1 0
+  aim: 0 1 0
   color: 200 200 200
   radius: 25
 cylinder:
   origin: 200 -1000 600
-  normal: 0 1 0
+  aim: 0 1 0
   color: 200 200 200
   radius: 25
 camera:

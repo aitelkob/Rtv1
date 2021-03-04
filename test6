@@ -5,7 +5,7 @@ sphere:
 cylinder:
   origin: -30 0 0
   radius: 6.5
-  normal: 1 0 0
+  aim: 1 0 0
   color: 255 128 171
   rot: 0 0 0
 camera:

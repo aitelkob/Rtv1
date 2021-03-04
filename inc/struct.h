@@ -80,7 +80,8 @@ typedef	struct		s_object
 	double			radius;
 	t_vector		origin;
 	t_vector		rot;
-	t_vector		normal;
+	t_vector		aim;
+	t_vector		translation;
 	t_vector		direction;
 	t_vector		color;
 	double			min;
