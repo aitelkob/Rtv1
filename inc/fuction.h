@@ -67,6 +67,7 @@ double			map(double x, double sw, double ew, double spw, double epw);
 t_vector		crossproduct(t_vector vec1, t_vector vec2);
 t_vector		nrm(t_vector vec);
 t_vector		rotation(t_vector v, t_vector angle);
+double			min_ray(double t1, double t2);
 
 /*
  ********************************mlx stuff

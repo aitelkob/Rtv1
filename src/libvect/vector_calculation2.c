@@ -26,3 +26,14 @@ double			dot(t_vector v, t_vector b)
 {
 	return ((v.x * b.x) + (v.y * b.y) + (v.z * b.z));
 }
+
+double			min_ray(double t1, double t2)
+{
+	if (((t1 < t2 || t2 < 0.1) && t1 > 0.1))
+		return (t1);
+	else if (((t2 < t1 || t1 < 0.1) && t2 > 0.1))
+	{
+		return (t2);
+	}
+	return (0);
+}

@@ -6,23 +6,12 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 16:20:45 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/19 12:12:09 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/03/04 15:48:55 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-
-double      min_ray(double t1, double t2)
-{
-    if (((t1 < t2 || t2 < 0.1) && t1 > 0.1))
-        return (t1);
-    else if (((t2 < t1 || t1 < 0.1) && t2 > 0.1))
-    {
-        return (t2);
-    }
-    return (0);
-}
 static	double			quadratic(double a, double b, double c)
 {
 	double				determinant;
@@ -36,8 +25,7 @@ static	double			quadratic(double a, double b, double c)
 		return (-b / (2 * a));
 	t0 = (-b + sqrt(determinant)) / (2 * a);
 	t1 = (-b - sqrt(determinant)) / (2 * a);
-	return min_ray(t1, t0);
-	
+	return (min_ray(t1, t0));
 }
 
 double					intersection_plane(t_ray ray, t_object plane)
