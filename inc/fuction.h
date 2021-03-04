@@ -68,6 +68,7 @@ t_vector		crossproduct(t_vector vec1, t_vector vec2);
 t_vector		nrm(t_vector vec);
 t_vector		rotation(t_vector v, t_vector angle);
 double			min_ray(double t1, double t2);
+double			deg_to_rad(double angle);
 
 /*
  ********************************mlx stuff
@@ -90,7 +91,7 @@ double			intersection_cone(t_ray ray, t_object cone);
 double			intersection_sphere(t_ray ray, t_object sphere);
 void			exiting_program(t_rtv *rtv);
 /*
- ********************************* to del
+ ********************************* debugging
 */
 
 void			print_vect(t_vector vec, char *str);
