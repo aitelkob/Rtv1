@@ -68,25 +68,26 @@ t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal, t_ray 
 		h = nrm(add(light_dir,sub(ray.origin,hit)));
 		post = dot(light_dir, normal) < 0 ? 0: dot(light_dir, normal);
 		//printf("post == %f \n", post);
-		alfa =  (!(dst != -1 || post < 0)) * post + 0.1;
+		alfa =  (!(dst != -1 || post < 0)) * post;
 		alfa2 = (dst == -1) * dot(h, normal);
-		color = add(color, multi(obj->color, alfa));
-		color = add(color, multi(one,(alfa-0.1)*255 * powf(alfa2 < 0 ? 0 : alfa2, 100)));
+		color = add(color, multi(obj->color, 0.1+alfa * (tmp->intensity/100)));
+		color = add(color, multi(one,(tmp->intensity/100) * (alfa)*255 * powf(alfa2 < 0 ? 0 : alfa2, 100)));
 		tmp = tmp->next;
 	}
 
 	return (color);
 }
 
-t_vector		camera(t_ray ray, int x, int y, t_vector up)
+t_vector		camera(t_camera *camera,int x, int y, t_vector up)
 {
-
+	t_ray ray;
+	ray.origin = camera->origin;
+	ray.direction = camera->look_at;
 	t_vector w_vector = nrm(sub(ray.direction, ray.origin)); // get w vector
-
 	t_vector u_vector = crossproduct(w_vector, up); // get u vector
 	t_vector v_vector = crossproduct(w_vector, u_vector); // get v vector
 
-	double alpha = 60 * ((22.0/7.0) / 180.0);
+	double alpha = camera->fov * ((22.0/7.0) / 180.0);
 	double pw = tan(alpha);
 	double ph = pw;
 	double px = map(x, 0, WIN_W,-pw/2,pw/2);
@@ -180,31 +181,23 @@ void			raytracing(t_rtv *rtv)
 	int y;
 	unsigned int *img_temp;
 	t_vector		color;
+	t_vector		up;
 
 	//camera start
-	t_ray ray;
 	t_ray ray2;
-	ray.origin = rtv->camera->origin;
-	ray.direction = rtv->camera->look_at;
-	ray2.origin = ray.origin;
 
+	ray2.origin = rtv->camera->origin;
+	up =(t_vector){0,1,0};
 	x = -1;
 	while (++x <= WIN_H)
 	{
 		y = -1;
 		while (++y <= WIN_W)
 		{
-			///tekhrbihg diyal sofiane
 
-			t_vector plane_vec_s;
-			t_vector plane_org;
-			t_vector up;
-			//print_vect(rtv->light->origin,"light");
-			cord(&up, 0, 1, 0);
-			cord(&plane_vec_s, 0, 1, 0);
-			cord(&plane_org, 50, 50, 100);
 			/////////////start here
-			ray2.direction = camera(ray,x,y,up);
+
+			ray2.direction = camera(rtv->camera,x,y,up);
 			//double dst = get_dest(rtv,ray2);
 			color = get_pxl(rtv,ray2);
 			//print_vect(color,"color");

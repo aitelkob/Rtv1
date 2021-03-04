@@ -1,16 +1,43 @@
 light:
-  origin: 100 50 0
-  intensity: 1
+  origin: 0 50 190
+  intensity: 100
 plane:
   origin: 0 -30 0
   normal: 0 -1 0
   rot: 0 0 0
   color: 20 250 250
 cone:
-  origin: 0 50 0
-  normal: 0 -1 0
+  origin: 0 10 0
+  normal: 0 1 0
+  rot: 0 0 90
+  color: 20 25 250
+cone:
+  origin: 0 10 0
+  normal: 0 1 0
   rot: 0 0 0
-  color: 20 250 250
+  color: 2 250 20
+cylinder:
+  origin: 0 10 0
+  normal: 0 1 0
+  radius: 40
+  color: 2 250 20
+cylinder:
+  origin: 0 10 0
+  normal: 1 0 0
+  radius: 40
+  color: 20 25 250
+cylinder:
+  origin: 0 10 0
+  normal: 0 1 0
+  rot: 0 0 -45
+  radius: 40
+  color: 250 25 2
+cylinder:
+  origin: 0 10 0
+  normal: 0 1 0
+  rot: 0 0 45
+  radius: 40
+  color: 200 250 2
 camera:
 plane:
   origin: 0 -30 0
@@ -18,7 +45,7 @@ plane:
   rot: 0 0 0
   color: 20 250 250
 camera:
-  origin: 0 10 270
-  fov: 30
+  origin: 0 10 190
+  fov: 60
   look_at: 0 0 0
 #
