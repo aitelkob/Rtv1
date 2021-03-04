@@ -63,7 +63,7 @@ void			cord(t_vector *vec, double x, double y, double z);
 t_vector		ft_itvect(int x, int y, int z);
 t_vector		vecto_subvec(t_vector v1, t_vector v2);
 double			dot(t_vector v, t_vector b);
-double			map(double x, double sw, double ew, double spw, double epw);
+double			map(double x, double spw, double step);
 t_vector		crossproduct(t_vector vec1, t_vector vec2);
 t_vector		nrm(t_vector vec);
 t_vector		rotation(t_vector v, t_vector angle);

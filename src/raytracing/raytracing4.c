@@ -89,11 +89,10 @@ t_vector		camera(t_camera *camera,int x, int y, t_vector up)
 	t_vector v_vector = crossproduct(w_vector, u_vector); // get v vector
 
 	double alpha = camera->fov * ((22.0/7.0) / 180.0);
-	double pw = tan(alpha);
+	double pw = tan(alpha/2) * 2;
 	double ph = pw;
-	double px = map(x, 0, WIN_W,-pw/2,pw/2);
-	double py = map(y, 0, WIN_H,-ph/2,ph/2);
-
+	double px = map(x, -1, ((1.0 - (-1.0)) / (WIN_W - 0.0)));
+	double py = map(y, -1, ((1.0 - (-1.0)) / (WIN_W - 0.0)));
 	t_vector sum = add(multi(u_vector,px * pw), multi(v_vector,py * ph));
 	return add(sum, w_vector);
 }

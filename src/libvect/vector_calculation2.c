@@ -17,9 +17,9 @@ t_vector		vecto_subvec(t_vector v1, t_vector v2)
 	return (ft_itvect(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z));
 }
 
-double			map(double x, double sw, double ew, double spw, double epw)
+double			map(double x, double spw, double step)
 {
-	return (x * ((epw - spw) / (ew - sw)) + spw);
+	return x * step + spw;
 }
 
 double			dot(t_vector v, t_vector b)
