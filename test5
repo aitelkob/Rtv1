@@ -1,105 +1,261 @@
 light:
-  origin: 0 0 110
+  origin: 0 0 -50
   intensity: 1
 sphere:
-  origin: -30 -30 70
+  origin: -35 -35 70
   radius: 10
-  color: 255 128 171
+  color: 223 102 102
 sphere:
-  origin: 0 0 0
+  origin: 0 -35 0
   radius: 10
-  color: 255 128 171
+  color: 223 102 102
 sphere:
-  origin: 0 0 0
+  origin: 35 -35 70
   radius: 10
-  color: 255 128 171
+  color: 223 102 102
 sphere:
-  origin: 0 0 0
+  origin: -35 35 70
   radius: 10
-  color: 255 128 171
+  color: 223 102 102
 sphere:
-  origin: 0 0 0
+  origin: 35 35 70
   radius: 10
-  color: 255 128 171
+  color: 223 102 102
 sphere:
-  origin: 0 -30 0
+  origin: 35 35 0
   radius: 10
-  color: 255 128 171
+  color: 223 102 102
 sphere:
-  origin: 30 -30 70
+  origin: -35 -35 0
   radius: 10
-  color: 255 128 171
+  color: 223 102 102
 sphere:
-  origin: -30 30 70
+  origin: -35 35 0
   radius: 10
-  color: 255 128 171
+  color: 223 102 102
 sphere:
-  origin: 30 30 70
+  origin: 35 -35 0
   radius: 10
-  color: 255 128 171
+  color: 223 102 102
 sphere:
-  origin: 30 30 0
+  origin: -35 -35 0
   radius: 10
-  color: 255 128 171
-sphere:
-  origin: -30 -30 0
-  radius: 10
-  color: 255 128 171
-sphere:
-  origin: -30 30 0
-  radius: 10
-  color: 255 128 171
-sphere:
-  origin: 30 -30 0
-  radius: 10
-  color: 255 128 171
-sphere:
-  origin: -30 -30 0
-  radius: 10
-  color: 255 128 171
+  color: 223 102 102
 cylinder:
-  origin: -30 0 0
+  origin: -35 0 0
   radius: 6.5
   normal: 0 1 0
-  color: 255 128 171
+  color: 223 102 102
   rot: 0 0 0
 cylinder:
-  origin: 30 0 70
+  origin: 35 0 70
   radius: 6.5
   normal: 0 1 0
-  color: 255 128 171
+  color: 223 102 102
 cylinder:
-  origin: -30 0 70
+  origin: -35 0 70
   radius: 6.5
   normal: 0 1 0
-  color: 255 128 171
+  color: 223 102 102
 cylinder:
-  origin: 30 0 0
+  origin: 35 0 0
   radius: 6.5
   normal: 0 1 0
-  color: 255 128 171
+  color: 255 128 11
+sphere:
+  origin: -35 -35 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 0 -35 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 35 -35 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -35 35 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 35 35 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 35 35 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -35 -35 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -35 35 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 35 -35 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -35 -35 50
+  radius: 10
+  color: 223 102 102
+cylinder:
+  origin: -35 0 50
+  radius: 6.5
+  normal: 0 1 0
+  color: 200 200 200
+  rot: 0 0 0
+cylinder:
+  origin: 35 0 50
+  radius: 6.5
+  normal: 0 1 0
+  color: 200 200 200
+cylinder:
+  origin: -35 0 50
+  radius: 6.5
+  normal: 0 1 0
+  color: 200 200 200
+cylinder:
+  origin: 35 0 50
+  radius: 6.5
+  normal: 0 1 0
+  color: 200 200 200
+sphere:
+  origin: -35 -35 100
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 0 -35 100
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 35 -35 100
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -35 35 100
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 35 35 100
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 35 35 0
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -35 -35 0
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -35 35 0
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 35 -35 0
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -35 -35 0
+  radius: 10
+  color: 223 102 102
+cylinder:
+  origin: -35 0 0
+  radius: 6.5
+  normal: 0 1 0
+  color: 200 200 200
+  rot: 0 0 0
+cylinder:
+  origin: 35 0 100
+  radius: 6.5
+  normal: 0 1 0
+  color: 200 200 200
+cylinder:
+  origin: -35 0 100
+  radius: 6.5
+  normal: 0 1 0
+  color: 200 200 200
+cylinder:
+  origin: 35 0 100
+  radius: 6.5
+  normal: 0 1 0
+  color: 200 200 200
 plane:
-  origin: 0 30 0
+  origin: 0 35 0
   normal: 0 1 0
   rot: 0 0 0
-  color: 20 250 250
+  color: 200 200 200
 plane:
-  origin: 0 -30 0
+  origin: 0 -35 0
   normal: 0 -1 0
   rot: 0 0 0
-  color: 250 250 250
+  color: 230 230 230
 plane:
   origin: 100 0 0
   normal: 1 0 0
   rot: 0 0 0
-  color: 20 250 250
+  color: 20 50 250
+plane:
+  origin: 150 0 0
+  normal: 1 0 0
+  rot: 0 0 60
+  color: 200 200 210
+plane:
+  origin: 150 0 0
+  normal: 1 0 0
+  rot: 0 0 -60
+  color: 200 200 210
 plane:
   origin: -100 0 0
   normal: -1 0 0
   rot: 0 0 0
-  color: 20 250 250
+  color: 20 50 250
+plane:
+  origin: -150 0 0
+  normal: -1 0 0
+  rot: 0 0 -60
+  color: 200 200 210
+plane:
+  origin: -150 0 0
+  normal: -1 0 0
+  rot: 0 0 60
+  color: 200 200 210
+plane:
+  origin:  0 0 -150
+  normal: 0 0 -1
+  rot: 0 0 0
+  color: 20 50 250
+plane:
+  origin: 0 0 -400
+  normal: 0 0 -1
+  rot: 0 70 0
+  color: 200 200 210
+plane:
+  origin: 0 0 -400
+  normal: 0 0 -1
+  rot: 0 -70 0
+  color: 200 200 210
+plane:
+  origin: 0 0 -400
+  normal: 0 -1 0
+  rot: 0 0 0
+  color: 200 200 210
+plane:
+  origin: 0 0 -400
+  normal: 0 -1 0
+  rot: 0 0 0
+  color: 200 200 210
+plane:
+  origin: 0 0 200
+  normal: 0 0 -1
+  rot: 0 60 0
+  color: 0 200 210
 camera:
-  origin: 0 0 110
-  fov: 30
+  origin: 0 0 20
+  fov: 35
   look_at: 0 0 0
 #
