@@ -33,42 +33,64 @@ int					rgb_to_int(t_vector v)
 	return (rgb);
 }
 
-t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector aim, t_ray ray)
+
+double shadow(t_light *tmp_light, t_vector light_dir)
 {
-	//t_ray ray;
-	//t_object   *tmp;
-	double  dist_light;
-	double   dist;
-	double intensity;
-	t_light *tmp;
+	t_ray ray_light;
+	t_object *tmp_obj;
+
+	ray_light.origin =  tmp_light->origin;
+	ray_light.direction = nrm(multi(light_dir, -1));
+	return get_dest(rtv,ray2,&tmp_obj,obj);
+}
+
+double specular(t_vector org_hit, t_vector light_dir, double dst, t_vector normal)
+{
+	t_vector cam_light;
+
+	cam_light = nrm(add(light_dir, org_hit));
+	return (dst == -1) * dot(cam_light, normal);
+}
+
+double diffuse(t_vector light_dir, double dst, t_vector normal)
+{
+	double alpha;
+	alpha = dot(light_dir, normal) < 0 ? 0: dot(light_dir, normal);
+	return (!(dst != -1 || post < 0)) * post;
+}
+
+t_vector coloring(double diffuse, double specular, t_vector obj_color)
+{
 	t_vector color;
-	double alfa;
-	double alfa2;
-	double dst;
-	t_object *tmp2;
-	t_vector h;
-	t_vector one;
-	t_vector light_dir;
-	t_ray ray2;
-	double post;
-	intensity = 0;
-	tmp = rtv->light;
-	cord(&one,1,1,1);
+	
 	color =(t_vector) {0,0,0};
+	color = add(color, multi(obj_color, 0.1 + diffuse);
+	color = add(color, multi((t_vector) {1,1,1}, diffuse * 255 * /
+			powf(specular < 0 ? 0 : specular, 100)));
+	return color;
+}
+
+t_vector			lighting(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal, t_ray ray)
+{
+	t_light *tmp;
+	t_vector light_dir;
+	t_vector color;
+	double dst;
+	double spec;
+	
+	tmp = rtv->light;
+	
 	while (tmp)
 	{
 		light_dir = nrm(sub(tmp->origin, hit));
-		dist_light = length(light_dir,light_dir);
-		ray2.origin =  tmp->origin;
-		ray2.direction = nrm(multi(light_dir, -1));
-		dst = get_dest(rtv,ray2,&tmp2,obj);
-		h = nrm(add(light_dir,sub(ray.origin,hit)));
-		post = dot(light_dir, aim) < 0 ? 0: dot(light_dir, aim);
-		//printf("post == %f \n", post);
-		alfa =  (!(dst != -1 || post < 0)) * post;
-		alfa2 = (dst == -1) * dot(h, aim);
-		color = add(color, multi(obj->color, 0.1+alfa * (tmp->intensity/100)));
-		color = add(color, multi(one,(tmp->intensity/100) * (alfa)*255 * powf(alfa2 < 0 ? 0 : alfa2, 100)));
+
+		dst = shadow(tmp, light_dir);
+
+		spec = specular(sub(ray.origin,hit), light_dir, dst, normal)
+
+		color = coloring(diffuse(light_dir, dst, normal) \
+				* (obj->intensity / 100.0), spec, obj->color)
+		
 		tmp = tmp->next;
 	}
 
