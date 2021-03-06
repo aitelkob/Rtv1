@@ -109,10 +109,10 @@ void				raytracing(t_rtv *rtv)
 	ray2.origin = rtv->camera->origin;
 	up = (t_vector){0, 1, 0};
 	x = -1;
-	while (++x <= WIN_H)
+	while (++x < WIN_H)
 	{
 		y = -1;
-		while (++y <= WIN_W)
+		while (++y < WIN_W)
 		{
 			ray2.direction = camera(rtv->camera, x, y, up);
 			color = get_pxl(rtv, ray2);

@@ -2,22 +2,22 @@ light:
   origin: 0 250 190
   intensity: 100
 plane:
-  origin: 209 -90 0
+  origin: @2 -90 0
   aim: 0 -1 0
   rot: 0 0 0
   color: 20 250 250
 cylinder:
-  origin: 79 10 0
+  origin: @1 10 0
   aim: 0 1 0
   radius: 40
-  color: 2 250 209
+  color: 2 250 @2
 cylinder:
-  origin: 0 10 79
+  origin: 0 10 @1
   aim: 1 0 0
   radius: 40
   color: 20 25 250
 cylinder:
-  origin: 79 10 0
+  origin: @1 10 0
   aim: 0 1 0
   rot: 0 0 -45
   radius: 40
@@ -27,25 +27,25 @@ cylinder:
   aim: 0 1 0
   rot: 0 0 45
   radius: 40
-  color: 200 250 209
+  color: 200 250 @2
 sphere:
   origin: 0 20 0
   radius: 50
-  color: 79 250 20
+  color: @1 250 20
 sphere:
-  origin: 0 79 0
+  origin: 0 @1 0
   radius: 50
   color: 20 25 250
 sphere:
-  origin: 209 10 0
+  origin: @2 10 0
   radius: 50
   color: 250 25 2
 sphere:
   origin: -10 10 0
   radius: 50
-  color: 200 250 79
+  color: 200 250 @1
 sphere:
-  origin: 0 10 209
+  origin: 0 10 @2
   radius: 50
   color: 255 255 255
 camera:
