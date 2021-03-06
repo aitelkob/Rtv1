@@ -69,6 +69,7 @@ SRC			+=raytracing/raytracing4.c
 SRC			+=raytracing/rotation.c
 SRC			+=raytracing/intersection.c
 SRC			+=raytracing/get_pxl.c
+SRC			+=raytracing/colors.c
 
 #################### Libraries
 LIBS		:= -L$(MLXDIR) -lmlx

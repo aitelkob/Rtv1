@@ -1,5 +1,5 @@
 light:
-  origin: 0 100 190
+  origin: 0 250 190
   intensity: 100
 plane:
   origin: 0 -90 0

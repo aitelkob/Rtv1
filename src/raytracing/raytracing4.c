@@ -12,9 +12,9 @@
 
 #include "rtv1.h"
 
-double get_dest(t_rtv *rtv, t_ray ray,t_object **close, t_object *current);
+//double get_dest(t_rtv *rtv, t_ray ray,t_object **close, t_object *current);
 
-int color_nrm(int i)
+/*int color_nrm(int i)
 {
 	return i > 255 ? 255 : i;
 }
@@ -75,7 +75,7 @@ t_vector			colors(t_rtv *rtv,t_object *obj,t_vector hit, t_vector aim, t_ray ray
 	}
 
 	return (color);
-}
+}*/
 
 t_vector		camera(t_camera *camera, int x, int y, t_vector up)
 {

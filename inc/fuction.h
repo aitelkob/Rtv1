@@ -69,7 +69,7 @@ t_vector		nrm(t_vector vec);
 t_vector		rotation(t_vector v, t_vector angle);
 double			min_ray(double t1, double t2);
 double			deg_to_rad(double angle);
-
+int					rgb_to_int(t_vector v);
 /*
  ********************************mlx stuff
 */
@@ -85,8 +85,7 @@ double			get_dest(t_rtv *rtv, t_ray ray,t_object **close, t_object *current);
 */
 
 void			raytracing(t_rtv *rtv);
-t_vector		colors(t_rtv *rtv, t_object *obj,
-t_vector hit, t_vector aim, t_ray ray);
+t_vector		lighting(t_rtv *rtv,t_object *obj,t_vector hit, t_vector normal, t_ray ray);
 t_vector		get_pxl(t_rtv *rtv, t_ray ray);
 
 /*

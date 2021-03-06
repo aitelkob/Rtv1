@@ -86,7 +86,7 @@ t_vector			get_pxl(t_rtv *rtv, t_ray ray)
 	if (dst_min > 0)
 		color = obj->color;
 	if (rtv->light)
-		color = colors(rtv, obj, hit_point,
+		color = lighting(rtv, obj, hit_point,
 		obj_norm(ray, obj, dst_min), ray);
 	return (color);
 }
