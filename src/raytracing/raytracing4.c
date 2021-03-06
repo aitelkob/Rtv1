@@ -33,7 +33,7 @@ t_vector		camera(t_camera *camera, int x, int  y, t_vector up)
 	, multi(v_vector, p.y * p.z)), w_vector));
 }
 
-void				raytracing(t_rtv *rtv)
+void				raytracing(t_rtv *rtv) 
 {
 	int				x;
 	int				y;

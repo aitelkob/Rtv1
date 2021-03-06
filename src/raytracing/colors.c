@@ -59,11 +59,8 @@ double diffuse(t_vector light_dir, double dst, t_vector normal)
 	return (!(dst != -1 || alpha < 0)) * alpha;
 }
 
-t_vector coloring(double diffuse, double specular, t_vector obj_color)
+t_vector coloring(t_vector color, double diffuse, double specular, t_vector obj_color)
 {
-	t_vector color;
-	
-	color =(t_vector) {0,0,0};
 	color = add(color, multi(obj_color, 0.1 + diffuse));
 	color = add(color, multi((t_vector) {1,1,1},
 	diffuse * 255 *powf(specular < 0 ? 0 : specular, 100)));
@@ -79,7 +76,7 @@ t_vector			lighting(t_rtv *rtv,t_object *obj,t_vector hit, t_ray ray)
 	double spec;
 	
 	tmp = rtv->light;
-	
+	color =(t_vector) {0,0,0};
 	while (tmp)
 	{
 		light_dir = nrm(sub(tmp->origin, hit));
@@ -88,7 +85,7 @@ t_vector			lighting(t_rtv *rtv,t_object *obj,t_vector hit, t_ray ray)
 
 		spec = specular(sub(ray.origin,hit), light_dir, dst, obj->normal);
 
-		color = coloring(diffuse(light_dir, dst, obj->normal) \
+		color = coloring(color, diffuse(light_dir, dst, obj->normal) \
 				* (tmp->intensity / 100.0), spec, obj->color);
 		
 		tmp = tmp->next;
