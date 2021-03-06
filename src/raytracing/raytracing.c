@@ -12,13 +12,13 @@
 
 #include "rtv1.h"
 
-t_vector		camera(t_camera *camera, int x, int  y, t_vector up)
+t_vector			camera(t_camera *camera, int x, int y, t_vector up)
 {
-	t_ray		ray;
-	t_vector	w_vector;
-	t_vector	u_vector;
-	t_vector	v_vector;
-	t_vector	p;
+	t_ray			ray;
+	t_vector		w_vector;
+	t_vector		u_vector;
+	t_vector		v_vector;
+	t_vector		p;
 
 	ray.origin = camera->origin;
 	ray.direction = camera->look_at;
@@ -33,7 +33,7 @@ t_vector		camera(t_camera *camera, int x, int  y, t_vector up)
 	, multi(v_vector, p.y * p.z)), w_vector));
 }
 
-void				raytracing(t_rtv *rtv) 
+void				raytracing(t_rtv *rtv)
 {
 	int				x;
 	int				y;

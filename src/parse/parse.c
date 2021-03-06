@@ -12,12 +12,6 @@
 
 #include "rtv1.h"
 
-void			error(char *str, char *where)
-{
-	printf("%s in ===(%s)\n", str, where);
-	exit(0);
-}
-
 char			*settings_cut(t_rtv *rtv, char *variable, char **data)
 {
 	char		**line;

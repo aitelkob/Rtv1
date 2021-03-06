@@ -12,14 +12,14 @@
 
 #include "rtv1.h"
 
-double				get_dest(t_rtv *rtv, t_ray ray, t_object **close, t_object *current)
+double				get_dest(t_rtv *rtv, t_ray ray,
+t_object **close, t_object *current)
 {
 	t_object		*tmp;
 	double			dst;
-	double			min;
 
 	tmp = rtv->obj;
-	min = -1;
+	rtv->min = -1;
 	while (tmp)
 	{
 		if (tmp->type == SPHERE)
@@ -30,16 +30,16 @@ double				get_dest(t_rtv *rtv, t_ray ray, t_object **close, t_object *current)
 			dst = intersection_cylinder(ray, *tmp);
 		else if (tmp->type == CONE)
 			dst = intersection_cone(ray, *tmp);
-		if (dst > 0 && (dst < min + 0.00000001 || min == -1))
+		if (dst > 0 && (dst < rtv->min + 0.00000001 || rtv->min == -1))
 		{
 			*close = tmp;
-			min = dst;
+			rtv->min = dst;
 		}
 		tmp = tmp->next;
 	}
 	if (current != NULL && *close == current)
 		return (-1);
-	return (min);
+	return (rtv->min);
 }
 
 t_object			*obj_norm(t_ray ray, t_object *obj, double dst)
@@ -67,7 +67,7 @@ t_object			*obj_norm(t_ray ray, t_object *obj, double dst)
 	if (dot(ray.direction, normal) > 0)
 		normal = multi(normal, -1);
 	obj->normal = nrm(normal);
-	return obj;
+	return (obj);
 }
 
 t_vector			get_pxl(t_rtv *rtv, t_ray ray)

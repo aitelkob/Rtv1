@@ -19,7 +19,7 @@ t_vector		vecto_subvec(t_vector v1, t_vector v2)
 
 double			map(double x, double spw, double step)
 {
-	return x * step + spw;
+	return (x * step + spw);
 }
 
 double			dot(t_vector v, t_vector b)

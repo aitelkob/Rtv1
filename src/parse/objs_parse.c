@@ -34,8 +34,6 @@ void					plan_parce(t_rtv *rtv)
 	}
 	else
 	{
-		plan->aim = rotation(plan->aim, plan->rot);
-		plan->origin = add(plan->origin, plan->translation);
 		first_obj(rtv, plan);
 		plan = NULL;
 		forward(rtv, data);
@@ -93,8 +91,7 @@ void					cylinder_parce(t_rtv *rtv)
 	}
 	else
 	{
-		cylinder->origin = add(cylinder->origin, cylinder->translation);
-		cylinder->aim = rotation(cylinder->aim, cylinder->rot);
+		rot_trans(cylinder);
 		first_obj(rtv, cylinder);
 		cylinder = NULL;
 		forward(rtv, data);
@@ -123,8 +120,7 @@ void					cone_parce(t_rtv *rtv)
 	}
 	else
 	{
-		cone->origin = add(cone->origin, cone->translation);
-		cone->aim = rotation(cone->aim, cone->rot);
+		rot_trans(cone);
 		first_obj(rtv, cone);
 		cone = NULL;
 		forward(rtv, data);
