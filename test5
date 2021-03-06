@@ -1,6 +1,6 @@
 light:
   origin: 0 250 190
-  intensity: 100
+  intensity: 0
 plane:
   origin: 0 -90 0
   aim: 0 -1 0
