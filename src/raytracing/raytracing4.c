@@ -21,14 +21,14 @@ t_vector		camera(t_camera *camera, int x, int  y, t_vector up)
 	t_vector	p;
 
 	ray.origin = camera->origin;
-	ray.direction = camera->look_at;
+	ray.direction = camera->look_at; 
 	ray.origin.x += 0.000000001;
 	w_vector = nrm(sub(ray.direction, ray.origin));
 	u_vector = nrm(crossproduct(w_vector, up));
 	v_vector = crossproduct(w_vector, u_vector);
-	p.z = tan(deg_to_rad(camera->fov) / 2) * 2;
+	p.z = tan(deg_to_rad(camera->fov)/2);
 	p.x = map(x, -1, ((1.0 - (-1.0)) / (WIN_W - 0.0)));
-	p.y = map(y, -1, ((1.0 - (-1.0)) / (WIN_W - 0.0)));
+	p.y = map(y, 1, ((-1.0 - (1.0)) / (WIN_W - 0.0)));
 	return (add(add(multi(u_vector, p.x * p.z)
 	, multi(v_vector, p.y * p.z)), w_vector));
 }
@@ -49,7 +49,7 @@ void				raytracing(t_rtv *rtv)
 		y = -1;
 		while (++y < WIN_W)
 		{
-			ray2.direction = camera(rtv->camera, x, y, up);
+			ray2.direction = nrm(camera(rtv->camera, x, y, up));
 			color = get_pxl(rtv, ray2);
 			rtv->mlx.img[(WIN_H - 1 - y) * WIN_W + x] = rgb_to_int(color);
 		}

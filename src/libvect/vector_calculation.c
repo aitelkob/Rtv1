@@ -22,7 +22,6 @@ void			cord(t_vector *vec, double x, double y, double z)
 double			length(t_vector vec1, t_vector vec2)
 {
 	double		result;
-
 	result = sqrt(length_squared(vec1, vec2));
 	return (result);
 }
@@ -47,7 +46,7 @@ t_vector		crossproduct(t_vector vec1, t_vector vec2)
 	t_vector	result;
 
 	result.x = vec1.y * vec2.z - vec2.y * vec1.z;
-	result.y = vec1.x * vec2.z - vec2.x * vec1.z;
+	result.y = vec2.x * vec1.z - vec1.x * vec2.z;
 	result.z = vec1.x * vec2.y - vec2.x * vec1.y;
 	return (result);
 }

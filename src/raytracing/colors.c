@@ -85,8 +85,8 @@ t_vector			lighting(t_rtv *rtv,t_object *obj,t_vector hit, t_ray ray)
 
 		spec = specular(sub(ray.origin,hit), light_dir, dst, obj->normal);
 
-		color = coloring(color, diffuse(light_dir, dst, obj->normal) \
-				* (tmp->intensity / 100.0), spec, obj->color);
+		color = coloring(color,1,0 /*diffuse(light_dir, dst, obj->normal) \
+				* (tmp->intensity / 100.0), spec*/, obj->color);
 		
 		tmp = tmp->next;
 	}

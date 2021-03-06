@@ -14,7 +14,7 @@
 
 double				deg_to_rad(double angle)
 {
-	return (angle * (PI / 180.0));
+	return (angle * (M_PI / 180.0));
 }
 
 t_vector			rotation(t_vector v, t_vector angle)

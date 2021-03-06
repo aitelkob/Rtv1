@@ -1,20 +1,12 @@
 light:
-  origin: 10 50 50
+  origin: 0 50 50
   intensity: 100
-light:
-  origin: -10 50 50
-  intensity: 100
-plane:
-  origin: 0 0 0
-  aim: 0 -1 0
-  rot: 0 0 0
-  color: 20 250 250
 sphere:
   origin: 0 0 0
   radius: 10
   color: 255 0 0
 camera:
-  origin: 0 1000 1000
+  origin: 0 500 500
   fov: 60
   look_at: 0 0 0
 #
