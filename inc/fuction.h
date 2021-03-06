@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:22:35 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/27 18:31:52 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/03/06 16:04:37 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_vector		rotation(t_vector v, t_vector angle);
 double			min_ray(double t1, double t2);
 double			deg_to_rad(double angle);
 int				rgb_to_int(t_vector v);
+void			rot_trans(t_object *obj);
 /*
  ********************************mlx stuff
 */
@@ -79,13 +80,14 @@ int				key_hook(int keycode, t_rtv *rtv);
 void			setup_mlx(t_mlix *mlx);
 void			ft_destroy(t_mlix *mlx);
 void			ft_put_pixel(t_mlix *mlx, int x, int y, int color);
-double			get_dest(t_rtv *rtv, t_ray ray,t_object **close, t_object *current);
+double			get_dest(t_rtv *rtv, t_ray ray,
+t_object **close, t_object *current);
 /*
  ********************************** raytracing
 */
 
 void			raytracing(t_rtv *rtv);
-t_vector		lighting(t_rtv *rtv,t_object *obj,t_vector hit, t_ray ray);
+t_vector		lighting(t_rtv *rtv, t_object *obj, t_vector hit, t_ray ray);
 t_vector		get_pxl(t_rtv *rtv, t_ray ray);
 
 /*

@@ -22,6 +22,7 @@ void			cord(t_vector *vec, double x, double y, double z)
 double			length(t_vector vec1, t_vector vec2)
 {
 	double		result;
+
 	result = sqrt(length_squared(vec1, vec2));
 	return (result);
 }

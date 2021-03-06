@@ -39,7 +39,7 @@ t_camera *camera, t_rtv *rtv)
 	else
 	{
 		free(data);
-		unknown_setting(rtv, "camera", rtv->parse.nb_line);	
+		unknown_setting(rtv, "camera", rtv->parse.nb_line);
 	}
 	free(data);
 }

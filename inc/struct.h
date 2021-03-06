@@ -102,6 +102,7 @@ typedef	struct		s_rtv
 	t_parse			parse;
 	t_camera		*camera;
 	t_light			*light;
+	double			min;
 	t_ray			ray;
 }					t_rtv;
 
