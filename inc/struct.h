@@ -85,7 +85,7 @@ typedef	struct		s_object
 	double			angle;
 	t_vector		direction;
 	t_vector		color;
-	double			min;
+	t_vector		normal;
 	struct s_object	*next;
 }					t_object;
 typedef struct		s_camera

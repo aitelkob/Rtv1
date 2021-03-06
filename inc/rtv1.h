@@ -14,8 +14,6 @@
 # define RTV1_H
 # define WIN_H 1000
 # define WIN_W 1000
-# define DIST_MAX 20000
-# define DIST_MIN 0.0001
 # define FOV 30
 # define KEY_ESC 53
 # define PI 3.14159

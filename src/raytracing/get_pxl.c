@@ -42,7 +42,7 @@ double				get_dest(t_rtv *rtv, t_ray ray, t_object **close, t_object *current)
 	return (min);
 }
 
-t_vector			obj_norm(t_ray ray, t_object *obj, double dst)
+t_object			*obj_norm(t_ray ray, t_object *obj, double dst)
 {
 	double			m;
 	double			tk;
@@ -66,7 +66,8 @@ t_vector			obj_norm(t_ray ray, t_object *obj, double dst)
 		normal = sub(p_c, multi(obj->aim, tk * m));
 	if (dot(ray.direction, normal) > 0)
 		normal = multi(normal, -1);
-	return (nrm(normal));
+	obj->normal = nrm(normal);
+	return obj;
 }
 
 t_vector			get_pxl(t_rtv *rtv, t_ray ray)
@@ -86,7 +87,6 @@ t_vector			get_pxl(t_rtv *rtv, t_ray ray)
 	if (dst_min > 0)
 		color = obj->color;
 	if (rtv->light)
-		color = lighting(rtv, obj, hit_point,
-		obj_norm(ray, obj, dst_min), ray);
+		color = lighting(rtv, obj_norm(ray, obj, dst_min), hit_point, ray);
 	return (color);
 }
