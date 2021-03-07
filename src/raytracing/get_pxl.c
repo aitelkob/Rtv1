@@ -30,7 +30,7 @@ t_object **close, t_object *current)
 			dst = intersection_cylinder(ray, *tmp);
 		else if (tmp->type == CONE)
 			dst = intersection_cone(ray, *tmp);
-		if (dst > 0 && (dst < rtv->min + 0.00000001 || rtv->min == -1))
+		if (dst > 0 && (dst < rtv->min + 0.000001 || rtv->min == -1))
 		{
 			*close = tmp;
 			rtv->min = dst;

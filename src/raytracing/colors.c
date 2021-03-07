@@ -45,7 +45,7 @@ double specular, t_vector obj_color)
 {
 	color = add(color, multi(obj_color, 0.1 + diffuse));
 	color = add(color, multi((t_vector) {1, 1, 1},
-	255 * powf(specular < 0 ? 0 : specular, 100)));
+	diffuse * 255 * powf(specular < 0 ? 0 : specular, 100)));
 	return (color);
 }
 
