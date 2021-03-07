@@ -1,12 +1,12 @@
 light:
-  origin: 0 0 10
+  origin: 0 0 170
   intensity: 100
 cone:
   origin: 0 0 0
   aim: 0 1 0
   radius: 50
   rot: 0 0 0
-  color: 25 100 0
+  color: 20 100 20
 camera:
   origin: 0 0 170
   fov: 60
