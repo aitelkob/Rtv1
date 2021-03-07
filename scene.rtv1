@@ -20,6 +20,7 @@ cylinder:
   origin: 0 0 0
   aim: 0 0 0
   rot: 0 0 0
+  translation: 0 0 0
   radius: 0
   color: 0 0 0
 camera:

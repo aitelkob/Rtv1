@@ -1,0 +1,14 @@
+light:
+  origin: 0 0 170
+  intensity: 100
+cylinder:
+  origin: 0 0 0
+  aim: 0 0 0
+  rot: 0 0 0
+  radius: 30
+  color: 0 0 250
+camera:
+  origin: 0 0 170
+  fov: 60
+  look_at: 0 0 0
+#

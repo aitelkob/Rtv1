@@ -1,0 +1,261 @@
+light:
+  origin: 0 0 200
+  intensity: 100
+sphere:
+  origin: -50 -50 70
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 0 -50 0
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 50 -50 70
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -50 50 70
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 50 50 70
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 50 50 0
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -50 -50 0
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -50 50 0
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 50 -50 0
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -50 -50 0
+  radius: 10
+  color: 223 102 102
+cylinder:
+  origin: -50 0 0
+  radius: 6.5
+  aim: 0 1 0
+  color: 223 102 102
+  rot: 0 0 0
+cylinder:
+  origin: 50 0 70
+  radius: 6.5
+  aim: 0 1 0
+  color: 223 102 102
+cylinder:
+  origin: -50 0 70
+  radius: 6.5
+  aim: 0 1 0
+  color: 223 102 102
+cylinder:
+  origin: 50 0 0
+  radius: 6.5
+  aim: 0 1 0
+  color: 255 128 11
+sphere:
+  origin: -50 -50 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 0 -50 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 50 -50 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -50 50 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 50 50 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 50 50 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -50 -50 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -50 50 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 50 -50 50
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -50 -50 50
+  radius: 10
+  color: 223 102 102
+cylinder:
+  origin: -50 0 50
+  radius: 6.5
+  aim: 0 1 0
+  color: 200 200 200
+  rot: 0 0 0
+cylinder:
+  origin: 50 0 50
+  radius: 6.5
+  aim: 0 1 0
+  color: 200 200 200
+cylinder:
+  origin: -50 0 50
+  radius: 6.5
+  aim: 0 1 0
+  color: 200 200 200
+cylinder:
+  origin: 50 0 50
+  radius: 6.5
+  aim: 0 1 0
+  color: 200 200 200
+sphere:
+  origin: -50 -50 100
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 0 -50 100
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 50 -50 100
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -50 50 100
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 50 50 100
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 50 50 0
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -50 -50 0
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -50 50 0
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: 50 -50 0
+  radius: 10
+  color: 223 102 102
+sphere:
+  origin: -50 -50 0
+  radius: 10
+  color: 223 102 102
+cylinder:
+  origin: -50 0 0
+  radius: 6.5
+  aim: 0 1 0
+  color: 200 200 200
+  rot: 0 0 0
+cylinder:
+  origin: 50 0 100
+  radius: 6.5
+  aim: 0 1 0
+  color: 200 200 200
+cylinder:
+  origin: -50 0 100
+  radius: 6.5
+  aim: 0 1 0
+  color: 200 200 200
+cylinder:
+  origin: 50 0 100
+  radius: 6.5
+  aim: 0 1 0
+  color: 200 200 200
+plane:
+  origin: 0 50 0
+  aim: 0 1 0
+  rot: 0 0 0
+  color: 200 200 200
+plane:
+  origin: 0 -50 0
+  aim: 0 -1 0
+  rot: 0 0 0
+  color: 230 230 230
+plane:
+  origin: 100 0 0
+  aim: 1 0 0
+  rot: 0 0 0
+  color: 20 50 250
+plane:
+  origin: 150 0 0
+  aim: 1 0 0
+  rot: 0 0 60
+  color: 200 200 210
+plane:
+  origin: 150 0 0
+  aim: 1 0 0
+  rot: 0 0 -60
+  color: 200 200 210
+plane:
+  origin: -100 0 0
+  aim: -1 0 0
+  rot: 0 0 0
+  color: 20 50 250
+plane:
+  origin: -150 0 0
+  aim: -1 0 0
+  rot: 0 0 -60
+  color: 200 200 210
+plane:
+  origin: -150 0 0
+  aim: -1 0 0
+  rot: 0 0 60
+  color: 200 200 210
+plane:
+  origin:  0 0 -150
+  aim: 0 0 -1
+  rot: 0 0 0
+  color: 20 50 250
+plane:
+  origin: 0 0 -500
+  aim: 0 0 -1
+  rot: 0 70 0
+  color: 200 200 210
+plane:
+  origin: 0 0 -500
+  aim: 0 0 -1
+  rot: 0 -70 0
+  color: 200 200 210
+plane:
+  origin: 0 0 -500
+  aim: 0 -1 0
+  rot: 0 0 0
+  color: 200 200 210
+plane:
+  origin: 0 0 -500
+  aim: 0 -1 0
+  rot: 0 0 0
+  color: 200 200 210
+plane:
+  origin: 0 0 00
+  aim: 0 0 -1
+  rot: 0 60 0
+  color: 0 200 210
+camera:
+  origin: 0 0 500
+  fov: 50
+  look_at: 0 0 0
+#

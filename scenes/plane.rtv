@@ -1,0 +1,13 @@
+light:
+  origin: 0 0 -200
+  intensity: 100
+plane:
+  origin: -50 -50 -100
+  aim: 0 -1 0
+  color: 2 100 0
+  rot: 0 0 0
+camera:
+  origin: 0 0 170
+  fov: 60
+  look_at: 0 0 0
+#

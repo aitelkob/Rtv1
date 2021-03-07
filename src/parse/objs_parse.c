@@ -34,6 +34,7 @@ void					plan_parce(t_rtv *rtv)
 	}
 	else
 	{
+		rot_trans(plan);
 		first_obj(rtv, plan);
 		plan = NULL;
 		forward(rtv, data);
