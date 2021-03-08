@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: babdelka <babdelka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 16:40:46 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/27 18:49:18 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/03/08 17:57:56 by babdelka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ enum				e_type
 	CYLINDER,
 	CONE
 };
+
+typedef enum 		e_material
+{
+	GLASS = 1,
+	SOLID,
+	NANL
+
+}					t_material;
 
 typedef	struct		s_vector
 {
@@ -87,7 +95,9 @@ typedef	struct		s_object
 	t_vector		color;
 	t_vector		normal;
 	struct s_object	*next;
+	t_material		material;
 }					t_object;
+
 typedef struct		s_camera
 {
 	t_vector		origin;
@@ -95,6 +105,7 @@ typedef struct		s_camera
 	t_vector		look_at;
 	int				check;
 }					t_camera;
+
 typedef	struct		s_rtv
 {
 	t_mlix			mlx;

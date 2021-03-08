@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_obj.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: babdelka <babdelka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:07:15 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/02/28 11:52:43 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/03/08 18:01:22 by babdelka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	sphere_checker(char *data, char *arg, t_object *sphere, t_rtv *rtv)
 		sphere->color = input_vector(rtv, arg, rtv->parse.nb_line, data);
 	else if (!ft_strcmp("translation", data))
 		sphere->translation = input_vector(rtv, arg, rtv->parse.nb_line, data);
+	else if (!ft_strcmp("material", data))
+		sphere->material = input_material(rtv, arg, rtv->parse.nb_line, data);
 	else
 	{
 		free(data);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: babdelka <babdelka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:26:32 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/03/01 11:52:52 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/03/08 18:02:56 by babdelka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void				init_obj(t_object *obj)
 	obj->aim = v;
 	obj->direction = v;
 	obj->color = v;
+
 }
 
 void				first_obj(t_rtv *rtv, t_object *obj)
@@ -83,3 +84,28 @@ t_vector			input_vector(t_rtv *rtv, char *data, int nbr, char *head)
 	free_splited(lines);
 	return (vec);
 }
+
+t_material				input_material(t_rtv *rtv, char *data, int nbr, char *head)
+{
+	char			**lines;
+	double			ret;
+	char			*tmp;
+	t_material		materiel;
+
+	lines = ft_strsplit(data, ' ');
+	if (ft_lentab(lines) != 1)
+	{
+		free(data);
+		free(head);
+		syntax_error(rtv, data, head, nbr);
+	}
+	free(data);
+	if (ft_strequ(lines[0], "glass"))
+		materiel = GLASS;
+	if (ft_strequ(lines[0], "solid"))
+		materiel = SOLID;
+	free_splited(lines);
+	return (ret);
+}
+
+

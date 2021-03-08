@@ -1,31 +1,27 @@
-light:
-  origin: 100 0 -100
-  intensity: 100
 sphere:
-  origin:  0 0 0
+  origin: 0 10 0
   radius: 20
   translation: 0 0 -100
   color: 255 0 0
+  material: glass
 plane:
-  origin: -50 -50 -100
+  origin: 0 -25 0
   aim: 0 -1 0
-  color: 2 100 0
+  color: 255 255 255
 plane:
-  origin: -50 30 0
+  origin: 0 150 0
   aim: 0 1 0
   color: 100 50 100
-  rot: 0 0 60
 plane:
-  origin: -50 -50 -100
-  aim: 0 -1 0
+  origin: -80 0 0
+  aim: -1 0 0
   color: 2 100 0
 plane:
-  origin: -50 30 0
-  aim: 0 1 0
-  color: 100 50 100
-  rot: 0 0 90
+  origin: 80 0 0
+  aim: 1 0 0
+  color: 2 100 0
 camera:
-  origin: 0 0 170
+  origin: 0 50 80
   fov: 60
-  look_at: 0 0 0
+  look_at: 0 0 -100
 #

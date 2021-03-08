@@ -1,8 +1,0 @@
-light:
-  origin: 0 30 0
-  intensity: 100
-camera:
-  origin: 0 0 40
-  fov: 60
-  look_at: 0 30 10
-#
