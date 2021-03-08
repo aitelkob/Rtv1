@@ -7,13 +7,9 @@ sphere:
   radius: 90
   color:  200 200 200
 sphere:
-  origin: 300 200 -400  
-  radius: 90
-  color:  200 200 200
-sphere:
   origin: -300 -200 -400
   radius: 90
-  color: 200 200 200
+  color: 00 200 200
 sphere:
   origin: 300 -200 -400 
   radius: 90
