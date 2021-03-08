@@ -1,7 +1,7 @@
 sphere:
   origin: 0 -40 400    
   radius: 70
-  color: 255 0 0
+  color: 254 0 0
 sphere:
   origin: -300 200 -400 
   radius: 90
