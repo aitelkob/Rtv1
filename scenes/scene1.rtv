@@ -1,5 +1,5 @@
 light:
-  origin: 0 0 -200
+  origin: 0 0 100
   intensity: 100
 sphere:
   origin:  0 0 0

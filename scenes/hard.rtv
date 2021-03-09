@@ -213,7 +213,7 @@ plane:
   origin: -100 0 0
   aim: -1 0 0
   rot: 0 0 0
-  color: 20 50 250
+  color: 20 0 250
 plane:
   origin: -150 0 0
   aim: -1 0 0
@@ -249,11 +249,6 @@ plane:
   aim: 0 -1 0
   rot: 0 0 0
   color: 200 200 210
-plane:
-  origin: 0 0 00
-  aim: 0 0 -1
-  rot: 0 60 0
-  color: 0 200 210
 camera:
   origin: 0 0 500
   fov: 50
