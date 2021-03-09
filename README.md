@@ -1,16 +1,8 @@
-[![Contributors][contributors-shield]][https://github.com/aitelkob/Rtv1/graphs/contributors]
-[![Forks][forks-shield]][https://github.com/aitelkob/Rtv1/network/members]
-[![Stargazers][stars-shield]][https://github.com/aitelkob/Rtv1/stargazers]
-[![Issues][issues-shield]][https://github.com/aitelkob/Rtv1/issues]
-[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/youssef-ait-el-kob/]
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo" width="100" height="100">
   </a>
 
   <h3 align="center">RT</h3>
