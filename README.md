@@ -1,11 +1,3 @@
-[![Contributors][contributors-shield]][https://github.com/aitelkob/Rtv1/graphs/contributors]
-[![Forks][forks-shield]][https://github.com/aitelkob/Rtv1/network/members]
-[![Stargazers][stars-shield]][https://github.com/aitelkob/Rtv1/stargazers]
-[![Issues][issues-shield]][https://github.com/aitelkob/Rtv1/issues]
-[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/youssef-ait-el-kob/]
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -25,7 +17,7 @@
     ·
     <a href="https://github.com/aitelkob/Rtv1/issues">Report Bug</a>
     ·
-    <a href="https://github.com/aitelkob/Rtv1/issues">Request Feature</a>
+    <a href="https://github.com/aitelkob/Rtv1/src">Request Feature</a>
   </p>
 </p>
 

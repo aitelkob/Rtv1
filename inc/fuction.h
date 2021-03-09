@@ -6,7 +6,7 @@
 /*   By: yait-el- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:22:35 by yait-el-          #+#    #+#             */
-/*   Updated: 2021/03/06 16:04:37 by yait-el-         ###   ########.fr       */
+/*   Updated: 2021/03/09 15:48:58 by yait-el-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 */
 
 void			parce(char *av, t_rtv *rtv);
+void			parce_xml(char *av, t_rtv *rtv);
 void			plan_parce(t_rtv *rtv);
 void			plan_checker(char *data, char *arg,
 				t_object *plan, t_rtv *rtv);
