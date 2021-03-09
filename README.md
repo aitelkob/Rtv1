@@ -5,7 +5,7 @@
     <img src="images/logo.png" alt="Logo" width="100" height="100">
   </a>
 
-  <h3 align="center">RT</h3>
+  <h3 align="center"></h3>
 
   <p align="center">
     project_description
