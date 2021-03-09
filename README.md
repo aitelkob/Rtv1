@@ -1,8 +1,8 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![Contributors][contributors-shield]][https://github.com/aitelkob/Rtv1/graphs/contributors]
+[![Forks][forks-shield]][https://github.com/aitelkob/Rtv1/network/members]
+[![Stargazers][stars-shield]][https://github.com/aitelkob/Rtv1/stargazers]
+[![Issues][issues-shield]][https://github.com/aitelkob/Rtv1/issues]
+[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/youssef-ait-el-kob/]
 
 
 
@@ -28,7 +28,6 @@
     <a href="https://github.com/aitelkob/Rtv1/issues">Request Feature</a>
   </p>
 </p>
-
 
 
 <!-- TABLE OF CONTENTS -->
@@ -58,23 +57,6 @@
 
 
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
-
-
-### Built With
-
-* []()
-* []()
-* []()
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -84,9 +66,12 @@ To get a local copy up and running follow these simple steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
+* Mac os
   ```sh
-  npm install npm@latest -g
+  mlx
+  gcc
+  cmake
+  git
   ```
 
 ### Installation
